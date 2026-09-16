@@ -1,4 +1,4 @@
-name: Deploy portfolio to GitHub Pages
+name: Build and deploy portfolio
 
 on:
   push:
@@ -38,13 +38,16 @@ jobs:
       - name: Verify output
         run: pnpm verify
       - name: Configure Pages
+        if: ${{ !github.event.repository.private }}
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
+        if: ${{ !github.event.repository.private }}
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
   deploy:
+    if: ${{ !github.event.repository.private }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
