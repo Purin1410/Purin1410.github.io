@@ -1,0 +1,8 @@
+---
+import { type Lang, otherPath, words } from '../lib/site';
+const { lang } = Astro.props as { lang: Lang };
+const pathname = /^\/404(?:\/|\.html)?$/.test(Astro.url.pathname) ? '/' : Astro.url.pathname;
+---
+<nav class="language-switch" aria-label={words(lang,'Language','Ngôn ngữ')}>
+  {(['en','vi'] as const).map(locale => <a data-language-link href={locale === lang ? pathname : otherPath(pathname,lang)} lang={locale} hreflang={locale} aria-current={locale===lang ? 'true' : undefined}>{locale.toUpperCase()}</a>)}
+</nav>

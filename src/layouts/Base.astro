@@ -1,0 +1,32 @@
+---
+import '@fontsource/be-vietnam-pro/latin-400.css';
+import '@fontsource/be-vietnam-pro/latin-500.css';
+import '@fontsource/be-vietnam-pro/latin-600.css';
+import '@fontsource/be-vietnam-pro/latin-700.css';
+import '@fontsource/be-vietnam-pro/vietnamese-400.css';
+import '@fontsource/be-vietnam-pro/vietnamese-500.css';
+import '@fontsource/be-vietnam-pro/vietnamese-600.css';
+import '@fontsource/be-vietnam-pro/vietnamese-700.css';
+import '../styles/global.css';
+import '../styles/polish.css';
+import { type Lang, otherPath, words } from '../lib/site';
+const { lang = 'en', title, description, alternate = true } = Astro.props as {lang?: Lang; title: string; description: string; alternate?: boolean};
+const site = Astro.site ?? Astro.url.origin;
+const canonicalUrl = new URL(Astro.url.pathname, site).toString();
+const alternateUrl = new URL(otherPath(Astro.url.pathname, lang), site).toString();
+const ogImage = new URL('/og.png', site).toString();
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title><meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" /><meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {alternate && <><link rel="alternate" hreflang={lang} href={canonicalUrl} /><link rel="alternate" hreflang={lang==='en'?'vi':'en'} href={alternateUrl} /></>}
+    <meta property="og:type" content="website" /><meta property="og:url" content={canonicalUrl} /><meta property="og:title" content={title} /><meta property="og:description" content={description} /><meta property="og:image" content={ogImage} /><meta property="og:locale" content={lang==='en'?'en_US':'vi_VN'} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body><a class="skip-link" href="#main">{words(lang,'Skip to content','Đến nội dung chính')}</a><slot /><script src="../lib/interactions.ts"></script></body>
+</html>

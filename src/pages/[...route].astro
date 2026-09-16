@@ -1,0 +1,19 @@
+---
+import HomePage from '../components/HomePage.astro';
+import IndexPage from '../components/IndexPage.astro';
+import CasePage from '../components/CasePage.astro';
+import { registry, type Lang } from '../lib/site';
+export async function getStaticPaths() {
+  const { projects } = await registry();
+  return (['en','vi'] as const).flatMap(lang=> {
+    const prefix = lang==='vi' ? 'vi/' : '';
+    return [
+      {params:{route:lang==='en'?undefined:'vi'},props:{lang,kind:'home'}},
+      ...(['work','research'] as const).map(kind=>({params:{route:`${prefix}${kind}`},props:{lang,kind}})),
+      ...projects.map(p=>({params:{route:`${prefix}work/${p.data.slug}`},props:{lang,kind:'case',slug:p.data.slug}})),
+    ];
+  });
+}
+const { lang, kind, slug } = Astro.props as {lang:Lang;kind:'home'|'work'|'research'|'case';slug?:string};
+---
+{kind==='home' ? <HomePage lang={lang} /> : kind==='case' ? <CasePage lang={lang} slug={slug!} /> : <IndexPage lang={lang} kind={kind} />}

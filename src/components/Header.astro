@@ -1,0 +1,11 @@
+---
+import { type Lang, words, pathFor } from '../lib/site';
+import { profile } from '../data/profile';
+import LanguageSwitch from './LanguageSwitch.astro';
+const { lang } = Astro.props as { lang: Lang };
+---
+<header class="topbar">
+  <a class="brand" href={pathFor('/',lang)}>{profile.name}</a>
+  <nav aria-label={words(lang,'Main navigation','Điều hướng chính')}><a href={pathFor('/work/',lang)}>{words(lang,'Work','Công việc')}</a><a href={pathFor('/research/',lang)}>{words(lang,'Research','Nghiên cứu')}</a></nav>
+  <LanguageSwitch lang={lang} />
+</header>

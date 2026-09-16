@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { type Lang, t, words, newsDate } from '../lib/site';
+import { sortNews } from '../lib/content-schema.mjs';
+const { items, lang } = Astro.props as {items: CollectionEntry<'news'>['data'][]; lang: Lang};
+const sorted = sortNews(items) as typeof items;
+---
+{sorted.length > 0 && <section id="news" class="section news-section" data-section>
+  <h2>{words(lang,'News','Cập nhật')}</h2>
+  <ol class="news-list">{sorted.slice(0,3).map(n => <li><time datetime={n.date}>{newsDate(n.date,n.precision,lang)}</time><p><a href={n.source} target="_blank" rel="noopener noreferrer">{t(n.text,lang)}</a></p></li>)}</ol>
+  {sorted.length > 3 && <details class="older-news"><summary><span class="closed-label">{words(lang,'Show older updates','Xem cập nhật cũ hơn')}</span><span class="open-label">{words(lang,'Show fewer updates','Thu gọn cập nhật')}</span></summary><ol class="news-list">{sorted.slice(3).map(n => <li><time datetime={n.date}>{newsDate(n.date,n.precision,lang)}</time><p><a href={n.source} target="_blank" rel="noopener noreferrer">{t(n.text,lang)}</a></p></li>)}</ol></details>}
+</section>}

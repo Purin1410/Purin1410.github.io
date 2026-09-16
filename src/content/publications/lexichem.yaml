@@ -1,0 +1,41 @@
+title: "LexiChem: Shared-Latent Alignment for Faithful Text-to-Molecule Generation in SELFIES Space"
+venue: APWeb-WAIM Joint International Conference on Web and Big Data
+year: 2026
+status: accepted
+role:
+  en: First author
+  vi: Tác giả chính
+result:
+  en:
+    Text-to-molecule generation evaluated on L+M-24; the research core comes from my undergraduate thesis system.
+  vi:
+    Sinh phân tử từ văn bản, đánh giá trên L+M-24; lõi nghiên cứu được trích từ hệ thống đồ án tốt nghiệp.
+tags:
+  - Text-to-Molecule
+  - L+M-24
+links: {}
+order: 3
+slug: lexichem
+kind: conference
+venueShort: APWeb-WAIM
+authors:
+  - name: Khoa Minh Nguyen
+    self: true
+  - name: Nam Van Hai Phan
+    self: false
+  - name: Phu Trong Nguyen
+    self: false
+  - name: Duc Tai Phan
+    self: false
+  - name: Tri Minh Pham
+    self: false
+  - name: Duc Ngoc Minh Dang
+    self: false
+featuredOrder: 1
+project: lexichem
+source: https://taiduc1001.github.io/publications/
+bibtex:
+  "@inproceedings{lexichem2026,\n  title = {LexiChem: Shared-Latent Alignment for Faithful Text-to-Molecule\
+  \ Generation in SELFIES Space},\n  author = {Khoa Minh Nguyen and Nam Van Hai Phan and Phu Trong Nguyen and Duc\
+  \ Tai Phan and Tri Minh Pham and Duc Ngoc Minh Dang},\n  booktitle = {APWeb-WAIM Joint International Conference\
+  \ on Web and Big Data},\n  year = {2026},\n  note = {Accepted; final publication metadata pending}\n}"

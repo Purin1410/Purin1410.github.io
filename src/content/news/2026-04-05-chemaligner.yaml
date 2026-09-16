@@ -1,0 +1,10 @@
+slug: 2026-04-05-chemaligner
+date: "2026-04-05"
+precision: day
+text:
+  en: ChemAligner-T5 is now published in the ICCIES 2026 proceedings.
+  vi: ChemAligner-T5 đã xuất bản trong kỷ yếu ICCIES 2026.
+source: https://link.springer.com/chapter/10.1007/978-3-032-21625-0_16
+event: publication
+publications:
+  - chemaligner-t5

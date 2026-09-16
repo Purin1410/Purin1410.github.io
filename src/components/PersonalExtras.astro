@@ -1,0 +1,51 @@
+---
+import { contributions, visibleGallery } from '../data/extras';
+import { credentials, aioModules } from '../data/credentials.mjs';
+import CredentialRow from './CredentialRow.astro';
+import ImagePreview from './ImagePreview.astro';
+import { type Lang, t, words } from '../lib/site';
+import Icon from './Icon.astro';
+const { lang } = Astro.props as { lang: Lang };
+const groups = [
+  ['ai', words(lang,'AI & data','AI & dữ liệu')],
+  ['engineering', words(lang,'Software & cloud','Phần mềm & điện toán đám mây')],
+  ['research', words(lang,'Research & academic skills','Nghiên cứu & kỹ năng học thuật')],
+  ['management', words(lang,'Project management','Quản lý dự án')],
+];
+---
+<section id="certificates" class="section" data-section>
+  <h2>{words(lang,'Certifications','Chứng chỉ')}</h2>
+  <ul class="certificate-list" data-featured-credentials>
+    <li data-credential="aio"><Icon name="school" size={22} /><div><h3>AIO 2024</h3><p>AI VIET NAM · 2025</p>
+      <details class="compact-details"><summary>{words(lang,'Programme completed · View 4 modules','Đã hoàn thành chương trình · Xem 4 module')}</summary>
+        <ul class="aio-modules">{aioModules.map(c => <li><span>{c.title}</span><ImagePreview id={c.id} src={c.image} caption={`${c.title} · AIO 2024 · AI VIET NAM`} lang={lang} /></li>)}</ul>
+      </details>
+    </div></li>
+    {credentials.filter(c => c.featured).map(c => <CredentialRow c={c} lang={lang} />)}
+  </ul>
+  <details class="compact-details additional-credentials"><summary>{words(lang,'View 13 more credentials','Xem thêm 13 chứng chỉ')}</summary>
+    {groups.map(([id,label]) => <div class="credential-group"><h3>{label}</h3><ul class="certificate-list">{credentials.filter(c => !c.featured && c.group === id).sort((a,b) => b.date.localeCompare(a.date)).map(c => <CredentialRow c={c} lang={lang} />)}</ul></div>)}
+  </details>
+</section>
+<section id="open-source" class="section" data-section>
+  <h2>{words(lang,'Contributions','Đóng góp xây dựng')}</h2>
+  <p class="contribution-repo"><strong><a href="https://github.com/sipyourdrink-ltd/bernstein" target="_blank" rel="noopener noreferrer">{words(lang,'Bernstein repository','Repo Bernstein')}</a></strong></p>
+  <ul class="contribution-prs">
+    {contributions.map(c => <li><a href={c.url} target="_blank" rel="noopener noreferrer">PR #{c.number} · {t(c.title,lang)}</a></li>)}
+  </ul>
+</section>
+{visibleGallery.length > 0 && <section id="gallery" class="section" data-section>
+  <h2>{words(lang,'Gallery','Hình ảnh')}</h2>
+  {visibleGallery.map(group => <div class="gallery-group">
+  <h3>{t(group.title,lang)}</h3>
+  <div class="gallery-grid">
+    {group.photos.map(photo => <figure>
+      <a class="gallery-photo" href={photo.src} target="_blank" rel="noopener noreferrer" aria-label={words(lang,`Open photo: ${photo.alt.en}`,`Mở ảnh: ${photo.alt.vi}`)}>
+        <img src={photo.src} alt={t(photo.alt,lang)} width={photo.width} height={photo.height} loading="lazy" decoding="async" style={{objectPosition: photo.position || 'center'}} />
+        <span class="gallery-expand" aria-hidden="true"><Icon name="external" size={16} /></span>
+      </a>
+      <figcaption>{t(photo.caption,lang)}</figcaption>
+    </figure>)}
+  </div>
+  </div>)}
+</section>}

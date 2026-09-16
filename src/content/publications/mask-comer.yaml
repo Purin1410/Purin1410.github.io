@@ -1,0 +1,48 @@
+title:
+  "Mask CoMER: Enhancing Handwritten Mathematical Expression Recognition with Masked Language Pretraining and
+  Regularization"
+venue: International Conference on Document Analysis and Recognition
+year: 2025
+status: published
+role:
+  en: Co-first author
+  vi: Đồng tác giả chính
+result:
+  en: Masked-language pretraining and regularization for handwritten mathematical expression recognition.
+  vi: Tiền huấn luyện với cơ chế che và regularization cho nhận dạng công thức toán viết tay.
+tags:
+  - HMER
+  - Masked LM
+  - Encoder–Decoder
+links:
+  code: https://github.com/Neeze/Mask-CoMER
+  doi: https://doi.org/10.1007/978-3-032-04624-6_22
+order: 1
+slug: mask-comer
+kind: conference
+venueShort: ICDAR
+authors:
+  - name: Nam Van Hai Phan
+    self: false
+  - name: Khoa Minh Nguyen
+    self: true
+  - name: Trung Thanh Nguyen
+    self: false
+  - name: Trung Thanh Pham
+    self: false
+  - name: Phuong-Nam Tran
+    self: false
+  - name: Duc Ngoc Minh Dang
+    self: false
+featuredOrder: 2
+project: hmer-research
+source: https://doi.org/10.1007/978-3-032-04624-6_22
+bibtex:
+  "@inproceedings{maskcomer2025,\n  title = {Mask CoMER: Enhancing Handwritten Mathematical Expression Recognition\
+  \ with Masked Language Pretraining and Regularization},\n  author = {Nam Van Hai Phan and Khoa Minh Nguyen and\
+  \ Trung Thanh Nguyen and Trung Thanh Pham and Phuong-Nam Tran and Duc Ngoc Minh Dang},\n  booktitle = {International\
+  \ Conference on Document Analysis and Recognition},\n  year = {2025},\n  doi = {10.1007/978-3-032-04624-6_22}\n\
+  }"
+abstractExcerpt:
+  We propose Mask CoMER, a two-stage training approach that combines a novel Masked Language Model
+  Pretraining objective with stochastic depth regularization.

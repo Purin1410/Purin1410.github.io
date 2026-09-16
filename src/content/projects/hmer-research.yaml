@@ -1,0 +1,52 @@
+title: HMER Research
+tagline:
+  en: Handwritten mathematical expression recognition
+  vi: Nhận dạng công thức toán viết tay
+role:
+  en: Research contributor
+  vi: Đóng góp nghiên cứu
+period: 2024 – 2026
+status:
+  en: Research contributions
+  vi: Đóng góp nghiên cứu
+summary:
+  en:
+    Research on converting handwritten mathematical expressions into structured sequences, including experiments in
+    masked-language pretraining, multi-task learning and vision-language models.
+  vi:
+    Nghiên cứu chuyển ảnh công thức toán viết tay thành chuỗi có cấu trúc, gồm các thí nghiệm về tiền huấn luyện ngôn ngữ
+    có che, học đa nhiệm và mô hình thị giác-ngôn ngữ.
+highlights:
+  en:
+    - Contributed to masked-language pretraining and multi-task learning experiments for HMER.
+    - Explored vision-language modeling with Qwen2.5-VL and parameter-efficient adaptation via LoRA/PEFT.
+    - Two related papers are listed with their authorship, venue and publication status.
+  vi:
+    - Đóng góp vào các thí nghiệm tiền huấn luyện ngôn ngữ có che và học đa nhiệm cho HMER.
+    - Thử nghiệm mô hình thị giác–ngôn ngữ với Qwen2.5-VL và thích nghi tham số hiệu quả bằng LoRA/PEFT.
+    - Hai công bố liên quan được ghi rõ tác giả, nơi công bố và trạng thái.
+stack:
+  - PyTorch
+  - LLaMA Factory
+  - LoRA / PEFT
+  - Qwen2.5-VL
+  - Weights & Biases
+links: {}
+featured: false
+order: 4
+slug: hmer-research
+kind: research
+publications:
+  - mask-comer
+  - mtl-cbarm-hmer
+flow:
+  en:
+    - Handwritten expression
+    - Visual encoding
+    - Sequence modeling
+    - Structured output
+  vi:
+    - Công thức viết tay
+    - Mã hóa hình ảnh
+    - Mô hình chuỗi
+    - Đầu ra có cấu trúc

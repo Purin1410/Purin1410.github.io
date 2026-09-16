@@ -1,0 +1,50 @@
+title: Research Ops
+tagline:
+  en: A local workspace for traceable research
+  vi: Workspace cục bộ cho quy trình nghiên cứu có thể truy vết
+role:
+  en: Developer · Personal project
+  vi: Người phát triển · Dự án cá nhân
+period: 2026 – present
+status:
+  en: Personal project · In development
+  vi: Dự án cá nhân · Đang phát triển
+summary:
+  en: >-
+    Research Ops is a system I am building so AI agents can support research continuously, even when I am away from the
+    computer, without turning the process into a black box. AI handles execution and brings decisions back for human review.
+  vi: >-
+    Research Ops là hệ thống tôi đang xây dựng để các AI agent có thể hỗ trợ nghiên cứu liên tục 24/7, kể cả khi tôi không
+    ngồi trước máy, mà quá trình vẫn có thể kiểm tra và tiếp tục. AI đảm nhận phần thực thi và đưa các quyết định về cho người nghiên cứu xem xét.
+highlights:
+  en:
+    - Research sessions can resume from the exact sources, evidence and revision that produced a decision.
+    - PDF metadata, source files and cited spans stay linked through content digests.
+    - A human must approve runtime changes; model execution and GPU evaluation are still unfinished.
+  vi:
+    - Phiên nghiên cứu có thể tiếp tục từ đúng nguồn, bằng chứng và revision đã dẫn tới một quyết định.
+    - Metadata PDF, file nguồn và đoạn trích dẫn được nối với nhau bằng digest nội dung.
+    - Mọi thay đổi runtime cần người dùng phê duyệt; thực thi mô hình và đánh giá GPU vẫn chưa hoàn thiện.
+stack:
+  - Python
+  - PostgreSQL
+  - TypeScript
+  - React
+  - Prefect
+links: {}
+featured: true
+order: 3
+slug: research-ops
+kind: engineering
+publications: []
+flow:
+  en:
+    - Sources
+    - Work sessions
+    - Evidence + review
+    - Decisions
+  vi:
+    - Tài liệu
+    - Phiên nghiên cứu
+    - Bằng chứng + kiểm tra
+    - Quyết định

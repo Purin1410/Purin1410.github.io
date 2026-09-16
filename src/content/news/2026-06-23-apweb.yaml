@@ -1,0 +1,11 @@
+slug: 2026-06-23-apweb
+date: "2026-06-23"
+precision: day
+text:
+  en: "Announcement: LexiChem and CorrTie accepted at APWeb-WAIM 2026."
+  vi: "Thông báo: LexiChem và CorrTie được nhận tại APWeb-WAIM 2026."
+source: https://taiduc1001.github.io/
+event: announcement
+publications:
+  - lexichem
+  - corrtie

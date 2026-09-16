@@ -1,0 +1,16 @@
+---
+import { type Lang, t, words } from '../lib/site';
+import type { z } from 'astro/zod';
+import { mediaSchema } from '../lib/content-schema.mjs';
+type Media = z.infer<typeof mediaSchema>;
+const { media, lang, eager = false, href } = Astro.props as { media: Media; lang: Lang; eager?: boolean; href?: string };
+---
+<figure class:list={['media-figure', media.type === 'video' && media.height > media.width && 'is-portrait-video']}>
+  {media.type === 'video' ? <div class="video-frame" data-video-frame>
+    <video controls playsinline preload="none" poster={media.poster} width={media.width} height={media.height} aria-label={t(media.alt,lang)} data-video><source src={media.src} type={media.src.endsWith('.mp4') ? 'video/mp4' : undefined} />{words(lang,'Your browser cannot play this video.','Trình duyệt không phát được video này.')}</video>
+    <p class="video-error" hidden>{words(lang,'This video could not be loaded.','Không thể tải video này.')} <a href={media.src}>{words(lang,'Open video file','Mở tệp video')}</a></p>
+  </div> : <a href={href || media.src} class="media-link" aria-label={href ? t(media.alt,lang) : words(lang,'Open full image: ','Mở ảnh đầy đủ: ')+t(media.alt,lang)} target={href ? undefined : '_blank'} rel={href ? undefined : 'noopener noreferrer'}>
+    <img src={media.src} alt={t(media.alt,lang)} width={media.width} height={media.height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  </a>}
+  <figcaption>{t(media.caption,lang)}</figcaption>
+</figure>

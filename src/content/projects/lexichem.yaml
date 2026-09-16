@@ -1,0 +1,90 @@
+title: LexiChem
+tagline:
+  en: Text-to-molecule web platform
+  vi: Nền tảng web text-to-molecule
+role:
+  en: Contributor · Capstone project
+  vi: Thành viên đóng góp · Đồ án tốt nghiệp
+period: 2025 – 2026
+status:
+  en: Completed
+  vi: Hoàn thành
+summary:
+  en:
+    "LexiChem turns a written molecule description into candidate structures that can be checked and viewed in 2D or 3D.
+    I worked on the AI data path, model experiments and the connection between inference and the application."
+  vi:
+    "LexiChem nhận mô tả phân tử bằng văn bản, sinh cấu trúc ứng viên rồi cho phép kiểm tra và xem ở dạng 2D hoặc 3D.
+    Tôi phụ trách tuyến dữ liệu AI, thực nghiệm mô hình và phần nối suy luận với ứng dụng."
+highlights:
+  en:
+    - 2D/3D molecule views with RDKit-backed structure checks and ADMET readouts.
+    - Multiple generation models served through Triton Inference Server.
+    - RAG/Knowledge is still under development; the remaining functions can be run in practice.
+  vi:
+    - Trực quan hóa phân tử 2D/3D, kiểm tra cấu trúc qua RDKit và hiển thị thuộc tính ADMET.
+    - Phục vụ nhiều mô hình sinh qua Triton Inference Server.
+    - RAG/Knowledge vẫn đang được phát triển; các chức năng còn lại có thể chạy thực tế.
+stack:
+  - Next.js 14.1
+  - React 18
+  - TypeScript
+  - Tailwind CSS
+  - Radix UI
+  - shadcn/ui
+  - SWR
+  - Axios
+  - FastAPI
+  - Python
+  - HTTP/REST
+  - gRPC
+  - NVIDIA Triton Inference Server
+  - Hugging Face Transformers
+  - PyTorch
+  - MongoDB
+  - Motor
+  - RDKit
+  - OpenBabel
+  - AutoDock Vina
+  - PLIP
+  - ADMETlab
+  - ADMET-AI
+  - FAISS
+  - 3Dmol.js
+  - WebGL
+  - JSME
+  - Docker Compose
+  - Nginx
+  - Kubernetes / k3d
+  - OpenAI / Gemini
+  - CUDA 12.1
+links: {}
+featured: true
+order: 1
+slug: lexichem
+kind: engineering
+publications:
+  - lexichem
+  - chemaligner-t5
+media:
+  src: /media/lexichem-product.webp
+  alt:
+    en: LexiChem Experiments Workbench with molecular visualization
+    vi: LexiChem Experiments Workbench với giao diện trực quan hóa phân tử
+  caption:
+    en: Capstone application · local interface
+    vi: Ứng dụng đồ án · giao diện cục bộ
+  type: image
+  width: 1400
+  height: 679
+flow:
+  en:
+    - Description
+    - Model inference
+    - Molecular structure
+    - 2D / 3D exploration
+  vi:
+    - Mô tả
+    - Suy luận mô hình
+    - Cấu trúc phân tử
+    - Khám phá 2D / 3D

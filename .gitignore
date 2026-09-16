@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.qa/
+.env*
+!.env.example
+
+# Private source material; publish only reviewed derivatives in public/media.
+/PORTFOLIO/
+/PORTFOLIO.zip
+/image.jpg
+
+# Local implementation notes and source-audit records are not part of the public site repository.
+/CHECKPOINT.md
+/docs/
+/public/media/research-ops.webp

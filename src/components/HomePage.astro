@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Sidebar from './Sidebar.astro';
+import News from './News.astro';
+import ProjectRow from './ProjectRow.astro';
+import PublicationRow from './PublicationRow.astro';
+import Footer from './Footer.astro';
+import PersonalExtras from './PersonalExtras.astro';
+import Experience from './Experience.astro';
+import Recognition from './Recognition.astro';
+import Icon from './Icon.astro';
+import { profile } from '../data/profile';
+import { type Lang, registry, t, words, pathFor } from '../lib/site';
+const { lang } = Astro.props as {lang: Lang};
+const { projects, papers, news } = await registry();
+const selected = papers.filter(p=>p.data.featuredOrder != null).sort((a,b)=>a.data.featuredOrder!-b.data.featuredOrder!);
+---
+<Base lang={lang} title="Khoa Nguyen — AI Engineer & Research" description={t(profile.tagline,lang)}>
+  <div class="site-shell">
+    <Sidebar lang={lang} hasNews={news.length>0} />
+    <main id="main" class="main-column">
+      <section id="about" class="section about-section" data-section>
+        <h2>{words(lang,'About','Giới thiệu')}</h2>
+        <p class="intro">{t(profile.about,lang)}</p>
+        <p>{t(profile.aboutExperience,lang)}</p>
+        <p>{t(profile.aboutDirection,lang)}</p>
+        <p class="opportunity">{t(profile.opportunity,lang)}</p>
+      </section>
+      <News items={news} lang={lang} />
+      <section id="work" class="section" data-section><div class="section-heading"><h2>{words(lang,'Selected work','Công việc tiêu biểu')}</h2><a class="text-link" href={pathFor('/work/',lang)}>{words(lang,'All work','Tất cả dự án')}<Icon name="arrow" size={17} /></a></div><div class="project-list">{projects.filter(p=>p.data.featured).map((p,i)=><ProjectRow project={p} lang={lang} eager={i===0} />)}</div></section>
+      <section id="research" class="section" data-section><div class="section-heading"><h2>{words(lang,'Selected publications','Công bố tiêu biểu')}</h2><a class="text-link" href={pathFor('/research/',lang)}>{words(lang,'All publications','Tất cả công bố')}<Icon name="arrow" size={17} /></a></div><div class="publication-list">{selected.map(p=><PublicationRow paper={p} lang={lang} />)}</div></section>
+      <section id="background" class="section" data-section>
+        <h2>{words(lang,'Background','Học vấn & nghiên cứu')}</h2>
+        <Experience lang={lang} />
+        <div class="background-row"><Icon name="school" size={25} /><div><h3>FPT University, HCMC</h3><p>{words(lang,'AI & Data Science · Academic requirements completed · Degree conferral expected November 2026','AI & Data Science · Đã hoàn thành yêu cầu học thuật · Dự kiến nhận bằng tháng 11/2026')}</p><p>{words(lang,'Entrance scholarship · Awarded through the university’s scholarship examination in 2022 · Covers 50% of tuition for the full programme.','Học bổng đầu vào · Đạt qua kỳ thi học bổng của trường năm 2022 · Hỗ trợ 50% học phí toàn chương trình.')}</p></div></div>
+      </section>
+      <Recognition lang={lang} />
+      <PersonalExtras lang={lang} />
+      <Footer lang={lang} />
+    </main>
+  </div>
+</Base>

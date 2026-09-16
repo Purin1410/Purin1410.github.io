@@ -1,0 +1,11 @@
+---
+import { type Lang, words } from '../lib/site';
+const { id, src, caption, lang } = Astro.props as { id: string; src: string; caption: string; lang: Lang };
+---
+<span class="image-preview" data-image-preview>
+  <a href={src} target="_blank" rel="noopener noreferrer" class="preview-trigger" data-preview-trigger aria-controls={`preview-${id}`} aria-expanded="false">{words(lang,'View image','Xem ảnh')}</a>
+  <span id={`preview-${id}`} class="preview-panel" data-preview-panel hidden>
+    <a href={src} target="_blank" rel="noopener noreferrer" aria-label={words(lang,'Open full image','Mở ảnh đầy đủ')}><img src={src} alt={caption} loading="lazy" decoding="async" /></a>
+    <span class="preview-caption">{caption}</span>
+  </span>
+</span>

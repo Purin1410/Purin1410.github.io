@@ -1,0 +1,95 @@
+title: NexOps
+tagline:
+  en: Smart MES / SCADA platform for connected manufacturing
+  vi: Nền tảng MES / SCADA cho sản xuất kết nối
+role:
+  en: AI & Simulation Lead
+  vi: Trưởng nhóm AI & Mô phỏng
+period: 2025 – present
+status:
+  en: Prototype · in development
+  vi: Nguyên mẫu · đang phát triển
+summary:
+  en:
+    An MES/SCADA prototype that puts machine status, production plans, alarms and OEE in one place. The factory-wide demo
+    runs on repeatable simulated scenarios; a separate control path has been tested with a real Bambu Lab printer over LAN.
+  vi:
+    Nguyên mẫu MES/SCADA gom trạng thái máy, kế hoạch sản xuất, cảnh báo và OEE vào một nơi. Phần demo toàn xưởng chạy bằng
+    kịch bản mô phỏng có thể lặp lại; một luồng điều khiển riêng đã được thử với máy in Bambu Lab thật qua LAN.
+highlights:
+  en:
+    - Local-first site architecture for telemetry, work orders, alarms and OEE reporting.
+    - "Operational path: device or simulator → MQTT/EMQX → FastAPI/TimescaleDB → dashboard."
+    - Real Bambu Lab LAN-control trial; the wider factory views use deterministic demo scenarios.
+  vi:
+    - Kiến trúc site local-first cho telemetry, lệnh sản xuất, cảnh báo và báo cáo OEE.
+    - "Luồng vận hành: thiết bị hoặc simulator → MQTT/EMQX → FastAPI/TimescaleDB → dashboard."
+    - Đã thử điều khiển Bambu Lab qua LAN thật; các màn hình nhà máy rộng hơn dùng kịch bản demo xác định.
+stack:
+  - React 19
+  - TypeScript
+  - Vite 8
+  - Ant Design 6
+  - Apache ECharts 6
+  - Zustand 5
+  - React Router 7
+  - FastAPI
+  - Python 3.11
+  - SQLAlchemy 2
+  - Alembic
+  - HTTP/REST
+  - SSE
+  - TimescaleDB / PostgreSQL 16
+  - Redis 7
+  - EMQX 5
+  - MQTT 5
+  - Celery 5
+  - aiomqtt
+  - PLC simulator
+  - Bambu Lab LAN
+  - Keycloak 26
+  - MinIO
+  - Grafana 11
+  - Loki 3
+  - Docker Compose
+  - Ansible
+links: {}
+featured: true
+order: 2
+slug: nexops
+kind: engineering
+publications: []
+flow:
+  en:
+    - Device or deterministic simulator
+    - MQTT messaging through EMQX
+    - FastAPI services and TimescaleDB
+    - Dashboards, alarms and OEE
+  vi:
+    - Thiết bị hoặc simulator xác định
+    - MQTT qua EMQX
+    - Dịch vụ FastAPI và TimescaleDB
+    - Dashboard, cảnh báo và OEE
+media:
+  type: image
+  src: /media/nexops-andon.webp
+  width: 1425
+  height: 801
+  alt:
+    en: NexOps factory overview showing machine states, shift output and OEE
+    vi: Tổng quan nhà máy NexOps với trạng thái máy, sản lượng ca và OEE
+  caption:
+    en: Factory overview from the repeatable local demo.
+    vi: Tổng quan nhà máy trong bản demo cục bộ có thể lặp lại.
+video:
+  type: video
+  src: /media/nexops-hardware-demo.mp4
+  poster: /media/nexops-hardware-poster.webp
+  width: 720
+  height: 1280
+  alt:
+    en: Recorded NexOps control trial with a Bambu Lab printer over the local network
+    vi: Video thử nghiệm NexOps điều khiển máy in Bambu Lab qua mạng nội bộ
+  caption:
+    en: Recorded hardware trial · 35 sec. The Bambu Lab control path is running over LAN; this is not a production deployment.
+    vi: Thử nghiệm phần cứng được quay lại · 35 giây. Luồng điều khiển Bambu Lab chạy qua LAN; đây chưa phải triển khai sản xuất.

@@ -1,0 +1,41 @@
+title: "CorrTie: Correction-aware Tie-breaking for Active Learning with Vision-Language Models"
+venue: APWeb-WAIM Joint International Conference on Web and Big Data
+year: 2026
+status: accepted
+role:
+  en: Co-author · Critical review and methodological refinement
+  vi: Đồng tác giả · Phản biện và hoàn thiện phương pháp
+result:
+  en: Correction-aware sample selection for active learning with vision-language models and limited labeling budgets.
+  vi:
+    Chọn mẫu có xét bước hiệu chỉnh cho active learning với mô hình thị giác–ngôn ngữ khi ngân sách gán nhãn hạn
+    chế.
+tags:
+  - Active learning
+  - VLM
+  - Data efficiency
+links:
+  code: https://github.com/TaiDuc1001/CorrTie
+order: 5
+slug: corrtie
+kind: conference
+venueShort: APWeb-WAIM
+authors:
+  - name: Duc Tai Phan
+    self: false
+  - name: Tri Nguyen Thai
+    self: false
+  - name: Khoa Minh Nguyen
+    self: true
+  - name: Nhut Minh Nguyen
+    self: false
+  - name: Duc Ngoc Minh Dang
+    self: false
+featuredOrder: null
+project: null
+source: https://taiduc1001.github.io/publications/
+bibtex:
+  "@inproceedings{corrtie2026,\n  title = {CorrTie: Correction-aware Tie-breaking for Active Learning with\
+  \ Vision-Language Models},\n  author = {Duc Tai Phan and Tri Nguyen Thai and Khoa Minh Nguyen and Nhut Minh Nguyen\
+  \ and Duc Ngoc Minh Dang},\n  booktitle = {APWeb-WAIM Joint International Conference on Web and Big Data},\n \
+  \ year = {2026},\n  note = {Accepted; final publication metadata pending}\n}"

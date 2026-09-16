@@ -1,0 +1,56 @@
+title:
+  Enhancing handwritten mathematical expression recognition with convolutional block attention refinement module
+  and multi-task learning
+shortTitle: MTL + CBARM
+venue: Journal of Information and Telecommunication
+year: 2026
+status: published
+role:
+  en: Co-author
+  vi: Đồng tác giả
+result:
+  en:
+    Multi-task learning with convolutional block attention refinement for handwritten mathematical expression
+    recognition; published online 19 August 2026.
+  vi: Kết hợp học đa nhiệm với convolutional block attention refinement cho HMER; xuất bản trực tuyến ngày 19 tháng 8
+    năm 2026.
+tags:
+  - HMER
+  - Multi-task
+  - Regularization
+links:
+  code: https://github.com/trungtndev/Enhancing-HMER-with-CBARM-and-MTL
+  doi: https://doi.org/10.1080/24751839.2026.2716432
+order: 6
+slug: mtl-cbarm-hmer
+kind: journal
+venueShort: JIT
+authors:
+  - name: Thanh Trung Nguyen
+    self: false
+  - name: Nhut Minh Nguyen
+    self: false
+  - name: Nam Van Hai Phan
+    self: false
+  - name: Khoa Minh Nguyen
+    self: true
+  - name: Trung Thanh Pham
+    self: false
+  - name: Phuong-Nam Tran
+    self: false
+  - name: Cuong Tuan Nguyen
+    self: false
+  - name: Duc Ngoc Minh Dang
+    self: false
+featuredOrder: 3
+project: hmer-research
+source: https://nhut-ngnn.github.io/publications/
+bibtex:
+  "@article{mtlcbarmhmer2026,\n  title = {Enhancing handwritten mathematical expression recognition with convolutional\
+  \ block attention refinement module and multi-task learning},\n  author = {Thanh Trung Nguyen and Nhut Minh Nguyen\
+  \ and Nam Van Hai Phan and Khoa Minh Nguyen and Trung Thanh Pham and Phuong-Nam Tran and Cuong Tuan Nguyen and\
+  \ Duc Ngoc Minh Dang},\n  journal = {Journal of Information and Telecommunication},\n  year = {2026},\n  doi =\
+  \ {10.1080/24751839.2026.2716432},\n  note = {Published online 19 August 2026; final issue metadata pending}\n}"
+abstractExcerpt:
+  Handwritten Mathematical Expression Recognition (HMER) is challenging due to complex structural
+  relationships, implicit symbols, and variations in handwriting styles.

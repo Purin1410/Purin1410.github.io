@@ -1,0 +1,10 @@
+slug: 2025-09-17-mask
+date: "2025-09-17"
+precision: day
+text:
+  en: Mask CoMER is now published in the ICDAR 2025 proceedings.
+  vi: Mask CoMER đã xuất bản trong kỷ yếu ICDAR 2025.
+source: https://link.springer.com/chapter/10.1007/978-3-032-04624-6_22
+event: publication
+publications:
+  - mask-comer

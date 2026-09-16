@@ -1,0 +1,149 @@
+---
+import type { Lang } from '../lib/site';
+import { words } from '../lib/site';
+
+const { stack, lang } = Astro.props as { stack: string[]; lang: Lang };
+
+type TechMark = { mark: string; color: string; ink: string; icon?: string };
+
+const marks: Record<string, TechMark> = {
+  'Next.js 14.1': { mark: 'N', color: '#111827', ink: '#fff', icon: 'nextdotjs' },
+  'React 18': { mark: '⚛', color: '#61dafb', ink: '#087ea4', icon: 'react' },
+  'React 19': { mark: '⚛', color: '#61dafb', ink: '#087ea4', icon: 'react' },
+  TypeScript: { mark: 'TS', color: '#3178c6', ink: '#fff', icon: 'typescript' },
+  'Vite 8': { mark: 'V', color: '#9135ff', ink: '#fff', icon: 'vite' },
+  'Ant Design 6': { mark: 'A', color: '#1677ff', ink: '#fff', icon: 'antdesign' },
+  'Apache ECharts 6': { mark: 'EC', color: '#aa344d', ink: '#fff', icon: 'apacheecharts' },
+  'Zustand 5': { mark: 'Z', color: '#443e38', ink: '#fff' },
+  'React Router 7': { mark: 'RR', color: '#ca4245', ink: '#fff', icon: 'reactrouter' },
+  'Tailwind CSS': { mark: 'TW', color: '#06b6d4', ink: '#fff', icon: 'tailwindcss' },
+  'Radix UI': { mark: 'R', color: '#111827', ink: '#fff', icon: 'radixui' },
+  'shadcn/ui': { mark: 'ui', color: '#111827', ink: '#fff', icon: 'shadcnui' },
+  SWR: { mark: 'S', color: '#111827', ink: '#fff', icon: 'swr' },
+  Axios: { mark: 'A', color: '#5a29e4', ink: '#fff', icon: 'axios' },
+  FastAPI: { mark: 'API', color: '#009688', ink: '#fff', icon: 'fastapi' },
+  Python: { mark: 'Py', color: '#3776ab', ink: '#fff', icon: 'python' },
+  'Python 3.11': { mark: 'Py', color: '#3776ab', ink: '#fff', icon: 'python' },
+  'SQLAlchemy 2': { mark: 'SA', color: '#d71f00', ink: '#fff' },
+  Alembic: { mark: 'Al', color: '#6b7280', ink: '#fff' },
+  'HTTP/REST': { mark: '↔', color: '#64748b', ink: '#fff' },
+  SSE: { mark: 'SSE', color: '#2563eb', ink: '#fff' },
+  gRPC: { mark: 'RPC', color: '#244c5a', ink: '#fff' },
+  'NVIDIA Triton Inference Server': { mark: 'T', color: '#76b900', ink: '#102000', icon: 'nvidia' },
+  'Hugging Face Transformers': { mark: 'HF', color: '#fbbf24', ink: '#3f2a00', icon: 'huggingface' },
+  PyTorch: { mark: 'PT', color: '#ee4c2c', ink: '#fff', icon: 'pytorch' },
+  MongoDB: { mark: 'M', color: '#47a248', ink: '#fff', icon: 'mongodb' },
+  'TimescaleDB / PostgreSQL 16': { mark: 'PG', color: '#4169e1', ink: '#fff', icon: 'postgresql' },
+  'Redis 7': { mark: 'R', color: '#ff4438', ink: '#fff', icon: 'redis' },
+  'EMQX 5': { mark: 'E', color: '#5f2eea', ink: '#fff' },
+  'MQTT 5': { mark: 'MQ', color: '#660066', ink: '#fff', icon: 'mqtt' },
+  'Celery 5': { mark: 'C', color: '#37814a', ink: '#fff', icon: 'celery' },
+  Motor: { mark: 'Mo', color: '#64748b', ink: '#fff' },
+  RDKit: { mark: 'RD', color: '#6d5aa4', ink: '#fff' },
+  OpenBabel: { mark: 'OB', color: '#0f766e', ink: '#fff' },
+  'AutoDock Vina': { mark: 'V', color: '#be123c', ink: '#fff' },
+  PLIP: { mark: 'PL', color: '#7c3aed', ink: '#fff' },
+  ADMETlab: { mark: 'AD', color: '#2563eb', ink: '#fff' },
+  'ADMET-AI': { mark: 'AI', color: '#ea580c', ink: '#fff' },
+  FAISS: { mark: 'F', color: '#f59e0b', ink: '#3f2a00' },
+  '3Dmol.js': { mark: '3D', color: '#0ea5e9', ink: '#fff' },
+  WebGL: { mark: 'GL', color: '#ef4444', ink: '#fff' },
+  JSME: { mark: 'J', color: '#16a34a', ink: '#fff' },
+  'Docker Compose': { mark: 'DC', color: '#2496ed', ink: '#fff', icon: 'docker' },
+  aiomqtt: { mark: 'MQ', color: '#660066', ink: '#fff', icon: 'mqtt' },
+  'PLC simulator': { mark: 'PLC', color: '#475569', ink: '#fff' },
+  'Bambu Lab LAN': { mark: 'BL', color: '#00ae42', ink: '#fff' },
+  'Keycloak 26': { mark: 'K', color: '#4d4d4d', ink: '#fff', icon: 'keycloak' },
+  MinIO: { mark: 'M', color: '#c72e49', ink: '#fff', icon: 'minio' },
+  'Grafana 11': { mark: 'G', color: '#f46800', ink: '#fff', icon: 'grafana' },
+  'Loki 3': { mark: 'L', color: '#f46800', ink: '#fff', icon: 'grafana' },
+  Ansible: { mark: 'A', color: '#111827', ink: '#fff', icon: 'ansible' },
+  Nginx: { mark: 'N', color: '#009639', ink: '#fff', icon: 'nginx' },
+  'Kubernetes / k3d': { mark: 'K8', color: '#326ce5', ink: '#fff', icon: 'kubernetes' },
+  'OpenAI / Gemini': { mark: 'AI', color: '#8e75b2', ink: '#fff', icon: 'googlegemini' },
+  'CUDA 12.1': { mark: 'CUDA', color: '#76b900', ink: '#102000', icon: 'nvidia' },
+};
+
+const fallback: TechMark = { mark: '·', color: '#64748b', ink: '#fff' };
+
+const groupDefs = [
+  {
+    en: 'Frontend',
+    vi: 'Frontend',
+    items: ['Next.js 14.1', 'React 18', 'React 19', 'TypeScript', 'Vite 8', 'Ant Design 6', 'Apache ECharts 6', 'Zustand 5', 'React Router 7', 'Tailwind CSS', 'Radix UI', 'shadcn/ui', 'SWR', 'Axios'],
+  },
+  {
+    en: 'Backend & API',
+    vi: 'Backend & API',
+    items: ['FastAPI', 'Python', 'Python 3.11', 'SQLAlchemy 2', 'Alembic', 'HTTP/REST', 'SSE', 'gRPC'],
+  },
+  {
+    en: 'ML & inference',
+    vi: 'ML & suy luận',
+    items: ['NVIDIA Triton Inference Server', 'Hugging Face Transformers', 'PyTorch', 'OpenAI / Gemini'],
+  },
+  {
+    en: 'Data & knowledge',
+    vi: 'Dữ liệu & tri thức',
+    items: ['MongoDB', 'Motor', 'FAISS', 'TimescaleDB / PostgreSQL 16', 'Redis 7', 'EMQX 5', 'MQTT 5', 'Celery 5'],
+  },
+  {
+    en: 'Chemistry & scientific',
+    vi: 'Hóa học & khoa học tính toán',
+    items: ['RDKit', 'OpenBabel', 'AutoDock Vina', 'PLIP', 'ADMETlab', 'ADMET-AI'],
+  },
+  {
+    en: 'Visualization',
+    vi: 'Trực quan hóa',
+    items: ['3Dmol.js', 'WebGL', 'JSME'],
+  },
+  {
+    en: 'Edge & simulation',
+    vi: 'Edge & mô phỏng',
+    items: ['aiomqtt', 'PLC simulator', 'Bambu Lab LAN'],
+  },
+  {
+    en: 'Platform & observability',
+    vi: 'Nền tảng & quan sát hệ thống',
+    items: ['Keycloak 26', 'MinIO', 'Grafana 11', 'Loki 3', 'Docker Compose', 'Ansible'],
+  },
+  {
+    en: 'Infrastructure & runtime',
+    vi: 'Hạ tầng & runtime',
+    items: ['Nginx', 'Kubernetes / k3d', 'CUDA 12.1'],
+  },
+];
+
+const stackSet = new Set(stack);
+const assigned = new Set(groupDefs.flatMap((group) => group.items));
+const groups = groupDefs
+  .map((group) => ({ ...group, items: group.items.filter((item) => stackSet.has(item)) }))
+  .filter((group) => group.items.length > 0);
+const ungrouped = stack.filter((item) => !assigned.has(item));
+if (ungrouped.length > 0) groups.push({ en: 'Other', vi: 'Khác', items: ungrouped });
+---
+
+<section class="tech-stack-section" aria-labelledby="tech-stack-heading">
+  <div class="tech-stack-heading">
+    <h2 id="tech-stack-heading">{words(lang, 'Tech stack', 'Công nghệ sử dụng')}</h2>
+  </div>
+  <div class="tech-stack-groups">
+    {groups.map((group) => <section class="tech-stack-group" aria-label={words(lang, group.en, group.vi)}>
+      <h3>{words(lang, group.en, group.vi)}</h3>
+      <ul class="tech-stack-list">
+        {group.items.map((item) => {
+          const mark = marks[item] || fallback;
+          const iconSrc = mark.icon ? `/media/tech/${mark.icon}.svg` : undefined;
+          const iconStyle = iconSrc ? `--tech-icon:url('${iconSrc}')` : '';
+          return <li class="tech-stack-item">
+            <span class:list={['tech-logo', iconSrc && 'has-image']} style={`--tech-color:${mark.color};--tech-ink:${mark.ink};${iconStyle}`} aria-hidden="true">
+              {iconSrc && <span class="tech-logo-image" />}
+              <span class="tech-logo-fallback">{mark.mark}</span>
+            </span>
+            <span class="tech-name">{item}</span>
+          </li>;
+        })}
+      </ul>
+    </section>)}
+  </div>
+</section>

@@ -1,0 +1,19 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { type Lang, t, words, workPath } from '../lib/site';
+import Media from './Media.astro';
+import Icon from './Icon.astro';
+const { project, lang, eager = false } = Astro.props as {project: CollectionEntry<'projects'>; lang: Lang; eager?: boolean};
+const p = project.data;
+---
+<article data-project={p.slug} class:list={['project-row',!p.media && 'project-row-text']}>
+  {p.media && <Media media={p.media} lang={lang} eager={eager} href={workPath(p.slug,lang)} />}
+  <div class="project-info">
+    <h3>{p.slug === 'research-ops' ? p.title : <a href={workPath(p.slug,lang)}>{p.title}</a>}</h3>
+    <p class="project-tagline">{t(p.tagline,lang)}</p>
+    <span class:list={['project-status',p.slug==='lexichem' && 'completed']}>{t(p.status,lang)}</span>
+    <p class="project-summary">{t(p.summary,lang)}</p>
+    {p.slug === 'research-ops' ? <span class="text-link project-coming-soon">Will in soon</span> : <a class="text-link" href={workPath(p.slug,lang)} aria-label={words(lang,`View project: ${p.title}`,`Xem dự án: ${p.title}`)}>{words(lang,'View project','Xem dự án')}<Icon name="arrow" size={18} /></a>}
+    {p.links.demo && <a class="text-link" href={p.links.demo} target="_blank" rel="noopener noreferrer">{words(lang,'Live demo','Mở demo')}<Icon name="external" size={16} /></a>}
+  </div>
+</article>

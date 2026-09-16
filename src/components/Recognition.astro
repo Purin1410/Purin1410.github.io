@@ -1,0 +1,15 @@
+---
+import { awards, otherActivities } from '../data/extras';
+import ImagePreview from './ImagePreview.astro';
+import { type Lang, t, words } from '../lib/site';
+const { lang } = Astro.props as { lang: Lang };
+---
+<section id="awards" class="section" data-section>
+  <h2>{words(lang,'Awards & funding','Giải thưởng & tài trợ')}</h2>
+  <ul class="certificate-list">
+    {[...awards].sort((a,b) => b.year-a.year).map(a => <li><span class="award-year" data-award-year={a.year}>{a.year}</span><div><h3>{t(a.title,lang)}</h3><p>{t(a.detail,lang)}</p><ImagePreview id={a.id} src={a.photo.src} caption={t(a.photo.caption,lang)} lang={lang} /></div></li>)}
+  </ul>
+  <details class="compact-details earlier-activities"><summary>{words(lang,'Earlier achievements & other activities','Thành tích trước đây & hoạt động khác')}</summary>
+    <ul class="activity-list">{otherActivities.map(a => <li><span class="award-year">{a.year}</span><div><span class="activity-title">{t(a.title,lang)}</span><p>{t(a.detail,lang)}</p><ImagePreview id={a.id} src={a.photo.src} caption={t(a.photo.caption,lang)} lang={lang} /></div></li>)}</ul>
+  </details>
+</section>

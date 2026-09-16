@@ -1,0 +1,49 @@
+title: "ChemAligner-T5: A Unified Text-to-Molecule Model via Representation Alignment"
+venue: International Conference on Computational Intelligence in Engineering Science
+year: 2026
+status: published
+role:
+  en: Co-first author
+  vi: Đồng tác giả chính
+result:
+  en:
+    Contrastive alignment of textual and molecular representations on BioT5+; evaluated on the L+M-24 text-to-molecule
+    benchmark.
+  vi:
+    Căn chỉnh tương phản giữa biểu diễn văn bản và phân tử trên BioT5+; đánh giá trên benchmark text-to-molecule
+    L+M-24.
+tags:
+  - Text-to-Molecule
+  - Contrastive alignment
+  - BioT5+
+links:
+  code: https://github.com/Neeze/ChemAligner-T5
+  doi: https://doi.org/10.1007/978-3-032-21625-0_16
+order: 2
+slug: chemaligner-t5
+kind: conference
+venueShort: ICCIES
+authors:
+  - name: Nam Van Hai Phan
+    self: false
+  - name: Khoa Minh Nguyen
+    self: true
+  - name: Ngoc Thien Phu Nguyen
+    self: false
+  - name: Nguyen Doan Hieu Nguyen
+    self: false
+  - name: Tri Minh Pham
+    self: false
+  - name: Duc Ngoc Minh Dang
+    self: false
+featuredOrder: null
+project: lexichem
+source: https://doi.org/10.1007/978-3-032-21625-0_16
+bibtex:
+  "@inproceedings{chemalignert52026,\n  title = {ChemAligner-T5: A Unified Text-to-Molecule Model via Representation\
+  \ Alignment},\n  author = {Nam Van Hai Phan and Khoa Minh Nguyen and Ngoc Thien Phu Nguyen and Nguyen Doan Hieu\
+  \ Nguyen and Tri Minh Pham and Duc Ngoc Minh Dang},\n  booktitle = {International Conference on Computational\
+  \ Intelligence in Engineering Science},\n  year = {2026},\n  doi = {10.1007/978-3-032-21625-0_16}\n}"
+abstractExcerpt:
+  We introduce ChemAligner-T5, a BioT5+ base model enhanced with a contrastive learning mechanism
+  to directly align textual and molecular representations.
