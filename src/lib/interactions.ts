@@ -1,5 +1,52 @@
 import { copyCitation } from "./copy.mjs";
 
+const themeKey = "portfolio-theme";
+const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+const savedTheme = () => {
+  try {
+    const value = localStorage.getItem(themeKey);
+    return value === "light" || value === "dark" ? value : null;
+  } catch {
+    return null;
+  }
+};
+const updateThemeControls = (theme: "light" | "dark") => {
+  document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+    const label = theme === "dark" ? button.dataset.lightLabel : button.dataset.darkLabel;
+    if (label) {
+      button.setAttribute("aria-label", label);
+      button.title = label;
+    }
+    button.setAttribute("aria-pressed", String(theme === "dark"));
+  });
+};
+const applyTheme = (theme: "light" | "dark", persist = false) => {
+  document.documentElement.dataset.theme = theme;
+  document.documentElement.style.colorScheme = theme;
+  document.querySelector<HTMLMetaElement>('meta[name="theme-color"]')?.setAttribute(
+    "content",
+    theme === "dark" ? "#111827" : "#ffffff",
+  );
+  if (persist) {
+    try { localStorage.setItem(themeKey, theme); } catch {}
+  }
+  updateThemeControls(theme);
+};
+document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]").forEach((button) => {
+  button.addEventListener("click", () => {
+    applyTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark", true);
+  });
+});
+applyTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+themeMedia.addEventListener("change", (event) => {
+  if (!savedTheme()) applyTheme(event.matches ? "dark" : "light");
+});
+window.addEventListener("storage", (event) => {
+  if (event.key !== themeKey) return;
+  const stored = savedTheme();
+  applyTheme(stored ?? (themeMedia.matches ? "dark" : "light"));
+});
+
 // Progressive enhancement: links open full images when JavaScript is unavailable.
 let activePreview: HTMLElement | null = null;
 let pinned = false;

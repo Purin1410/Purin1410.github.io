@@ -20,6 +20,15 @@ for (const file of pages) {
   assert.match(html, /rel="canonical" href="https:\/\/purin1410\.github\.io\//, `${file}: absolute canonical URL`);
   assert.match(html, /property="og:image" content="https:\/\/purin1410\.github\.io\/og\.png"/, `${file}: absolute OG image`);
   assert.match(html, /id="main"/, `${file}: main target`);
+  assert.equal(
+    (html.match(/data-theme-toggle/g) || []).length,
+    1,
+    `${file}: one theme toggle`,
+  );
+  assert.ok(
+    html.includes("portfolio-theme") && html.includes("prefers-color-scheme: dark"),
+    `${file}: pre-render theme initialization`,
+  );
   assert.match(
     html,
     file.startsWith("vi/") ? /<html lang="vi">/ : /<html lang="en">/,
@@ -71,7 +80,7 @@ assert.match(home, /href="\/cv\.pdf"/, "homepage exposes CV download");
 assert.match(viHome, /href="\/cv\.pdf"/, "Vietnamese homepage exposes CV download");
 assert.ok(home.includes("/khoa.jpg") && viHome.includes("/khoa.jpg"), "approved portrait is present");
 for (const html of [home, viHome]) {
-  const sectionIds = ['about', 'news', 'work', 'research', 'background', 'awards', 'open-source', 'certificates', 'gallery'];
+  const sectionIds = ['about', 'news', 'work', 'research', 'background', 'awards', 'certificates', 'open-source', 'gallery'];
   let previous = -1;
   for (const id of sectionIds) {
     const position = html.indexOf(`id="${id}"`);
@@ -95,6 +104,15 @@ for (const html of [home, viHome]) {
   assert.deepEqual([...html.matchAll(/data-award-year="(\d+)"/g)].map(m => Number(m[1])), [2026, 2025, 2025, 2025], 'main awards ordered newest first; earlier activities separate');
 }
 assert.ok(work.includes('data-project="research-ops"') && work.includes('Will in soon'), 'Research Ops remains available in all work');
+for (const [file, sampleLabel, footnote] of [
+  ['work/hmer-research/index.html', 'CROHME sample*', '* Sample from CROHME 2016 dataset.'],
+  ['vi/work/hmer-research/index.html', 'Mẫu CROHME*', '* Mẫu từ bộ dữ liệu CROHME 2016.'],
+]) {
+  const html = await readFile(join(root, file), 'utf8');
+  assert.ok(html.includes(sampleLabel), `${file}: CROHME sample marker`);
+  assert.ok(html.includes(footnote), `${file}: CROHME attribution footnote`);
+  assert.ok(html.includes('tc11.cvc.uab.es/datasets/ICFHR-CROHME-2016_1'), `${file}: CROHME source link`);
+}
 for (const file of ['work/lexichem/index.html', 'vi/work/lexichem/index.html']) {
   const html = await readFile(join(root, file), 'utf8');
   const techCount = [...html.matchAll(/data-tech=/g)].length;

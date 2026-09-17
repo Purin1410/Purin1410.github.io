@@ -4,11 +4,13 @@ import { profile } from '../data/profile';
 import { type Lang, t, words, pathFor } from '../lib/site';
 import Icon from './Icon.astro';
 import LanguageSwitch from './LanguageSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
 import { visibleGallery } from '../data/extras';
 import { credentials } from '../data/credentials.mjs';
 const { lang, hasNews = true, page = 'home' } = Astro.props as {lang: Lang; hasNews?: boolean; page?: string};
 const sections = [['about',words(lang,'About','Giới thiệu')],...(hasNews ? [['news',words(lang,'News','Cập nhật')]] : []),['work',words(lang,'Selected work','Công việc tiêu biểu')],['research',words(lang,'Publications','Công bố')],['background',words(lang,'Background','Học vấn & nghiên cứu')]];
 const cv = existsSync('public/cv.pdf');
+const fullCv = existsSync('public/cv-full.pdf');
 sections.push(['awards', words(lang,'Awards & funding','Giải thưởng & tài trợ')]);
 if (credentials.length) sections.push(['certificates', words(lang,'Certifications','Chứng chỉ')]);
 sections.push(['open-source', words(lang,'Contributions','Đóng góp xây dựng')]);
@@ -24,7 +26,10 @@ const photo = existsSync('public/khoa.jpg');
     <p class="tagline">{t(profile.tagline,lang)}</p>
     </div>
   </div>
-  {cv && <a class="cv-button" href="/cv.pdf"><Icon name="paper" />{words(lang,'Download CV','Tải CV')}<Icon name="arrow" size={16} /></a>}
+  {(cv || fullCv) && <div class="cv-downloads">
+    {cv && <a class="cv-button" href="/cv.pdf" download="Nguyen-Minh-Khoa-CV.pdf"><Icon name="paper" />{words(lang,'CV · 1 page','CV · 1 trang')}<Icon name="arrow" size={16} /></a>}
+    {fullCv && <a class="cv-button" href="/cv-full.pdf" download="Nguyen-Minh-Khoa-Full-CV.pdf"><Icon name="paper" />{words(lang,'Full CV','CV đầy đủ')}<Icon name="arrow" size={16} /></a>}
+  </div>}
   <nav class="section-nav" aria-label={words(lang,'Portfolio sections','Các mục portfolio')}>
     {sections.map(([id,label]) => <a href={`${pathFor('/',lang)}#${id}`} data-section-link={page==='home' ? id : undefined} aria-current={page===id ? 'page' : undefined}>{label}</a>)}
   </nav>
@@ -34,5 +39,8 @@ const photo = existsSync('public/khoa.jpg');
     <a href={profile.links.scholar} target="_blank" rel="noopener noreferrer"><Icon name="school" />Scholar</a>
     <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" />LinkedIn</a>
   </div>
-  <LanguageSwitch lang={lang} />
+  <div class="display-controls">
+    <LanguageSwitch lang={lang} />
+    <ThemeToggle lang={lang} />
+  </div>
 </aside>

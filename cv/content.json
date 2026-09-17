@@ -1,0 +1,157 @@
+{
+  "name": "Nguyen Minh Khoa",
+  "title": "AI Engineer & Researcher",
+  "location": "Ho Chi Minh City, Vietnam",
+  "email": "ngminhkhoayj2706@gmail.com",
+  "links": [
+    ["LinkedIn", "https://www.linkedin.com/in/ngminhkhoa1410"],
+    ["GitHub", "https://github.com/Purin1410"],
+    ["Google Scholar", "https://scholar.google.com/citations?user=tCq7yoQAAAAJ"]
+  ],
+  "summary": [
+    "I’m Khoa Nguyen, an AI engineer and Research Assistant at AiTA Lab, FPT University.",
+    "My recent work includes handwritten mathematical expression recognition and text-to-molecule generation. I have worked across data preparation, model experiments, and inference integration, with a preference for research that can be checked in working software.",
+    "I’m now focusing on AI for manufacturing, especially visual systems that must cope with limited data and changing operating conditions. I’m looking for work that gives equal weight to careful experiments and hands-on implementation.",
+    "I’m open to AI engineering, research engineering, and applied machine-learning collaborations."
+  ],
+  "experience": {
+    "title": "Research Assistant | AiTA Lab, FPT University",
+    "date": "Oct 2024 - Present",
+    "short": [
+      "Co-authored two HMER papers at ICDAR and in the Journal of Information and Telecommunication, contributing masked-language pretraining and multi-task learning experiments.",
+      "First-authored LexiChem (APWeb-WAIM 2026): developed methods, ran ablations and presented the work in Da Nang. Co-first author of ChemAligner-T5 (ICCIES 2026).",
+      "Co-authored CorrTie (APWeb-WAIM 2026), contributing critical review and methodological refinement."
+    ],
+    "full": [
+      "First-authored LexiChem, accepted at APWeb-WAIM 2026, and presented it in Da Nang. Developed method ideas, ran experiments and ablations, wrote the Introduction and Results & Discussion, and co-wrote Methods.",
+      "Co-first-authored Mask CoMER (ICDAR 2025) and co-authored the MTL + CBARM journal paper, contributing pretraining and multi-task learning experiments for mathematical expression recognition.",
+      "Co-first-authored ChemAligner-T5 (ICCIES 2026), a study aligning text and molecular representations for text-to-molecule generation.",
+      "Reviewed and refined the methodology for CorrTie, an active-learning paper accepted at APWeb-WAIM 2026, as a co-author."
+    ]
+  },
+  "projects": [
+    {
+      "id": "lexichem",
+      "title": "LexiChem | AI & Inference Contributor",
+      "date": "2025 - 2026",
+      "context": "Completed capstone | Three-person team | Local application",
+      "short": [
+        "Built the AI inference workflow so users can generate molecules from text, validate structures and revisit saved runs using FastAPI, Triton, RDKit and MongoDB.",
+        "Built a three-dataset training pipeline and ran ablations for the first-author APWeb-WAIM paper."
+      ],
+      "full": [
+        "Built the AI path in a three-person capstone, bringing text-to-molecule models into an application where users generate, compare and inspect molecular candidates in 2D/3D.",
+        "Created training-ready SELFIES data from Mol-Instructions, L+M-24 and ChEBI-20 by validating structures, canonicalizing SMILES and removing duplicates with RDKit.",
+        "Developed shared-latent text/SELFIES alignment ideas and tested them through experiments and ablations, forming the research core of the first-author APWeb-WAIM paper.",
+        "Integrated FastAPI/Triton inference, RDKit structure checks and MongoDB storage into Experiments, connecting prompt entry to validated molecules and saved runs."
+      ],
+      "stack": "Python, PyTorch, Transformers, RDKit, SMILES/SELFIES, FastAPI, NVIDIA Triton, MongoDB"
+    },
+    {
+      "id": "nexops",
+      "title": "NexOps | AI, Simulation & Platform Lead",
+      "date": "2025 - Present",
+      "context": "MES/SCADA working prototype | Local factory-operations runtime",
+      "short": [
+        "Built the local MES/SCADA runtime connecting simulated machines to production planning, alarms and OEE dashboards through MQTT, FastAPI and TimescaleDB.",
+        "Connected a Bambu Lab printer over LAN, demonstrating real device control in the local prototype."
+      ],
+      "full": [
+        "Built the local runtime linking machine telemetry, work orders, production plans, alarms and OEE across operator views, leading the project's AI, simulation and platform work.",
+        "Created repeatable machine and shift simulations to exercise planning and alarm workflows under the same factory scenarios across runs.",
+        "Connected simulator and edge events to live dashboards through MQTT/EMQX, FastAPI and TimescaleDB, making machine state and shift metrics visible in one workspace.",
+        "Integrated a Bambu Lab printer over LAN and demonstrated device control in a recorded trial, extending the prototype beyond simulated machines."
+      ],
+      "stack": "Python, FastAPI, MQTT/EMQX, PostgreSQL/TimescaleDB, React, TypeScript, Docker Compose"
+    },
+    {
+      "id": "hmer",
+      "title": "HMER | Research Contributor",
+      "date": "2024 - 2026",
+      "context": "Handwritten mathematical expressions to LaTeX | AiTA Lab",
+      "full": [
+        "Co-first-authored Mask CoMER, published in the ICDAR proceedings, with experimental contributions to masked-language pretraining for handwritten expression recognition.",
+        "Co-authored the MTL + CBARM paper in the Journal of Information and Telecommunication through multi-task learning experiments combining structural supervision and attention refinement."
+      ],
+      "stack": "Python, PyTorch, PyTorch Lightning, CUDA, Weights & Biases, CROHME"
+    },
+    {
+      "id": "research-ops",
+      "title": "Research Ops | Developer",
+      "date": "2026 - Present",
+      "context": "Personal project | Pre-alpha research infrastructure",
+      "full": [
+        "Built a resumable research workspace that preserves the sources, evidence and decisions behind each revision, keeping research context available across interrupted sessions.",
+        "Implemented revision snapshots and idempotent commands in FastAPI/PostgreSQL to preserve prior state and handle repeated requests, with live updates delivered through SSE.",
+        "Linked PDF evidence to source-file digests and manuscript exports to specific revisions, making the source of a citation and the state behind an export traceable.",
+        "Verified the local document workflow from PDF import and evidence-span checking through manuscript export and compilation; kept runtime changes behind human approval."
+      ],
+      "stack": "Python, FastAPI, PostgreSQL, TypeScript, React, Prefect"
+    }
+  ],
+  "publications": [
+    {
+      "id": "lexichem",
+      "title": "LexiChem: Shared-Latent Alignment for Faithful Text-to-Molecule Generation in SELFIES Space",
+      "venue": "APWeb-WAIM 2026",
+      "role": "First author",
+      "status": "Accepted & presented",
+      "url": "",
+      "detail": "Developed method ideas and ablations; wrote the Introduction and Results & Discussion, and co-wrote Methods. Presented at APWeb-WAIM in Da Nang."
+    },
+    {
+      "id": "mask-comer",
+      "title": "Mask CoMER: Enhancing Handwritten Mathematical Expression Recognition with Masked Language Pretraining and Regularization",
+      "venue": "ICDAR 2025",
+      "role": "Co-first author",
+      "status": "Published; proceedings 2026",
+      "url": "https://doi.org/10.1007/978-3-032-04624-6_22",
+      "detail": "Experimental contributions to masked-language pretraining for HMER. LNCS 16025, pp. 375-390."
+    },
+    {
+      "id": "chemaligner",
+      "title": "ChemAligner-T5: A Unified Text-to-Molecule Model via Representation Alignment",
+      "venue": "ICCIES 2026",
+      "role": "Co-first author",
+      "status": "Published",
+      "url": "https://doi.org/10.1007/978-3-032-21625-0_16",
+      "detail": "Co-first-author work on aligning text and molecular representations with BioT5+, evaluated on L+M-24."
+    },
+    {
+      "id": "mtl-cbarm",
+      "title": "Enhancing handwritten mathematical expression recognition with convolutional block attention refinement module and multi-task learning",
+      "venue": "Journal of Information and Telecommunication",
+      "role": "Co-author",
+      "status": "Published online 19 August 2026",
+      "url": "https://doi.org/10.1080/24751839.2026.2716432",
+      "detail": "Experimental contributions to multi-task learning for HMER with structural supervision and attention refinement."
+    },
+    {
+      "id": "corrtie",
+      "title": "CorrTie: Correction-aware Tie-breaking for Active Learning with Vision-Language Models",
+      "venue": "APWeb-WAIM 2026",
+      "role": "Co-author",
+      "status": "Accepted",
+      "url": "https://github.com/TaiDuc1001/CorrTie",
+      "detail": "Critical review and methodological refinement of correction-aware sample selection for vision-language active learning."
+    }
+  ],
+  "education": {
+    "title": "Bachelor of Science in Artificial Intelligence | FPT University, HCMC",
+    "date": "2022 - 2026",
+    "status": "Academic requirements completed; degree conferral expected November 2026.",
+    "gpa": "Final GPA: 8.0/10."
+  },
+  "awards": [
+    ["2022", "50% Tuition Scholarship | FPT University", "Earned through the university scholarship examination, covering half of tuition for the full programme."],
+    ["2026", "Second Prize | RESFES HCMC", "Awarded to the ChemAligner-T5 team at FPT University HCMC's Spring 2026 student research competition."],
+    ["2025", "Second Prize | RESFES HCMC", "Awarded to the Mask CoMER team at FPT University HCMC's student research competition."],
+    ["2025", "VND 50 Million Team Award & Funding | Demo Pitching Day", "TrendRadar team recognition and project funding from FPT University."],
+    ["2025", "VND 40 Million Team Support | Innovation Quest", "TrendRadar, FrontAI team, through SIHUB; includes a VND 10 million team reward."],
+    ["2021", "Silver Medal | HCMC Open April Olympiad", "Mathematics, Grade 11."]
+  ],
+  "skills": [
+    ["AI & research", "Python, PyTorch, Transformers, model experiments and ablations, HMER, cross-modal learning, text-to-molecule generation"],
+    ["Systems & data", "FastAPI, NVIDIA Triton, RDKit, PostgreSQL/TimescaleDB, MongoDB, MQTT, Docker, Git"]
+  ]
+}

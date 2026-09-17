@@ -40,19 +40,83 @@
 @layer base {
   :root {
     font-family: "Be Vietnam Pro", sans-serif;
-    color: #475569;
-    background: #fff;
+    color: var(--text);
+    background: var(--page-bg);
     font-synthesis: none;
+    --page-bg: #ffffff;
+    --surface: #ffffff;
+    --surface-soft: #f8fafc;
+    --surface-muted: #f4f7fc;
+    --surface-tint: #eef4ff;
+    --surface-purple: #f3eef9;
+    --control-active: #eef3fb;
+    --overlay: #ffffffed;
+    --text: #475569;
     --ink: #162033;
     --link: #2563eb;
     --line: #e5eaf0;
     --muted: #64748b;
+    --text-strong: #344155;
+    --text-linkish: #42516a;
+    --text-detail: #53627a;
+    --text-emphasis: #36435a;
+    --border-soft: #e1e8f1;
+    --border-strong: #cdd8e6;
+    --focus: #2563eb;
+    --selection: #dbeafe;
+    --success: #397050;
+    --success-border: #d7e9dc;
+    --success-bg: #f5faf6;
+    --warning: #93451f;
+    --warning-border: #edcdbd;
+    --warning-bg: #fff8f4;
+    --conference: #6b91d2;
+    --journal: #9170ba;
+    --conference-text: #2259a9;
+    --journal-text: #755294;
+    --shadow: #16203322;
     scroll-behavior: smooth;
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #111827;
+    --surface: #182235;
+    --surface-soft: #172033;
+    --surface-muted: #1e293b;
+    --surface-tint: #172554;
+    --surface-purple: #2e2440;
+    --control-active: #1e3a5f;
+    --overlay: #182235f2;
+    --text: #cbd5e1;
+    --ink: #f8fafc;
+    --link: #60a5fa;
+    --line: #334155;
+    --muted: #94a3b8;
+    --text-strong: #e2e8f0;
+    --text-linkish: #cbd5e1;
+    --text-detail: #aebdd1;
+    --text-emphasis: #e2e8f0;
+    --border-soft: #334155;
+    --border-strong: #475569;
+    --focus: #60a5fa;
+    --selection: #1e3a5f;
+    --success: #86d39d;
+    --success-border: #315b42;
+    --success-bg: #163524;
+    --warning: #f6b48f;
+    --warning-border: #70452f;
+    --warning-bg: #382318;
+    --conference: #8cb4f4;
+    --journal: #c4a1ec;
+    --conference-text: #a9c9ff;
+    --journal-text: #d8b9f8;
+    --shadow: #00000055;
   }
   body {
     font-size: 16px;
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
+    background: var(--page-bg);
+    color: var(--text);
   }
   h1,
   h2,
@@ -96,7 +160,7 @@
   summary:focus-visible,
   pre:focus-visible,
   video:focus-visible {
-    outline: 3px solid #2563eb;
+    outline: 3px solid var(--focus);
     outline-offset: 5px;
     border-radius: 3px;
   }
@@ -104,7 +168,7 @@
     scroll-margin-top: 40px;
   }
   ::selection {
-    background: #dbeafe;
+    background: var(--selection);
     color: var(--ink);
   }
 }
@@ -202,13 +266,54 @@
     margin-top: 27px;
     color: var(--muted);
   }
+  .display-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sidebar .display-controls {
+    margin-top: 20px;
+  }
+  .sidebar .display-controls .language-switch {
+    margin-top: 0;
+  }
+  .theme-toggle {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--surface-soft);
+    color: var(--muted);
+  }
+  :root[data-theme] .theme-toggle {
+    display: inline-flex;
+  }
+  .theme-toggle:hover {
+    border-color: var(--border-strong);
+    background: var(--control-active);
+    color: var(--link);
+  }
+  .theme-icon {
+    display: inline-flex;
+  }
+  .theme-icon-sun,
+  :root[data-theme="dark"] .theme-icon-moon {
+    display: none;
+  }
+  :root[data-theme="dark"] .theme-icon-sun {
+    display: inline-flex;
+  }
   .language-switch a {
     padding: 2px 7px;
     line-height: 1.8;
     border-radius: 4px;
   }
   .language-switch a[aria-current] {
-    background: #eef3fb;
+    background: var(--control-active);
     color: var(--link);
     font-weight: 600;
   }
@@ -238,7 +343,7 @@
   .intro {
     font-size: 18px;
     line-height: 1.8;
-    color: #344155;
+    color: var(--text-strong);
   }
   .about-section > p:not(.intro) {
     font-size: 16px;
@@ -290,7 +395,7 @@
     margin: 0;
   }
   .news-list a {
-    color: #42516a;
+    color: var(--text-linkish);
   }
   .news-list a:hover {
     color: var(--link);
@@ -348,16 +453,16 @@
     font-size: 10px;
     display: inline-block;
     margin-top: 10px;
-    border: 1px solid #dde5ee;
+    border: 1px solid var(--border-soft);
     border-radius: 4px;
     padding: 1px 7px;
-    color: #506178;
-    background: #f8fafc;
+    color: var(--text-detail);
+    background: var(--surface-soft);
   }
   .project-status.completed {
-    color: #397050;
-    border-color: #d7e9dc;
-    background: #f5faf6;
+    color: var(--success);
+    border-color: var(--success-border);
+    background: var(--success-bg);
   }
   .project-summary {
     font-size: 16px;
@@ -377,8 +482,8 @@
   }
   .media-link {
     display: block;
-    border: 1px solid #e1e8f1;
-    background: #f4f7fc;
+    border: 1px solid var(--border-soft);
+    background: var(--surface-muted);
     border-radius: 7px;
     overflow: hidden;
   }
@@ -415,10 +520,10 @@
   }
   .publication-mark {
     margin-top: 3px;
-    color: #6b91d2;
+    color: var(--conference);
   }
   .publication-row.journal .publication-mark {
-    color: #9170ba;
+    color: var(--journal);
   }
   .publication-meta {
     display: flex;
@@ -432,17 +537,17 @@
   .venue-type {
     padding: 2px 7px;
     border-radius: 3px;
-    background: #eef4ff;
-    color: #2259a9;
+    background: var(--surface-tint);
+    color: var(--conference-text);
     font-weight: 500;
   }
   .venue-type.journal {
-    color: #755294;
-    background: #f3eef9;
+    color: var(--journal-text);
+    background: var(--surface-purple);
   }
   .venue-short {
     font-weight: 500;
-    color: #53627a;
+    color: var(--text-detail);
   }
   .publication-status {
     color: var(--muted);
@@ -464,7 +569,7 @@
   }
   .authors strong {
     font-weight: 600;
-    color: #36435a;
+    color: var(--text-emphasis);
   }
   .publication-venue {
     font-size: 11px;
@@ -529,7 +634,7 @@
     transform: rotate(45deg);
   }
   .disclosure-content {
-    background: #f8fafc;
+    background: var(--surface-soft);
     border: 1px solid var(--line);
     border-radius: 5px;
     padding: 16px;
@@ -561,8 +666,8 @@
     flex-wrap: wrap;
   }
   .copy-button {
-    border: 1px solid #cdd8e6;
-    background: #fff;
+    border: 1px solid var(--border-strong);
+    background: var(--surface);
     border-radius: 4px;
     display: inline-flex;
     gap: 7px;
@@ -572,10 +677,10 @@
   }
   .copy-status {
     font-size: 11px;
-    color: #426346;
+    color: var(--success);
   }
   .copy-status.error {
-    color: #93451f;
+    color: var(--warning);
   }
   pre {
     font-size: 11px;
@@ -584,7 +689,7 @@
     max-height: 300px;
     margin-bottom: 0;
     tab-size: 2;
-    color: #475569;
+    color: var(--text);
     white-space: pre-wrap;
     overflow-wrap: anywhere;
   }
@@ -655,6 +760,9 @@
   .topbar .language-switch {
     margin: 0;
   }
+  .topbar .display-controls {
+    gap: 7px;
+  }
   .case-main {
     padding: 36px 0 50px;
   }
@@ -693,7 +801,7 @@
   }
   .case-meta dd {
     font-size: 12px;
-    color: #35445a;
+    color: var(--text-strong);
     margin-top: 3px;
   }
   .case-media .media-link {
@@ -717,7 +825,7 @@
     overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: #f4f7fc;
+    background: var(--surface-muted);
   }
   .case-evidence img {
     width: 100%;
@@ -787,15 +895,15 @@
   }
   .step-index {
     font-size: 10px;
-    color: #8796ad;
+    color: var(--muted);
   }
   .flow svg {
     position: absolute;
     right: -9px;
     top: 50%;
     transform: translateY(-50%);
-    background: #fff;
-    color: #8393aa;
+    background: var(--page-bg);
+    color: var(--muted);
     z-index: 1;
   }
   .stack-line {
@@ -808,7 +916,7 @@
   }
   .stack-line strong {
     font-size: 11px;
-    color: #49566b;
+    color: var(--text-detail);
     font-weight: 500;
   }
   .outcome {
@@ -835,9 +943,9 @@
     z-index: 100;
     transform: translateY(-150%);
     padding: 10px 15px;
-    background: #fff;
+    background: var(--surface);
     color: var(--link);
-    box-shadow: 0 2px 10px #16203322;
+    box-shadow: 0 2px 10px var(--shadow);
   }
   .skip-link:focus {
     transform: none;
@@ -848,8 +956,8 @@
   }
   .video-error {
     padding: 16px;
-    border: 1px solid #edcdbd;
-    background: #fff8f4;
+    border: 1px solid var(--warning-border);
+    background: var(--warning-bg);
     font-size: 13px;
   }
   .video-error a {

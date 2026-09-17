@@ -1,0 +1,17 @@
+---
+import { type Lang, words } from '../lib/site';
+import Icon from './Icon.astro';
+const { lang } = Astro.props as { lang: Lang };
+---
+<button
+  class="theme-toggle"
+  type="button"
+  data-theme-toggle
+  data-dark-label={words(lang, 'Switch to dark mode', 'Chuyển sang chế độ tối')}
+  data-light-label={words(lang, 'Switch to light mode', 'Chuyển sang chế độ sáng')}
+  aria-label={words(lang, 'Switch to dark mode', 'Chuyển sang chế độ tối')}
+  title={words(lang, 'Switch to dark mode', 'Chuyển sang chế độ tối')}
+>
+  <span class="theme-icon theme-icon-sun"><Icon name="sun" size={17} /></span>
+  <span class="theme-icon theme-icon-moon"><Icon name="moon" size={17} /></span>
+</button>

@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   validPrecisionDate,
   newsSchema,
@@ -125,6 +126,21 @@ test("content rejects missing translations and unsafe links", () => {
     publicationSchema.safeParse({ slug: "bad", kind: "preprint" }).success,
     false,
   );
+});
+test("HMER case Markdown keeps metadata only", async () => {
+  for (const locale of ["en", "vi"]) {
+    const source = await readFile(
+      new URL(`../src/content/cases/${locale}/hmer-research.md`, import.meta.url),
+      "utf8",
+    );
+    const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    assert.ok(match, `${locale}: valid frontmatter block`);
+    const [, frontmatter, body] = match;
+    assert.match(frontmatter, /^project: hmer-research$/m);
+    assert.match(frontmatter, new RegExp(`^locale: ${locale}$`, "m"));
+    assert.match(frontmatter, /^outcome:\s*$/m);
+    assert.equal(body.trim(), "", `${locale}: no stale narrative body`);
+  }
 });
 test("clipboard reports success and graceful failure", async () => {
   let copied = "";
