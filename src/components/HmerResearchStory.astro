@@ -1,0 +1,226 @@
+---
+import type { Lang } from '../lib/site';
+import TechStack from './TechStack.astro';
+
+const { lang, stack } = Astro.props as { lang: Lang; stack: string[] };
+
+const copy = {
+  en: {
+    input: 'Sample',
+    datasetSample: 'CROHME sample',
+    model: 'Vision + structure model',
+    output: 'Structured output',
+    heroAlt: 'A handwritten mathematical expression passes through visual encoding and structure-aware sequence modeling to become a machine-readable sequence.',
+    heroCaption: 'A handwritten expression is converted into a machine-readable LaTeX sequence.',
+    overview: 'Overview',
+    overviewBody: 'Handwritten Mathematical Expression Recognition turns an image of handwritten mathematics into a structured sequence. The difficult part is not only reading symbols, but retaining superscripts, fractions, roots and the spatial relationships that give an expression its meaning.',
+    thread: 'The research thread',
+    threadBody: 'Across the experiments, the same question stays central: how much mathematical structure survives between the image encoder and the generated sequence?',
+    role: 'My role',
+    roleItems: [
+      ['Pretraining & multi-task learning', 'Contributed to masked-language pretraining and multi-task learning experiments for HMER.'],
+      ['Model training & evaluation', 'Trained and evaluated PyTorch models, with experiment runs tracked in Weights & Biases.'],
+    ],
+    pipeline: 'Research pipeline',
+    pipelineIntro: 'One recognition pipeline, with two complementary research interventions aimed at preserving context and mathematical structure.',
+    steps: [
+      ['01', 'Handwritten expression', 'A grayscale image contains symbols and two-dimensional layout.'],
+      ['02', 'Visual encoding', 'The encoder converts the image into spatial visual features.'],
+      ['03', 'Structure-aware modeling', 'The decoder uses visual context to generate a structured token sequence.'],
+      ['04', 'Machine-readable output', 'The sequence can be reconstructed as a mathematical expression.'],
+    ],
+    maskTitle: 'Mask CoMER',
+    maskBody: 'A two-stage strategy: masked-language pretraining first, then the main HMER task with stochastic-depth regularization.',
+    maskAlt: 'Simplified Mask CoMER diagram showing masked-token pretraining followed by HMER fine-tuning.',
+    maskCaption: 'An overview of Mask CoMER methodology',
+    cbarmTitle: 'MTL + CBARM',
+    cbarmBody: 'The main LaTeX-sequence task is trained alongside a structural auxiliary task, while CBARM refines cross-attention using channel and spatial cues.',
+    cbarmAlt: 'Simplified multi-task learning and CBARM diagram with main and auxiliary targets feeding a shared model.',
+    cbarmCaption: 'An overview of MTL + CBARM methodology',
+  },
+  vi: {
+    input: 'Mẫu',
+    datasetSample: 'Mẫu CROHME',
+    model: 'Mô hình thị giác + cấu trúc',
+    output: 'Đầu ra có cấu trúc',
+    heroAlt: 'Một công thức toán viết tay đi qua bước mã hóa hình ảnh và mô hình chuỗi có nhận biết cấu trúc để trở thành chuỗi máy có thể đọc.',
+    heroCaption: 'Biểu thức viết tay được chuyển thành chuỗi LaTeX mà máy có thể đọc.',
+    overview: 'Tổng quan',
+    overviewBody: 'Nhận dạng công thức toán viết tay chuyển ảnh công thức thành chuỗi có cấu trúc. Phần khó không chỉ là đọc ký hiệu, mà còn phải giữ số mũ, phân số, căn thức và các quan hệ không gian tạo nên ý nghĩa của biểu thức.',
+    thread: 'Mạch nghiên cứu',
+    threadBody: 'Xuyên suốt các thí nghiệm là một câu hỏi: bao nhiêu cấu trúc toán học còn được giữ lại từ bộ mã hóa ảnh đến chuỗi đầu ra?',
+    role: 'Vai trò của tôi',
+    roleItems: [
+      ['Tiền huấn luyện & học đa nhiệm', 'Đóng góp vào các thí nghiệm tiền huấn luyện ngôn ngữ có che và học đa nhiệm cho HMER.'],
+      ['Huấn luyện & đánh giá mô hình', 'Huấn luyện và đánh giá mô hình PyTorch, theo dõi các lượt chạy bằng Weights & Biases.'],
+    ],
+    pipeline: 'Pipeline nghiên cứu',
+    pipelineIntro: 'Một pipeline nhận dạng với hai hướng can thiệp bổ trợ nhằm giữ ngữ cảnh và cấu trúc toán học.',
+    steps: [
+      ['01', 'Công thức viết tay', 'Ảnh xám chứa ký hiệu và bố cục toán học hai chiều.'],
+      ['02', 'Mã hóa hình ảnh', 'Bộ mã hóa chuyển ảnh thành đặc trưng thị giác có thông tin không gian.'],
+      ['03', 'Mô hình hóa cấu trúc', 'Bộ giải mã dùng ngữ cảnh thị giác để sinh chuỗi token có cấu trúc.'],
+      ['04', 'Đầu ra máy đọc được', 'Chuỗi đầu ra có thể tái dựng thành biểu thức toán học.'],
+    ],
+    maskTitle: 'Mask CoMER',
+    maskBody: 'Chiến lược hai giai đoạn: tiền huấn luyện dự đoán token bị che, sau đó huấn luyện tác vụ HMER chính cùng stochastic-depth regularization.',
+    maskAlt: 'Sơ đồ Mask CoMER giản lược, gồm tiền huấn luyện token bị che rồi fine-tune cho HMER.',
+    maskCaption: 'Tổng quan phương pháp Mask CoMER',
+    cbarmTitle: 'MTL + CBARM',
+    cbarmBody: 'Tác vụ chính sinh chuỗi LaTeX được huấn luyện cùng tác vụ phụ về cấu trúc; CBARM tinh chỉnh cross-attention bằng tín hiệu theo kênh và không gian.',
+    cbarmAlt: 'Sơ đồ giản lược học đa nhiệm và CBARM với nhãn chính, nhãn phụ đi vào một mô hình dùng chung.',
+    cbarmCaption: 'Tổng quan phương pháp MTL + CBARM',
+  },
+}[lang];
+---
+
+<div class="hmer-story">
+  <section class="hmer-hero-visual" aria-labelledby="hmer-glance-heading">
+    <h2 id="hmer-glance-heading" class="sr-only">{copy.heroCaption}</h2>
+    <div class="hmer-visual-labels" aria-hidden="true">
+      <span>{copy.input}</span><span>{copy.model}</span><span>{copy.output}</span>
+    </div>
+    <figure>
+      <div class="hmer-diagram-canvas hmer-hero-canvas">
+        <img src="/media/hmer-research/hmer-at-a-glance.svg" width="960" height="330" loading="eager" decoding="async" alt={copy.heroAlt} />
+        <img class="hmer-dataset-image hmer-dataset-hero" src="/media/hmer-research/crohme-2016-un-120-em-423.webp" width="286" height="69" loading="eager" decoding="async" alt="" aria-hidden="true" />
+      </div>
+      <figcaption><span class="hmer-dataset-source">{copy.datasetSample}</span>{copy.heroCaption}</figcaption>
+    </figure>
+  </section>
+
+  <section class="hmer-intro-grid">
+    <div>
+      <h2>{copy.overview}</h2>
+      <p>{copy.overviewBody}</p>
+      <aside class="hmer-thread" aria-label={copy.thread}>
+        <strong>{copy.thread}</strong>
+        <p>{copy.threadBody}</p>
+      </aside>
+    </div>
+    <div class="hmer-role">
+      <h2>{copy.role}</h2>
+      <ul>
+        {copy.roleItems.map(([title, body]) => <li><span class="hmer-role-mark" aria-hidden="true"></span><div><strong>{title}</strong><p>{body}</p></div></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <TechStack stack={stack} lang={lang} variant="hmer" />
+
+  <section class="hmer-pipeline case-section" aria-labelledby="hmer-pipeline-heading">
+    <div class="hmer-section-heading">
+      <h2 id="hmer-pipeline-heading">{copy.pipeline}</h2>
+      <p>{copy.pipelineIntro}</p>
+    </div>
+    <ol class="hmer-steps">
+      {copy.steps.map(([index, title, body]) => <li><span>{index}</span><strong>{title}</strong><p>{body}</p></li>)}
+    </ol>
+    <div class="hmer-methods">
+      <article class="hmer-method hmer-method-mask">
+        <div class="hmer-method-copy"><h3>{copy.maskTitle}</h3><p>{copy.maskBody}</p></div>
+        <figure>
+          <div class="hmer-diagram-canvas hmer-mask-canvas">
+            <img src="/media/hmer-research/mask-comer-method.svg" width="960" height="360" loading="lazy" decoding="async" alt={copy.maskAlt} />
+            <img class="hmer-dataset-image hmer-mask-sample-one" src="/media/hmer-research/crohme-2016-un-120-em-423.webp" width="286" height="69" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+            <img class="hmer-dataset-image hmer-mask-sample-two" src="/media/hmer-research/crohme-2016-un-120-em-423.webp" width="286" height="69" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+          </div>
+          <figcaption>{copy.maskCaption}</figcaption>
+        </figure>
+      </article>
+      <article class="hmer-method hmer-method-cbarm">
+        <div class="hmer-method-copy"><h3>{copy.cbarmTitle}</h3><p>{copy.cbarmBody}</p></div>
+        <figure>
+          <div class="hmer-diagram-canvas hmer-cbarm-canvas">
+            <img src="/media/hmer-research/mtl-cbarm-method.svg" width="960" height="360" loading="lazy" decoding="async" alt={copy.cbarmAlt} />
+            <img class="hmer-dataset-image hmer-cbarm-sample" src="/media/hmer-research/crohme-2016-un-120-em-423.webp" width="286" height="69" loading="lazy" decoding="async" alt="" aria-hidden="true" />
+          </div>
+          <figcaption>{copy.cbarmCaption}</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+</div>
+
+<style>
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  :global(.case-heading-hmer) { display: grid; grid-template-columns: minmax(0, 1fr) 275px; column-gap: 54px; }
+  :global(.case-heading-hmer > :not(.hmer-heading-note)) { grid-column: 1; }
+  :global(.case-heading-hmer .hmer-heading-note) { grid-column: 2; grid-row: 2 / span 2; align-self: center; max-width: 250px; padding-left: 30px; color: #536888; font-size: 14px; font-style: italic; line-height: 1.65; }
+  :global(.case-heading-hmer .hmer-heading-note::before) { content: ''; display: block; width: 32px; height: 1px; margin-bottom: 13px; background: #9db1d0; }
+  .hmer-story { --hmer-blue: #2563eb; --hmer-violet: #7654c8; }
+  .hmer-hero-visual { margin: 2px 0 42px; }
+  .hmer-visual-labels { display: grid; grid-template-columns: 1fr 1.14fr 1fr; gap: 48px; margin: 0 24px 9px; color: #53627a; font-size: 11px; font-weight: 500; }
+  .hmer-visual-labels span:first-child { max-width: 220px; }
+  .hmer-visual-labels span:nth-child(2) { text-align: center; }
+  .hmer-visual-labels span:last-child { text-align: right; }
+  .hmer-hero-visual figure { margin: 0; }
+  .hmer-diagram-canvas { position: relative; overflow: hidden; line-height: 0; }
+  .hmer-diagram-canvas > img:first-child { width: 100%; height: auto; }
+  .hmer-hero-canvas { border: 1px solid #dbe5f1; border-radius: 10px; background: #fbfdff; }
+  .hmer-dataset-image { position: absolute; z-index: 1; height: auto; border: 0; border-radius: 0; background: transparent; object-fit: contain; }
+  .hmer-dataset-hero { top: 41.4%; left: 6.04%; width: 20.63%; }
+  .hmer-mask-sample-one { top: 39.2%; left: 7.29%; width: 8.44%; }
+  .hmer-mask-sample-two { top: 38.3%; left: 58.13%; width: 9.38%; }
+  .hmer-cbarm-sample { top: 44.4%; left: 5.31%; width: 10.42%; }
+  .hmer-hero-visual figcaption, .hmer-method figcaption { margin-top: 9px; color: var(--muted); font-size: 11px; line-height: 1.65; }
+  .hmer-dataset-source { display: inline-flex; align-items: center; margin-right: 10px; padding: 2px 7px; border: 1px solid #c8d7ea; border-radius: 999px; color: #315c9c; font-size: 9px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+  .hmer-intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .92fr); gap: 52px; padding: 36px 0 40px; border-top: 1px solid var(--line); }
+  .hmer-intro-grid h2, .hmer-section-heading h2 { margin: 0 0 15px; font-size: 26px; }
+  .hmer-intro-grid p, .hmer-section-heading p { font-size: 15px; line-height: 1.85; }
+  .hmer-thread { margin-top: 24px; padding-left: 17px; border-left: 2px solid #b9cef1; }
+  .hmer-thread strong { color: #315c9c; font-size: 12px; font-weight: 600; }
+  .hmer-thread p { margin-top: 5px; color: #53627a; font-size: 13px; }
+  .hmer-role { padding-left: 36px; border-left: 1px solid var(--line); }
+  .hmer-role ul { display: grid; gap: 22px; padding: 0; margin: 0; list-style: none; }
+  .hmer-role li { display: grid; grid-template-columns: 14px minmax(0, 1fr); gap: 12px; }
+  .hmer-role-mark { width: 10px; height: 10px; margin-top: 7px; border: 2px solid var(--hmer-blue); border-radius: 3px; }
+  .hmer-role strong { display: block; color: var(--ink); font-size: 13px; line-height: 1.55; }
+  .hmer-role p { margin-top: 3px; color: #5d6c82; font-size: 12px; line-height: 1.7; }
+  .hmer-pipeline { margin-top: 44px; }
+  .hmer-section-heading { max-width: 710px; }
+  .hmer-section-heading p { color: #56657a; }
+  .hmer-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; padding: 0; margin: 27px 0 42px; list-style: none; border-top: 1px solid #cfd9e8; border-bottom: 1px solid #cfd9e8; }
+  .hmer-steps li { position: relative; min-width: 0; padding: 20px 22px 22px 0; }
+  .hmer-steps li + li { padding-left: 22px; border-left: 1px solid #e4eaf2; }
+  .hmer-steps li:not(:last-child)::after { content: '→'; position: absolute; right: -8px; top: 20px; z-index: 1; padding: 0 2px; background: #fff; color: #8ca0bb; }
+  .hmer-steps span { display: block; color: #8191a7; font-size: 10px; font-variant-numeric: tabular-nums; }
+  .hmer-steps strong { display: block; margin-top: 8px; color: var(--ink); font-size: 12px; line-height: 1.5; }
+  .hmer-steps p { margin-top: 6px; color: #68778c; font-size: 11px; line-height: 1.65; }
+  .hmer-methods { display: grid; gap: 42px; }
+  .hmer-method { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 28px; align-items: start; padding-top: 30px; border-top: 1px solid var(--line); }
+  .hmer-method-copy { padding-top: 4px; }
+  .hmer-method h3 { font-size: 20px; }
+  .hmer-method h3::after { content: ''; display: block; width: 36px; height: 2px; margin-top: 11px; background: var(--hmer-blue); }
+  .hmer-method-cbarm h3::after { background: var(--hmer-violet); }
+  .hmer-method-copy p { margin-top: 16px; color: #56657a; font-size: 13px; line-height: 1.8; }
+  .hmer-method figure { min-width: 0; margin: 0; }
+  .hmer-method .hmer-diagram-canvas { border: 1px solid #dce5f0; border-radius: 8px; background: #fbfdff; }
+  @media (max-width: 760px) {
+    :global(.case-heading-hmer) { display: block; }
+    :global(.case-heading-hmer .hmer-heading-note) { max-width: 460px; margin-top: 19px; padding-left: 0; font-size: 13px; }
+    .hmer-visual-labels { gap: 18px; margin-inline: 12px; }
+    .hmer-intro-grid { grid-template-columns: 1fr; gap: 30px; }
+    .hmer-role { padding: 28px 0 0; border-top: 1px solid var(--line); border-left: 0; }
+    .hmer-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hmer-steps li:nth-child(3) { border-left: 0; }
+    .hmer-steps li:nth-child(-n + 2) { border-bottom: 1px solid #e4eaf2; }
+    .hmer-steps li:nth-child(2)::after { display: none; }
+    .hmer-method { grid-template-columns: 1fr; gap: 20px; }
+    .hmer-method-copy { max-width: 620px; }
+  }
+  @media (max-width: 520px) {
+    .hmer-hero-visual { margin-bottom: 31px; }
+    .hmer-visual-labels { display: none; }
+    .hmer-hero-canvas { border-radius: 7px; }
+    .hmer-intro-grid { padding: 29px 0 32px; }
+    .hmer-intro-grid h2, .hmer-section-heading h2 { font-size: 23px; }
+    .hmer-intro-grid p, .hmer-section-heading p { font-size: 14px; }
+    .hmer-steps { grid-template-columns: 1fr; }
+    .hmer-steps li, .hmer-steps li + li { padding: 17px 0; border-left: 0; border-bottom: 1px solid #e4eaf2; }
+    .hmer-steps li:last-child { border-bottom: 0; }
+    .hmer-steps li::after { display: none; }
+    .hmer-method { gap: 15px; padding-top: 25px; }
+    .hmer-method h3 { font-size: 19px; }
+  }
+</style>

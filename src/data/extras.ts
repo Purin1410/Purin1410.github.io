@@ -35,7 +35,20 @@ export const otherActivities: Recognition[] = [
   { id: 'excap', year: 2025, title: { en: 'EXCAP · Participation', vi: 'EXCAP · Tham gia' }, detail: { en: 'TrendRadar project · no award.', vi: 'Dự án TrendRadar · không đạt giải.' }, photo: photo('excap-team', 'The TrendRadar team at EXCAP 2025.', 'Nhóm TrendRadar tại EXCAP 2025.') },
   { id: 'math-medal', year: 2021, title: { en: 'HCMC Open April Olympiad · Silver Medal', vi: 'Olympic Tháng 4 TP.HCM mở rộng · Huy chương Bạc' }, detail: { en: 'Mathematics · Grade 11.', vi: 'Môn Toán · Khối 11.' }, photo: photo('math-medal', 'Silver medal, HCMC Open April Olympiad 2021.', 'Huy chương Bạc Olympic Tháng 4 TP.HCM mở rộng 2021.') },
 ];
-export const contributions = [
-  { number: 3672, url: 'https://github.com/sipyourdrink-ltd/bernstein/pull/3672', title: { en: 'Authenticate projection audit evidence', vi: 'Xác thực bằng chứng kiểm toán projection' }, detail: { en: 'Bound projection verification to authenticated audit evidence, with tests for mismatches, archived evidence and read-only verification.', vi: 'Gắn xác minh projection với bằng chứng kiểm toán đã xác thực; bổ sung kiểm thử dữ liệu không khớp, bằng chứng lưu trữ và xác minh chỉ đọc.' } },
-  { number: 3673, url: 'https://github.com/sipyourdrink-ltd/bernstein/pull/3673', title: { en: 'Disclose tool host effects', vi: 'Công bố tác động của công cụ lên hệ thống' }, detail: { en: 'Made MCP tool effects visible to clients through schema descriptions and FastMCP, with tests to prevent descriptions drifting from tool behavior.', vi: 'Hiển thị tác động của MCP tool cho client qua mô tả schema và FastMCP; thêm kiểm thử để mô tả không lệch khỏi hành vi công cụ.' } },
+export const contributionRepositories = [
+  {
+    name: 'Lightly',
+    url: 'https://github.com/lightly-ai/lightly',
+    pullRequests: [
+      { number: 2050, url: 'https://github.com/lightly-ai/lightly/pull/2050', title: { en: 'Fix masked attention with gradient checkpointing', vi: 'Sửa masked attention khi dùng gradient checkpointing' } },
+    ],
+  },
+  {
+    name: 'Bernstein',
+    url: 'https://github.com/sipyourdrink-ltd/bernstein',
+    pullRequests: [
+      { number: 3672, url: 'https://github.com/sipyourdrink-ltd/bernstein/pull/3672', title: { en: 'Authenticate projection audit evidence', vi: 'Xác thực bằng chứng kiểm toán projection' } },
+      { number: 3673, url: 'https://github.com/sipyourdrink-ltd/bernstein/pull/3673', title: { en: 'Disclose tool host effects', vi: 'Công bố tác động của công cụ lên hệ thống' } },
+    ],
+  },
 ];

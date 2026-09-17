@@ -8,7 +8,7 @@ outcome:
 
 ## Dự án này là gì
 
-Research Ops là hệ thống tôi đang xây dựng để các AI agent có thể hỗ trợ nghiên cứu liên tục 24/7, kể cả khi tôi không ngồi trước máy, mà toàn bộ quá trình vẫn có thể kiểm tra và tiếp tục. Hệ thống giữ câu hỏi, giả thuyết, lần chạy, bằng chứng và quyết định trong một hồ sơ bền vững, nên công việc không mất mạch khi thí nghiệm bị gián đoạn, phiên làm việc kết thúc hoặc công cụ AI thay đổi. AI đảm nhận phần thực thi và đưa các quyết định về cho người nghiên cứu xem xét; hướng đi và kết luận khoa học vẫn do con người quyết định.
+Research Ops là workspace pre-alpha nhằm giảm lượng chú ý cần thiết để duy trì một quy trình nghiên cứu đáng tin cậy. Hệ thống lưu câu hỏi, giả thuyết, lần chạy, bằng chứng, checkpoint và quyết định trong một hồ sơ bền vững, nên thí nghiệm bị gián đoạn hay phiên làm việc kết thúc cũng không làm mất ngữ cảnh. Agent chỉ thực hiện các tác vụ có giới hạn và đưa quyết định về để xem xét; người nghiên cứu vẫn kiểm soát hướng đi, phê duyệt, diễn giải và kết luận khoa học.
 
 ## Vì sao tôi xây dựng nó
 
@@ -21,8 +21,6 @@ Bản hiện tại có kho tài liệu, xử lý PDF và trích dẫn, phiên ng
 File nguồn được lưu theo SHA-256 digest, đoạn trích dẫn luôn gắn với digest đó, còn bản thảo được xuất từ revision cụ thể. Trong một lần kiểm tra cục bộ, hệ thống đã nhập PDF 18 trang, xác minh một đoạn bằng chứng, rồi xuất và biên dịch artifact bản thảo ở revision 2.
 
 Mọi thay đổi runtime còn cần bundle đã ghim, revision khớp, ngân sách, reservation và phê duyệt của người dùng. Receipt GPU mới nhất vẫn ở trạng thái `MANUAL_ACTION_REQUIRED` và chưa có kết quả huấn luyện.
-
-Bộ kiểm tra cục bộ có 299 test, bỏ qua 4. Phần frontend và API có thêm 40 test trong 9 file. Đây là độ phủ phần mềm cục bộ, không phải thước đo chất lượng nghiên cứu hay năng suất.
 
 ## Giới hạn hiện tại
 

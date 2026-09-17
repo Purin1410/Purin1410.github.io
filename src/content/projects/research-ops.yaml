@@ -7,15 +7,15 @@ role:
   vi: Người phát triển · Dự án cá nhân
 period: 2026 – present
 status:
-  en: Personal project · In development
-  vi: Dự án cá nhân · Đang phát triển
+  en: Pre-alpha · In development
+  vi: Pre-alpha · Đang phát triển
 summary:
   en: >-
-    Research Ops is a system I am building so AI agents can support research continuously, even when I am away from the
-    computer, without turning the process into a black box. AI handles execution and brings decisions back for human review.
+    A pre-alpha system for reducing the attention needed to keep long-running research moving without giving up provenance
+    or human judgment. It keeps sources, evidence, checkpoints and decisions connected while agents handle bounded execution.
   vi: >-
-    Research Ops là hệ thống tôi đang xây dựng để các AI agent có thể hỗ trợ nghiên cứu liên tục 24/7, kể cả khi tôi không
-    ngồi trước máy, mà quá trình vẫn có thể kiểm tra và tiếp tục. AI đảm nhận phần thực thi và đưa các quyết định về cho người nghiên cứu xem xét.
+    Hệ thống pre-alpha giúp giảm lượng chú ý cần thiết để duy trì nghiên cứu dài hạn mà không đánh đổi khả năng truy vết hay
+    quyền phán đoán của con người. Nguồn, bằng chứng, checkpoint và quyết định được nối liền; agent chỉ thực hiện các tác vụ có giới hạn.
 highlights:
   en:
     - Research sessions can resume from the exact sources, evidence and revision that produced a decision.
@@ -32,8 +32,8 @@ stack:
   - React
   - Prefect
 links: {}
-featured: true
-order: 3
+featured: false
+order: 4
 slug: research-ops
 kind: engineering
 publications: []

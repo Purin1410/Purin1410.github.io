@@ -11,13 +11,12 @@ outcome:
 
 Handwritten Mathematical Expression Recognition (HMER) turns an image of handwritten mathematics into a structured sequence. The challenge is not only reading symbols, but preserving spatial relationships and mathematical structure.
 
-This research track also includes experiments in cross-modal learning and structured sequence generation.
+This research track focuses on masked-language pretraining, multi-task learning and structured sequence generation.
 
 ## My role
 
 - Contributed to masked-language pretraining and multi-task learning experiments for HMER.
 - Trained and evaluated models with PyTorch, with experiments tracked in Weights & Biases.
-- Explored Qwen2.5-VL and parameter-efficient adaptation with LoRA/PEFT in selected vision-language experiments.
 
 ## Research thread
 

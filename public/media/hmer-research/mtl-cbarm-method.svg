@@ -1,0 +1,26 @@
+<svg width="960" height="360" viewBox="0 0 960 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Multi-task learning with CBARM</title>
+  <desc>A handwritten expression and visual encoder feed a shared decoder with CBARM attention refinement, then branch into a main LaTeX sequence task and a structural auxiliary task.</desc>
+  <defs><linearGradient id="cBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F9FBFF"/><stop offset="1" stop-color="#F6F1FF"/></linearGradient></defs>
+  <rect width="960" height="360" rx="8" fill="#FBFDFF"/>
+  <rect x="35" y="104" width="132" height="132" rx="8" fill="white" stroke="#D7E1ED"/>
+  <text x="48" y="126" fill="#59708F" font-family="Arial, sans-serif" font-size="8" font-weight="700">CROHME SAMPLE</text>
+  <rect x="46" y="142" width="110" height="60" rx="4" fill="#050505"/>
+  <path d="M185 170H218" stroke="#8495AC" stroke-width="2"/><path d="M212 163L220 170L212 177" stroke="#8495AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g><path d="M240 110L292 82V254L240 282V110Z" fill="#E4EDFF" stroke="#719BE4" stroke-width="2"/><path d="M264 117L316 89V247L264 275V117Z" fill="#D8E5FF" stroke="#5E8CDE" stroke-width="2"/><path d="M289 124L341 96V240L289 268V124Z" fill="#CBDCFF" stroke="#4C7FD6" stroke-width="2"/></g>
+  <path d="M357 170H389" stroke="#8495AC" stroke-width="2"/><path d="M383 163L391 170L383 177" stroke="#8495AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="406" y="72" width="205" height="196" rx="10" fill="url(#cBg)" stroke="#CFC2ED"/>
+  <rect x="435" y="96" width="147" height="43" rx="7" fill="#F0EAFF" stroke="#BAA5E9"/><text x="467" y="122" fill="#6246A5" font-family="Arial, sans-serif" font-size="13" font-weight="700">SELF-ATTENTION</text>
+  <path d="M508 139V154" stroke="#7654C8" stroke-width="2"/>
+  <rect x="435" y="154" width="147" height="54" rx="7" fill="#DDD2FA" stroke="#9C7FDC"/><text x="480" y="178" fill="#5B409D" font-family="Arial, sans-serif" font-size="13" font-weight="700">CBARM</text><text x="463" y="195" fill="#755CB3" font-family="Arial, sans-serif" font-size="10">CROSS-ATTENTION</text>
+  <path d="M508 208V223" stroke="#7654C8" stroke-width="2"/>
+  <rect x="435" y="223" width="147" height="24" rx="6" fill="#EAF1FF" stroke="#91ADE0"/><text x="489" y="239" fill="#395F98" font-family="Arial, sans-serif" font-size="11" font-weight="700">FFN</text>
+  <path d="M611 170H645" stroke="#8495AC" stroke-width="2"/><path d="M639 163L647 170L639 177" stroke="#8495AC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M653 170C677 170 679 105 705 105M653 170C677 170 679 235 705 235" stroke="#7654C8" stroke-width="2.2" fill="none"/>
+  <rect x="705" y="58" width="220" height="101" rx="8" fill="white" stroke="#C9D8EC"/>
+  <rect x="723" y="75" width="88" height="22" rx="11" fill="#E9F1FF"/><text x="742" y="90" fill="#315C9C" font-family="Arial, sans-serif" font-size="10" font-weight="700">MAIN TASK</text>
+  <text x="725" y="124" fill="#34445C" font-family="ui-monospace, monospace" font-size="13">x^2 + x - 1</text><path d="M725 141H891" stroke="#AAB7C8" stroke-width="2" stroke-linecap="round"/>
+  <rect x="705" y="201" width="220" height="101" rx="8" fill="white" stroke="#D8C9EF"/>
+  <rect x="723" y="218" width="112" height="22" rx="11" fill="#F0EAFF"/><text x="739" y="233" fill="#694BAE" font-family="Arial, sans-serif" font-size="10" font-weight="700">AUXILIARY TASK</text>
+  <g fill="#7654C8" font-family="ui-monospace, monospace" font-size="11"><text x="725" y="260">&lt;s&gt; ^ { &lt;s&gt; } +</text><text x="725" y="277">&lt;s&gt; - &lt;s&gt;</text></g><path d="M725 288H891" stroke="#BAA9D9" stroke-width="2" stroke-linecap="round"/>
+</svg>

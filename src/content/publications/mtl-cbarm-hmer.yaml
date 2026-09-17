@@ -19,7 +19,7 @@ tags:
   - Multi-task
   - Regularization
 links:
-  code: https://github.com/trungtndev/Enhancing-HMER-with-CBARM-and-MTL
+  code: https://github.com/trungtndev/HMER-CBARM-MTL
   doi: https://doi.org/10.1080/24751839.2026.2716432
 order: 6
 slug: mtl-cbarm-hmer

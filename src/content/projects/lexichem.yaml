@@ -1,30 +1,30 @@
 title: LexiChem
 tagline:
-  en: Text-to-molecule web platform
-  vi: Nền tảng web text-to-molecule
+  en: A workspace for designing molecules from text
+  vi: Không gian thiết kế phân tử từ mô tả bằng lời
 role:
-  en: Contributor · Capstone project
-  vi: Thành viên đóng góp · Đồ án tốt nghiệp
+  en: AI & inference contributor · Capstone project
+  vi: Phụ trách AI & suy luận · Đồ án tốt nghiệp
 period: 2025 – 2026
 status:
   en: Completed
   vi: Hoàn thành
 summary:
   en:
-    "LexiChem turns a written molecule description into candidate structures that can be checked and viewed in 2D or 3D.
-    I worked on the AI data path, model experiments and the connection between inference and the application."
+    "LexiChem starts with a plain-language brief for a molecule, then generates candidates that can be checked, compared and explored in 2D or 3D.
+    I built the AI data path, ran model experiments and brought inference into the product."
   vi:
-    "LexiChem nhận mô tả phân tử bằng văn bản, sinh cấu trúc ứng viên rồi cho phép kiểm tra và xem ở dạng 2D hoặc 3D.
-    Tôi phụ trách tuyến dữ liệu AI, thực nghiệm mô hình và phần nối suy luận với ứng dụng."
+    "LexiChem bắt đầu từ một mô tả phân tử bằng lời, sau đó sinh các ứng viên để kiểm tra, so sánh và khám phá ở dạng 2D hoặc 3D.
+    Tôi xây dựng tuyến dữ liệu AI, chạy thực nghiệm mô hình và đưa suy luận vào sản phẩm."
 highlights:
   en:
-    - 2D/3D molecule views with RDKit-backed structure checks and ADMET readouts.
-    - Multiple generation models served through Triton Inference Server.
-    - RAG/Knowledge is still under development; the remaining functions can be run in practice.
+    - Inspect generated molecules in 2D and 3D, with RDKit structure checks and ADMET readouts.
+    - Compare multiple generation models served through Triton Inference Server.
+    - Dashboard, Experiments and Simulation run locally; RAG/Knowledge remains in development.
   vi:
-    - Trực quan hóa phân tử 2D/3D, kiểm tra cấu trúc qua RDKit và hiển thị thuộc tính ADMET.
-    - Phục vụ nhiều mô hình sinh qua Triton Inference Server.
-    - RAG/Knowledge vẫn đang được phát triển; các chức năng còn lại có thể chạy thực tế.
+    - Xem phân tử sinh ra ở dạng 2D/3D, kiểm tra cấu trúc qua RDKit và đọc các thuộc tính ADMET.
+    - So sánh nhiều mô hình sinh được phục vụ qua Triton Inference Server.
+    - Dashboard, Experiments và Simulation chạy cục bộ; RAG/Knowledge vẫn đang phát triển.
 stack:
   - Next.js 14.1
   - React 18

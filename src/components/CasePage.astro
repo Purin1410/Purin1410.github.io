@@ -5,6 +5,7 @@ import Header from './Header.astro';
 import Media from './Media.astro';
 import PublicationRow from './PublicationRow.astro';
 import TechStack from './TechStack.astro';
+import HmerResearchStory from './HmerResearchStory.astro';
 import Footer from './Footer.astro';
 import Icon from './Icon.astro';
 import { type Lang, registry, words, t, pathFor } from '../lib/site';
@@ -19,18 +20,21 @@ const related = p.publications.map(slug=>papers.find(paper=>paper.data.slug===sl
 <Base lang={lang} title={`${p.title} — Khoa Nguyen`} description={t(p.summary,lang)}>
   <div class="case-shell"><Header lang={lang} /><main id="main" class="case-main">
     <a class="back-link" href={`${pathFor('/',lang)}#work`}><Icon name="back" size={17} />{words(lang,'Back to selected work','Về công việc tiêu biểu')}</a>
-    <header class="case-heading"><h1>{p.title}</h1><p class="case-tagline">{t(p.tagline,lang)}</p><p class="case-summary">{t(p.summary,lang)}</p><dl class="case-meta"><div><dt>{words(lang,'Role','Vai trò')}</dt><dd>{t(p.role,lang)}</dd></div><div><dt>{words(lang,'Period','Thời gian')}</dt><dd>{p.period}</dd></div><div><dt>{words(lang,'Status','Trạng thái')}</dt><dd>{t(p.status,lang)}</dd></div></dl><div class="resource-links">{Object.entries(p.links).map(([label,url])=><a href={url} target="_blank" rel="noopener noreferrer">{label==='demo' ? words(lang,'Live demo','Mở demo') : label==='code' ? 'Code' : 'Paper'}<Icon name="external" size={15} /></a>)}</div></header>
-    <TechStack stack={p.stack} lang={lang} />
-    {p.video ? <div class="case-media"><Media media={p.video} lang={lang} /></div> : slug === 'lexichem' ? <div class="case-media"><Media media={{type:'video', src:'/media/lexichem-demo.mp4', poster:'/media/lexichem-product.webp', width:1918, height:926, alt:{en:'Recorded LexiChem capstone product demonstration',vi:'Video demo sản phẩm đồ án LexiChem'}, caption:{en:'Recorded capstone demo · 1 min 47 sec. RAG/Knowledge is still under development; the remaining functions can be run in practice.',vi:'Demo đồ án được quay lại · 1 phút 47 giây. Trong đồ án này, ngoài RAG/Knowledge là đang trong quá trình phát triển ra thì các chức năng còn lại đều có thể chạy thực tế.'}}} lang={lang} /></div> : p.media && <div class="case-media"><Media media={p.media} lang={lang} eager /></div>}
-    <div class="case-body"><div class="prose"><Content /></div>
-      <section class="case-section"><h2>{words(lang,'How it works','Cách hoạt động')}</h2><ol class="flow">{p.flow[lang].map((step,i)=><li><span class="step-index">0{i+1}</span><span>{step}</span>{i < p.flow[lang].length-1 && <Icon name="arrow" size={18} />}</li>)}</ol>
-        {slug === 'lexichem' && <figure class="case-evidence">
-          <a href="/media/lexichem-design-workflow.webp" target="_blank" rel="noopener noreferrer" aria-label={words(lang,'Open the molecule design illustration at full size','Mở hình minh họa thiết kế phân tử ở kích thước đầy đủ')}>
-            <img src="/media/lexichem-design-workflow.webp" width="2752" height="1536" loading="lazy" decoding="async" alt={words(lang,'A scientist describes desired properties; AI generates molecular candidates, which are screened before laboratory synthesis and testing.','Nhà nghiên cứu mô tả thuộc tính mong muốn; AI sinh các phân tử ứng viên, sau đó sàng lọc trước khi tổng hợp và thử nghiệm trong phòng lab.')} />
-          </a>
-          <figcaption>{words(lang,'From a written description to molecular candidates: LexiChem supports generation and computational exploration. The laboratory synthesis and testing shown on the right are subsequent steps outside the application. Select the image to enlarge.','Từ mô tả bằng lời đến các phân tử ứng viên: LexiChem hỗ trợ sinh cấu trúc và khảo sát trên máy tính. Tổng hợp và thử nghiệm trong phòng lab ở bên phải là các bước tiếp theo, nằm ngoài ứng dụng. Bấm vào ảnh để xem lớn.')}</figcaption>
-        </figure>}
-      </section>
+    <header class:list={['case-heading', slug === 'hmer-research' && 'case-heading-hmer']}>
+      <h1>{p.title}</h1>
+      <p class="case-tagline">{t(p.tagline,lang)}</p>
+      <p class="case-summary">{t(p.summary,lang)}</p>
+      {slug === 'hmer-research' && <p class="hmer-heading-note">{words(lang,'From handwritten mathematics to structured, machine-readable form.','Từ công thức toán viết tay đến biểu diễn có cấu trúc mà máy có thể đọc.')}</p>}
+      <dl class="case-meta"><div><dt>{words(lang,'Role','Vai trò')}</dt><dd>{t(p.role,lang)}</dd></div><div><dt>{words(lang,'Period','Thời gian')}</dt><dd>{p.period}</dd></div><div><dt>{words(lang,'Status','Trạng thái')}</dt><dd>{t(p.status,lang)}</dd></div></dl>
+      <div class="resource-links">{Object.entries(p.links).map(([label,url])=><a href={url} target="_blank" rel="noopener noreferrer">{label==='demo' ? words(lang,'Live demo','Mở demo') : label==='code' ? 'Code' : 'Paper'}<Icon name="external" size={15} /></a>)}</div>
+    </header>
+    {slug !== 'hmer-research' && <TechStack stack={p.stack} lang={lang} heading={p.stackHeading} note={p.stackNote} />}
+    {p.video ? <div class="case-media"><Media media={p.video} lang={lang} /></div> : slug === 'lexichem' ? <div class="case-media"><Media media={{type:'video', src:'/media/lexichem-demo.mp4', poster:'/media/lexichem-product.webp', width:1918, height:926, alt:{en:'Recorded LexiChem capstone product demonstration',vi:'Video demo sản phẩm đồ án LexiChem'}, caption:{en:'Local capstone demo · 1 min 47 sec. Dashboard, Experiments and Simulation are working; RAG/Knowledge is still in development.',vi:'Demo đồ án chạy cục bộ · 1 phút 47 giây. Dashboard, Experiments và Simulation đã hoạt động; RAG/Knowledge vẫn đang phát triển.'}}} lang={lang} /></div> : slug !== 'hmer-research' && p.media && <div class="case-media"><Media media={p.media} lang={lang} eager /></div>}
+    <div class="case-body">
+      {slug === 'hmer-research' ? <HmerResearchStory lang={lang} stack={p.stack} /> : <>
+        <div class="prose"><Content /></div>
+        {!['lexichem', 'nexops'].includes(slug) && <section class="case-section"><h2>{words(lang,'How it works','Cách hoạt động')}</h2><ol class="flow">{p.flow[lang].map((step,i)=><li><span class="step-index">0{i+1}</span><span>{step}</span>{i < p.flow[lang].length-1 && <Icon name="arrow" size={18} />}</li>)}</ol></section>}
+      </>}
       {related.length>0 && <section class="case-section"><h2>{words(lang,'Research connection','Kết nối nghiên cứu')}</h2><div class="publication-list">{related.map(paper=><PublicationRow paper={paper} lang={lang} />)}</div></section>}
       {!['lexichem', 'nexops'].includes(slug) && <section class="case-section outcome"><h2>{words(lang,'Outcome & current status','Kết quả & trạng thái hiện tại')}</h2><p>{entry.data.outcome}</p></section>}
       <a class="back-link" href={pathFor('/work/',lang)}><Icon name="back" size={17} />{words(lang,'Explore all work','Xem tất cả dự án')}</a>

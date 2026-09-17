@@ -12,33 +12,47 @@ status:
 summary:
   en:
     Research on converting handwritten mathematical expressions into structured sequences, including experiments in
-    masked-language pretraining, multi-task learning and vision-language models.
+    masked-language pretraining and multi-task learning.
   vi:
     Nghiên cứu chuyển ảnh công thức toán viết tay thành chuỗi có cấu trúc, gồm các thí nghiệm về tiền huấn luyện ngôn ngữ
-    có che, học đa nhiệm và mô hình thị giác-ngôn ngữ.
+    có che và học đa nhiệm.
 highlights:
   en:
     - Contributed to masked-language pretraining and multi-task learning experiments for HMER.
-    - Explored vision-language modeling with Qwen2.5-VL and parameter-efficient adaptation via LoRA/PEFT.
     - Two related papers are listed with their authorship, venue and publication status.
   vi:
     - Đóng góp vào các thí nghiệm tiền huấn luyện ngôn ngữ có che và học đa nhiệm cho HMER.
-    - Thử nghiệm mô hình thị giác–ngôn ngữ với Qwen2.5-VL và thích nghi tham số hiệu quả bằng LoRA/PEFT.
     - Hai công bố liên quan được ghi rõ tác giả, nơi công bố và trạng thái.
 stack:
+  - Python
   - PyTorch
-  - LLaMA Factory
-  - LoRA / PEFT
-  - Qwen2.5-VL
+  - PyTorch Lightning
+  - CUDA
   - Weights & Biases
+  - CROHME
+  - Torchvision + OpenCV
+  - Pillow
+  - Einops
+  - TorchMetrics
 links: {}
-featured: false
-order: 4
+featured: true
+order: 3
 slug: hmer-research
 kind: research
 publications:
   - mask-comer
   - mtl-cbarm-hmer
+media:
+  type: image
+  src: /media/hmer-research/hmer-project-cover.webp
+  width: 960
+  height: 331
+  alt:
+    en: HMER pipeline from a CROHME handwritten sample through visual and structural modeling to LaTeX output
+    vi: Pipeline HMER từ mẫu viết tay CROHME qua mô hình thị giác và cấu trúc đến đầu ra LaTeX
+  caption:
+    en: CROHME sample
+    vi: Mẫu CROHME
 flow:
   en:
     - Handwritten expression

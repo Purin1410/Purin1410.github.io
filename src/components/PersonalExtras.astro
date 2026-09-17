@@ -1,5 +1,5 @@
 ---
-import { contributions, visibleGallery } from '../data/extras';
+import { contributionRepositories, visibleGallery } from '../data/extras';
 import { credentials, aioModules } from '../data/credentials.mjs';
 import CredentialRow from './CredentialRow.astro';
 import ImagePreview from './ImagePreview.astro';
@@ -15,7 +15,7 @@ const groups = [
 ---
 <section id="certificates" class="section" data-section>
   <h2>{words(lang,'Certifications','Chứng chỉ')}</h2>
-  <ul class="certificate-list" data-featured-credentials>
+  <ul class="certificate-list featured-credentials" data-featured-credentials>
     <li data-credential="aio"><Icon name="school" size={22} /><div><h3>AIO 2024</h3><p>AI VIET NAM · 2025</p>
       <details class="compact-details"><summary>{words(lang,'Programme completed · View 4 modules','Đã hoàn thành chương trình · Xem 4 module')}</summary>
         <ul class="aio-modules">{aioModules.map(c => <li><span>{c.title}</span><ImagePreview id={c.id} src={c.image} caption={`${c.title} · AIO 2024 · AI VIET NAM`} lang={lang} /></li>)}</ul>
@@ -24,15 +24,22 @@ const groups = [
     {credentials.filter(c => c.featured).map(c => <CredentialRow c={c} lang={lang} />)}
   </ul>
   <details class="compact-details additional-credentials"><summary>{words(lang,'View 13 more credentials','Xem thêm 13 chứng chỉ')}</summary>
-    {groups.map(([id,label]) => <div class="credential-group"><h3>{label}</h3><ul class="certificate-list">{credentials.filter(c => !c.featured && c.group === id).sort((a,b) => b.date.localeCompare(a.date)).map(c => <CredentialRow c={c} lang={lang} />)}</ul></div>)}
+    {groups.map(([id,label]) => <div class="credential-group"><h3>{label}</h3><ul class="certificate-list credential-grid">{credentials.filter(c => !c.featured && c.group === id).sort((a,b) => b.date.localeCompare(a.date)).map(c => <CredentialRow c={c} lang={lang} />)}</ul></div>)}
   </details>
 </section>
 <section id="open-source" class="section" data-section>
   <h2>{words(lang,'Contributions','Đóng góp xây dựng')}</h2>
-  <p class="contribution-repo"><strong><a href="https://github.com/sipyourdrink-ltd/bernstein" target="_blank" rel="noopener noreferrer">{words(lang,'Bernstein repository','Repo Bernstein')}</a></strong></p>
-  <ul class="contribution-prs">
-    {contributions.map(c => <li><a href={c.url} target="_blank" rel="noopener noreferrer">PR #{c.number} · {t(c.title,lang)}</a></li>)}
-  </ul>
+  <div class="contribution-repositories">
+    {contributionRepositories.map(repo => <div class="contribution-repository">
+      <p class="contribution-repo">
+        <Icon name="github" size={18} />
+        <strong><a href={repo.url} target="_blank" rel="noopener noreferrer">{words(lang,`${repo.name} repository`,`Repo ${repo.name}`)}</a></strong>
+      </p>
+      <ul class="contribution-prs">
+        {repo.pullRequests.map(pr => <li><a href={pr.url} target="_blank" rel="noopener noreferrer">PR #{pr.number} · {t(pr.title,lang)}</a></li>)}
+      </ul>
+    </div>)}
+  </div>
 </section>
 {visibleGallery.length > 0 && <section id="gallery" class="section" data-section>
   <h2>{words(lang,'Gallery','Hình ảnh')}</h2>

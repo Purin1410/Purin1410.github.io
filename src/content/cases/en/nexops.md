@@ -2,34 +2,43 @@
 project: nexops
 locale: en
 outcome:
-  NexOps is an active local prototype. Its factory-wide views use deterministic demo scenarios, while the Bambu Lab
-  control path has been exercised on real hardware over LAN. It is not a production deployment.
+  NexOps runs locally with repeatable factory scenarios for the production workflow.
 ---
 
 ## The problem
 
-Machine status, production plans, alarms and downtime often live in different screens, spreadsheets or paper records. NexOps puts them in one MES/SCADA interface so operators, maintenance staff and production managers work from the same state.
+Machine status, production plans, alarms and downtime often sit in different screens, spreadsheets or paper records. NexOps brings them into one MES/SCADA interface for operators, maintenance staff and production managers.
 
-## Product scope
+## What it covers
 
-The prototype covers machine telemetry, production planning, work orders, alarms, event history and OEE by shift. The factory views run on repeatable local scenarios. They make the workflow easy to test, but they are still simulated factory data.
+The prototype covers machine telemetry, production planning, work orders, alarms, event history and OEE by shift. Repeatable local scenarios let me run the same workflow again and compare the resulting telemetry, alarms and OEE.
+
+<section class="case-section nexops-flow">
+  <h2>How it works</h2>
+  <ol class="flow">
+    <li><span class="step-index">01</span><span>Device or deterministic simulator</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></li>
+    <li><span class="step-index">02</span><span>MQTT messaging through EMQX</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></li>
+    <li><span class="step-index">03</span><span>FastAPI services and TimescaleDB</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6" /></svg></li>
+    <li><span class="step-index">04</span><span>Dashboards, alarms and OEE</span></li>
+  </ol>
+</section>
 
 ## My role
 
-I lead the AI and simulation work. My part is the simulator and the data path around it: generating repeatable machine states, sending them through MQTT, and checking that the API, storage and operator screens agree.
+I lead the AI, simulation and platform work. I built the simulator, the factory scenarios around it, and the telemetry path that carries those scenarios into the operator views.
 
-- Built repeatable machine and shift scenarios for integration tests.
-- Connected telemetry and simulator output to storage, APIs and dashboard state.
-- Prepared the data path for anomaly-detection and predictive-maintenance experiments. Those experiments are not yet validated production features.
+- Built repeatable machine and shift scenarios for planning, alarms and OEE to run as one workflow.
+- Designed the path from simulator and edge events through MQTT/EMQX into FastAPI, TimescaleDB and dashboard state.
+- Implemented the local Bambu Lab control integration used in the hardware trial.
 
 ## Working prototype
 
-Device and simulator events pass through MQTT/EMQX, then FastAPI writes time-series state to TimescaleDB. Redis and Celery handle background work. React and ECharts provide the operator screens. Separately, an edge process has sent commands to a Bambu Lab printer over the local network.
+Simulator and device events travel through MQTT/EMQX. FastAPI stores the time-series state in TimescaleDB; React, ECharts and PixiJS turn it into the planning, alarm, OEE and factory-floor screens. The Bambu Lab LAN path is one hardware integration inside that local runtime.
 
 <div class="case-evidence-grid">
   <figure class="case-evidence">
     <a href="/media/nexops-andon.webp" target="_blank" rel="noopener noreferrer"><img src="/media/nexops-andon.webp" alt="NexOps factory overview with machine state, current shift output and OEE cards." width="1425" height="801" loading="lazy" decoding="async" /></a>
-    <figcaption>Factory overview · deterministic local demo data.</figcaption>
+    <figcaption>Factory overview from a repeatable local scenario.</figcaption>
   </figure>
   <figure class="case-evidence">
     <a href="/media/nexops-planning.webp" target="_blank" rel="noopener noreferrer"><img src="/media/nexops-planning.webp" alt="NexOps production planning screen with scheduling, validity and execution states." width="1425" height="801" loading="lazy" decoding="async" /></a>
@@ -44,7 +53,3 @@ Device and simulator events pass through MQTT/EMQX, then FastAPI writes time-ser
     <figcaption>Shift OEE breakdown and seven-day trend.</figcaption>
   </figure>
 </div>
-
-## What this does not prove
-
-NexOps is still under development. The screenshots show a controlled demo; the hardware video shows a lab trial. Neither is evidence of a factory rollout, customer result or measured predictive-maintenance accuracy.

@@ -757,6 +757,9 @@
     padding-left: 3px;
     margin-top: 8px;
   }
+  .prose .flow li {
+    margin-top: 0;
+  }
   .case-section {
     margin: 36px 0;
   }

@@ -1,0 +1,27 @@
+<svg width="960" height="360" viewBox="0 0 960 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Mask CoMER two-stage training</title>
+  <desc>Stage one predicts masked tokens using visual and text context. The resulting weights initialize stage two for handwritten mathematical expression recognition.</desc>
+  <defs><linearGradient id="mBg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F9FBFF"/><stop offset="1" stop-color="#F7F3FF"/></linearGradient></defs>
+  <rect width="960" height="360" rx="8" fill="#FBFDFF"/>
+  <rect x="28" y="28" width="418" height="304" rx="10" fill="url(#mBg)" stroke="#CFE0F5"/>
+  <rect x="514" y="28" width="418" height="304" rx="10" fill="url(#mBg)" stroke="#D9CFF2"/>
+  <rect x="48" y="47" width="100" height="28" rx="14" fill="#E8F1FF"/><text x="69" y="66" fill="#315F9F" font-family="Arial, sans-serif" font-size="12" font-weight="700">STAGE 1</text>
+  <rect x="534" y="47" width="100" height="28" rx="14" fill="#F0EAFF"/><text x="555" y="66" fill="#6C50B6" font-family="Arial, sans-serif" font-size="12" font-weight="700">STAGE 2</text>
+  <rect x="58" y="104" width="105" height="84" rx="6" fill="white" stroke="#C8D7EA"/>
+  <text x="67" y="120" fill="#59708F" font-family="Arial, sans-serif" font-size="7" font-weight="700">CROHME SAMPLE</text>
+  <rect x="66" y="130" width="89" height="43" rx="3" fill="#050505"/>
+  <path d="M177 146H207" stroke="#8395AD" stroke-width="2"/><path d="M201 139L209 146L201 153" stroke="#8395AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <g><rect x="222" y="94" width="43" height="31" rx="5" fill="#E6EFFF" stroke="#8DAEE4"/><rect x="273" y="94" width="55" height="31" rx="5" fill="#EBDFFF" stroke="#A98DE3"/><rect x="336" y="94" width="43" height="31" rx="5" fill="#E6EFFF" stroke="#8DAEE4"/><rect x="387" y="94" width="39" height="31" rx="5" fill="#EBDFFF" stroke="#A98DE3"/>
+  <text x="232" y="114" fill="#315C9C" font-family="ui-monospace, monospace" font-size="11">x^2</text><text x="281" y="114" fill="#7654C8" font-family="ui-monospace, monospace" font-size="11">[MASK]</text><text x="350" y="114" fill="#315C9C" font-family="ui-monospace, monospace" font-size="11">x</text><text x="395" y="114" fill="#7654C8" font-family="ui-monospace, monospace" font-size="11">-1</text></g>
+  <rect x="234" y="153" width="176" height="58" rx="8" fill="#EEF4FF" stroke="#84A9E8"/><text x="279" y="178" fill="#234F90" font-family="Arial, sans-serif" font-size="13" font-weight="700">CROSS-MODAL</text><text x="286" y="196" fill="#52719E" font-family="Arial, sans-serif" font-size="11">MASK PREDICTION</text>
+  <path d="M322 126V153M322 211V236" stroke="#7489A6" stroke-width="2"/>
+  <rect x="261" y="236" width="122" height="42" rx="7" fill="#E5EEFF" stroke="#719CE5"/><text x="282" y="262" fill="#2C5DAD" font-family="Arial, sans-serif" font-size="12" font-weight="700">PRETRAINED</text>
+  <path d="M446 180H514" stroke="#7654C8" stroke-width="2.5" stroke-dasharray="6 6"/><path d="M505 172L515 180L505 188" stroke="#7654C8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="545" y="102" width="116" height="82" rx="7" fill="white" stroke="#D7C9EF"/>
+  <text x="555" y="118" fill="#6C50B6" font-family="Arial, sans-serif" font-size="7" font-weight="700">CROHME SAMPLE</text>
+  <rect x="554" y="128" width="98" height="43" rx="3" fill="#050505"/>
+  <path d="M678 144H706" stroke="#8395AD" stroke-width="2"/><path d="M700 137L708 144L700 151" stroke="#8395AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="723" y="91" width="174" height="106" rx="8" fill="#F3EEFF" stroke="#AE94E6"/><rect x="746" y="108" width="128" height="22" rx="4" fill="#DED1FA"/><rect x="746" y="139" width="128" height="22" rx="4" fill="#D2C0F5"/><rect x="746" y="170" width="128" height="12" rx="4" fill="#C6AFF0"/><text x="775" y="155" fill="#694BAD" font-family="Arial, sans-serif" font-size="12" font-weight="700">HMER MODEL</text>
+  <path d="M810 197V225" stroke="#7654C8" stroke-width="2"/>
+  <rect x="699" y="225" width="198" height="58" rx="7" fill="white" stroke="#D6C9EF"/><text x="720" y="249" fill="#3C4C63" font-family="ui-monospace, monospace" font-size="12">x^2 + x - 1</text><path d="M720 263H851" stroke="#A9B7C9" stroke-width="2" stroke-linecap="round"/><circle cx="865" cy="263" r="5" fill="#7654C8"/>
+</svg>

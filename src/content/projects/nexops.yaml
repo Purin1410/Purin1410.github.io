@@ -1,58 +1,61 @@
 title: NexOps
 tagline:
-  en: Smart MES / SCADA platform for connected manufacturing
-  vi: Nền tảng MES / SCADA cho sản xuất kết nối
+  en: Local-first MES / SCADA for factory operations
+  vi: Nền tảng MES / SCADA local-first cho vận hành nhà máy
 role:
-  en: AI & Simulation Lead
-  vi: Trưởng nhóm AI & Mô phỏng
+  en: AI, Simulation & Platform Lead
+  vi: Trưởng nhóm AI, Mô phỏng & Nền tảng
 period: 2025 – present
 status:
-  en: Prototype · in development
-  vi: Nguyên mẫu · đang phát triển
+  en: Working prototype
+  vi: Nguyên mẫu đang hoạt động
 summary:
   en:
-    An MES/SCADA prototype that puts machine status, production plans, alarms and OEE in one place. The factory-wide demo
-    runs on repeatable simulated scenarios; a separate control path has been tested with a real Bambu Lab printer over LAN.
-  vi:
-    Nguyên mẫu MES/SCADA gom trạng thái máy, kế hoạch sản xuất, cảnh báo và OEE vào một nơi. Phần demo toàn xưởng chạy bằng
-    kịch bản mô phỏng có thể lặp lại; một luồng điều khiển riêng đã được thử với máy in Bambu Lab thật qua LAN.
+    NexOps gives production teams one local workspace for machine telemetry, plans, alarms and OEE. I lead the AI,
+    simulation and platform work that turns repeatable factory scenarios into live operational views.
+  vi: >-
+    NexOps là nơi đội sản xuất theo dõi telemetry máy, kế hoạch, cảnh báo và OEE trong cùng một workspace cục bộ. Tôi phụ
+    trách AI, mô phỏng và phần nền tảng: xây các kịch bản nhà máy có thể lặp lại rồi nối chúng vào những màn hình vận hành trực tiếp.
 highlights:
   en:
-    - Local-first site architecture for telemetry, work orders, alarms and OEE reporting.
-    - "Operational path: device or simulator → MQTT/EMQX → FastAPI/TimescaleDB → dashboard."
-    - Real Bambu Lab LAN-control trial; the wider factory views use deterministic demo scenarios.
+    - Led the local runtime that connects telemetry, work orders, alarms and OEE across the operator views.
+    - Built repeatable machine and shift simulations, plus the MQTT/EMQX path through FastAPI and TimescaleDB.
+    - Integrated an edge control path for a Bambu Lab printer on the local network.
   vi:
-    - Kiến trúc site local-first cho telemetry, lệnh sản xuất, cảnh báo và báo cáo OEE.
-    - "Luồng vận hành: thiết bị hoặc simulator → MQTT/EMQX → FastAPI/TimescaleDB → dashboard."
-    - Đã thử điều khiển Bambu Lab qua LAN thật; các màn hình nhà máy rộng hơn dùng kịch bản demo xác định.
+    - Dẫn phần runtime cục bộ, nối telemetry, lệnh sản xuất, cảnh báo và OEE vào các màn hình vận hành.
+    - Xây kịch bản máy và ca có thể chạy lại, cùng pipeline MQTT/EMQX đi qua FastAPI và TimescaleDB.
+    - Tích hợp một luồng điều khiển edge cho Bambu Lab trong mạng cục bộ.
 stack:
-  - React 19
+  - React
   - TypeScript
-  - Vite 8
-  - Ant Design 6
-  - Apache ECharts 6
-  - Zustand 5
-  - React Router 7
+  - Vite
+  - Ant Design
+  - Apache ECharts
+  - Zustand
+  - React Router
+  - PixiJS
   - FastAPI
-  - Python 3.11
-  - SQLAlchemy 2
+  - Python
+  - SQLAlchemy
   - Alembic
+  - Pydantic
+  - JWT
   - HTTP/REST
   - SSE
-  - TimescaleDB / PostgreSQL 16
-  - Redis 7
-  - EMQX 5
-  - MQTT 5
-  - Celery 5
+  - Celery
+  - TimescaleDB / PostgreSQL
+  - Redis
+  - EMQX
+  - MQTT
   - aiomqtt
+  - MQTT.js
+  - Node.js
   - PLC simulator
   - Bambu Lab LAN
-  - Keycloak 26
-  - MinIO
-  - Grafana 11
-  - Loki 3
   - Docker Compose
-  - Ansible
+  - Pytest
+  - Vitest
+  - Playwright
 links: {}
 featured: true
 order: 2
@@ -91,5 +94,5 @@ video:
     en: Recorded NexOps control trial with a Bambu Lab printer over the local network
     vi: Video thử nghiệm NexOps điều khiển máy in Bambu Lab qua mạng nội bộ
   caption:
-    en: Recorded hardware trial · 35 sec. The Bambu Lab control path is running over LAN; this is not a production deployment.
-    vi: Thử nghiệm phần cứng được quay lại · 35 giây. Luồng điều khiển Bambu Lab chạy qua LAN; đây chưa phải triển khai sản xuất.
+    en: Bambu Lab printer control over LAN · 35 sec.
+    vi: Điều khiển máy in Bambu Lab qua LAN · 35 giây.

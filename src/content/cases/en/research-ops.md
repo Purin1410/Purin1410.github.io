@@ -8,7 +8,7 @@ outcome:
 
 ## What it is
 
-Research Ops is a system I am building so AI agents can support research continuously, even when I am away from the computer, without turning the process into a black box. It keeps questions, hypotheses, runs, evidence and decisions in a durable record, so the work can continue across interrupted experiments, ended sessions and changes in AI tools. AI handles execution and brings decisions back for review; research direction and scientific conclusions remain under human control.
+Research Ops is a pre-alpha workspace designed to reduce the attention required to keep trustworthy research moving. It keeps questions, hypotheses, runs, evidence, checkpoints and decisions in a durable record, so interrupted experiments and ended sessions do not erase their context. Agents take on bounded execution and return decisions for review; the researcher retains control of direction, approval, interpretation and scientific conclusions.
 
 ## Why I am building it
 
@@ -21,8 +21,6 @@ The current build includes a research library, PDF and citation handling, work s
 Source files are stored by SHA-256 digest, cited spans stay tied to that digest, and manuscript exports pin the revision they came from. In a local check, the system imported an 18-page PDF, verified one evidence span, then exported and compiled a manuscript artifact pinned to revision 2.
 
 Runtime changes also need a pinned bundle, a matching revision, budget, reservation and human approval. The latest GPU receipt is still `MANUAL_ACTION_REQUIRED`; it contains no training result.
-
-The local acceptance record has 299 tests with 4 skips. Frontend and API checks add 40 tests across 9 files. These figures describe local software coverage, not research quality or productivity.
 
 ## Limits
 

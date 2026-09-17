@@ -11,13 +11,12 @@ outcome:
 
 Nhận dạng công thức toán viết tay (HMER) chuyển ảnh công thức viết tay thành chuỗi có cấu trúc. Bài toán không chỉ là đọc ký hiệu mà còn phải giữ quan hệ không gian và cấu trúc toán học.
 
-Hướng này đi cùng các thí nghiệm về học đa phương thức và sinh chuỗi có cấu trúc.
+Hướng này tập trung vào tiền huấn luyện ngôn ngữ có che, học đa nhiệm và sinh chuỗi có cấu trúc.
 
 ## Vai trò của tôi
 
 - Đóng góp vào các thí nghiệm tiền huấn luyện ngôn ngữ có che và học đa nhiệm cho HMER.
 - Huấn luyện, đánh giá mô hình bằng PyTorch và theo dõi thực nghiệm với Weights & Biases.
-- Thử nghiệm Qwen2.5-VL và LoRA/PEFT trong một số hướng mô hình thị giác–ngôn ngữ.
 
 ## Mạch nghiên cứu
 

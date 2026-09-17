@@ -2,7 +2,13 @@
 import type { Lang } from '../lib/site';
 import { words } from '../lib/site';
 
-const { stack, lang } = Astro.props as { stack: string[]; lang: Lang };
+const { stack, lang, heading, note, variant = 'default' } = Astro.props as {
+  stack: string[];
+  lang: Lang;
+  heading?: { en: string; vi: string };
+  note?: { en: string; vi: string };
+  variant?: 'default' | 'hmer';
+};
 
 type TechMark = { mark: string; color: string; ink: string; icon?: string };
 
@@ -10,12 +16,19 @@ const marks: Record<string, TechMark> = {
   'Next.js 14.1': { mark: 'N', color: '#111827', ink: '#fff', icon: 'nextdotjs' },
   'React 18': { mark: '⚛', color: '#61dafb', ink: '#087ea4', icon: 'react' },
   'React 19': { mark: '⚛', color: '#61dafb', ink: '#087ea4', icon: 'react' },
+  React: { mark: '⚛', color: '#61dafb', ink: '#087ea4', icon: 'react' },
   TypeScript: { mark: 'TS', color: '#3178c6', ink: '#fff', icon: 'typescript' },
   'Vite 8': { mark: 'V', color: '#9135ff', ink: '#fff', icon: 'vite' },
+  Vite: { mark: 'V', color: '#9135ff', ink: '#fff', icon: 'vite' },
   'Ant Design 6': { mark: 'A', color: '#1677ff', ink: '#fff', icon: 'antdesign' },
+  'Ant Design': { mark: 'A', color: '#1677ff', ink: '#fff', icon: 'antdesign' },
   'Apache ECharts 6': { mark: 'EC', color: '#aa344d', ink: '#fff', icon: 'apacheecharts' },
+  'Apache ECharts': { mark: 'EC', color: '#aa344d', ink: '#fff', icon: 'apacheecharts' },
   'Zustand 5': { mark: 'Z', color: '#443e38', ink: '#fff' },
+  Zustand: { mark: 'Z', color: '#443e38', ink: '#fff' },
   'React Router 7': { mark: 'RR', color: '#ca4245', ink: '#fff', icon: 'reactrouter' },
+  'React Router': { mark: 'RR', color: '#ca4245', ink: '#fff', icon: 'reactrouter' },
+  PixiJS: { mark: 'Px', color: '#e72264', ink: '#fff' },
   'Tailwind CSS': { mark: 'TW', color: '#06b6d4', ink: '#fff', icon: 'tailwindcss' },
   'Radix UI': { mark: 'R', color: '#111827', ink: '#fff', icon: 'radixui' },
   'shadcn/ui': { mark: 'ui', color: '#111827', ink: '#fff', icon: 'shadcnui' },
@@ -24,35 +37,61 @@ const marks: Record<string, TechMark> = {
   FastAPI: { mark: 'API', color: '#009688', ink: '#fff', icon: 'fastapi' },
   Python: { mark: 'Py', color: '#3776ab', ink: '#fff', icon: 'python' },
   'Python 3.11': { mark: 'Py', color: '#3776ab', ink: '#fff', icon: 'python' },
-  'SQLAlchemy 2': { mark: 'SA', color: '#d71f00', ink: '#fff' },
+  'Python 3.7': { mark: 'Py', color: '#3776ab', ink: '#fff', icon: 'python' },
+  'SQLAlchemy 2': { mark: 'SA', color: '#d71f00', ink: '#fff', icon: 'sqlalchemy' },
+  SQLAlchemy: { mark: 'SA', color: '#d71f00', ink: '#fff', icon: 'sqlalchemy' },
   Alembic: { mark: 'Al', color: '#6b7280', ink: '#fff' },
-  'HTTP/REST': { mark: '↔', color: '#64748b', ink: '#fff' },
+  Pydantic: { mark: 'Pd', color: '#e92063', ink: '#fff', icon: 'pydantic' },
+  JWT: { mark: 'JWT', color: '#111827', ink: '#fff' },
+  'HTTP/REST': { mark: '↔', color: '#64748b', ink: '#fff', icon: 'api' },
   SSE: { mark: 'SSE', color: '#2563eb', ink: '#fff' },
-  gRPC: { mark: 'RPC', color: '#244c5a', ink: '#fff' },
+  gRPC: { mark: 'RPC', color: '#244c5a', ink: '#fff', icon: 'grpc' },
   'NVIDIA Triton Inference Server': { mark: 'T', color: '#76b900', ink: '#102000', icon: 'nvidia' },
   'Hugging Face Transformers': { mark: 'HF', color: '#fbbf24', ink: '#3f2a00', icon: 'huggingface' },
   PyTorch: { mark: 'PT', color: '#ee4c2c', ink: '#fff', icon: 'pytorch' },
+  'PyTorch 1.8.1': { mark: 'PT', color: '#ee4c2c', ink: '#fff', icon: 'pytorch' },
+  'PyTorch Lightning': { mark: 'PL', color: '#792ee5', ink: '#fff', icon: 'pytorch-lightning' },
+  'PyTorch Lightning 1.4.9': { mark: 'PL', color: '#792ee5', ink: '#fff', icon: 'pytorch-lightning' },
+  CUDA: { mark: 'CUDA', color: '#76b900', ink: '#102000', icon: 'nvidia' },
+  'CUDA 11.1': { mark: 'CUDA', color: '#76b900', ink: '#102000', icon: 'nvidia' },
+  'Weights & Biases': { mark: 'W&B', color: '#ffbe00', ink: '#271f00', icon: 'wandb' },
+  CROHME: { mark: '∑', color: '#315c9c', ink: '#fff', icon: 'crohme' },
+  'CROHME 2014 / 2016 / 2019': { mark: '∑', color: '#315c9c', ink: '#fff', icon: 'crohme' },
+  'Torchvision + OpenCV': { mark: 'CV', color: '#0f766e', ink: '#fff', icon: 'torchvision-opencv' },
+  Pillow: { mark: 'PIL', color: '#4f46e5', ink: '#fff', icon: 'pillow' },
+  Einops: { mark: 'E', color: '#7654c8', ink: '#fff', icon: 'einops' },
+  TorchMetrics: { mark: 'TM', color: '#be123c', ink: '#fff', icon: 'torchmetrics' },
   MongoDB: { mark: 'M', color: '#47a248', ink: '#fff', icon: 'mongodb' },
   'TimescaleDB / PostgreSQL 16': { mark: 'PG', color: '#4169e1', ink: '#fff', icon: 'postgresql' },
+  'TimescaleDB / PostgreSQL': { mark: 'PG', color: '#4169e1', ink: '#fff', icon: 'postgresql' },
   'Redis 7': { mark: 'R', color: '#ff4438', ink: '#fff', icon: 'redis' },
+  Redis: { mark: 'R', color: '#ff4438', ink: '#fff', icon: 'redis' },
   'EMQX 5': { mark: 'E', color: '#5f2eea', ink: '#fff' },
+  EMQX: { mark: 'E', color: '#5f2eea', ink: '#fff' },
   'MQTT 5': { mark: 'MQ', color: '#660066', ink: '#fff', icon: 'mqtt' },
+  MQTT: { mark: 'MQ', color: '#660066', ink: '#fff', icon: 'mqtt' },
+  'MQTT.js': { mark: 'MQ', color: '#660066', ink: '#fff', icon: 'mqtt' },
   'Celery 5': { mark: 'C', color: '#37814a', ink: '#fff', icon: 'celery' },
-  Motor: { mark: 'Mo', color: '#64748b', ink: '#fff' },
-  RDKit: { mark: 'RD', color: '#6d5aa4', ink: '#fff' },
-  OpenBabel: { mark: 'OB', color: '#0f766e', ink: '#fff' },
-  'AutoDock Vina': { mark: 'V', color: '#be123c', ink: '#fff' },
-  PLIP: { mark: 'PL', color: '#7c3aed', ink: '#fff' },
-  ADMETlab: { mark: 'AD', color: '#2563eb', ink: '#fff' },
-  'ADMET-AI': { mark: 'AI', color: '#ea580c', ink: '#fff' },
-  FAISS: { mark: 'F', color: '#f59e0b', ink: '#3f2a00' },
-  '3Dmol.js': { mark: '3D', color: '#0ea5e9', ink: '#fff' },
-  WebGL: { mark: 'GL', color: '#ef4444', ink: '#fff' },
-  JSME: { mark: 'J', color: '#16a34a', ink: '#fff' },
+  Celery: { mark: 'C', color: '#37814a', ink: '#fff', icon: 'celery' },
+  Motor: { mark: 'Mo', color: '#47a248', ink: '#fff', icon: 'mongodb' },
+  RDKit: { mark: 'RD', color: '#6d5aa4', ink: '#fff', icon: 'molecule' },
+  OpenBabel: { mark: 'OB', color: '#0f766e', ink: '#fff', icon: 'molecule' },
+  'AutoDock Vina': { mark: 'V', color: '#be123c', ink: '#fff', icon: 'molecule3d' },
+  PLIP: { mark: 'PL', color: '#7c3aed', ink: '#fff', icon: 'protein' },
+  ADMETlab: { mark: 'AD', color: '#2563eb', ink: '#fff', icon: 'admet' },
+  'ADMET-AI': { mark: 'AI', color: '#ea580c', ink: '#fff', icon: 'admet' },
+  FAISS: { mark: 'F', color: '#f59e0b', ink: '#3f2a00', icon: 'vector' },
+  '3Dmol.js': { mark: '3D', color: '#0ea5e9', ink: '#fff', icon: 'molecule3d' },
+  WebGL: { mark: 'GL', color: '#ef4444', ink: '#fff', icon: 'webgl' },
+  JSME: { mark: 'J', color: '#16a34a', ink: '#fff', icon: 'molecule-editor' },
   'Docker Compose': { mark: 'DC', color: '#2496ed', ink: '#fff', icon: 'docker' },
   aiomqtt: { mark: 'MQ', color: '#660066', ink: '#fff', icon: 'mqtt' },
   'PLC simulator': { mark: 'PLC', color: '#475569', ink: '#fff' },
-  'Bambu Lab LAN': { mark: 'BL', color: '#00ae42', ink: '#fff' },
+  'Bambu Lab LAN': { mark: 'BL', color: '#00ae42', ink: '#fff', icon: 'bambulab' },
+  'Node.js': { mark: 'JS', color: '#5fa04e', ink: '#fff', icon: 'nodejs' },
+  Pytest: { mark: 'Py', color: '#0a9edc', ink: '#fff', icon: 'pytest' },
+  Vitest: { mark: 'Vt', color: '#00ff74', ink: '#123b1a', icon: 'vitest' },
+  Playwright: { mark: 'Pw', color: '#2ead33', ink: '#fff' },
   'Keycloak 26': { mark: 'K', color: '#4d4d4d', ink: '#fff', icon: 'keycloak' },
   MinIO: { mark: 'M', color: '#c72e49', ink: '#fff', icon: 'minio' },
   'Grafana 11': { mark: 'G', color: '#f46800', ink: '#fff', icon: 'grafana' },
@@ -70,12 +109,12 @@ const groupDefs = [
   {
     en: 'Frontend',
     vi: 'Frontend',
-    items: ['Next.js 14.1', 'React 18', 'React 19', 'TypeScript', 'Vite 8', 'Ant Design 6', 'Apache ECharts 6', 'Zustand 5', 'React Router 7', 'Tailwind CSS', 'Radix UI', 'shadcn/ui', 'SWR', 'Axios'],
+    items: ['Next.js 14.1', 'React 18', 'React 19', 'React', 'TypeScript', 'Vite 8', 'Vite', 'Ant Design 6', 'Ant Design', 'Apache ECharts 6', 'Apache ECharts', 'Zustand 5', 'Zustand', 'React Router 7', 'React Router', 'PixiJS', 'Tailwind CSS', 'Radix UI', 'shadcn/ui', 'SWR', 'Axios'],
   },
   {
     en: 'Backend & API',
     vi: 'Backend & API',
-    items: ['FastAPI', 'Python', 'Python 3.11', 'SQLAlchemy 2', 'Alembic', 'HTTP/REST', 'SSE', 'gRPC'],
+    items: ['FastAPI', 'Python', 'Python 3.11', 'SQLAlchemy 2', 'SQLAlchemy', 'Alembic', 'Pydantic', 'JWT', 'HTTP/REST', 'SSE', 'gRPC'],
   },
   {
     en: 'ML & inference',
@@ -85,7 +124,7 @@ const groupDefs = [
   {
     en: 'Data & knowledge',
     vi: 'Dữ liệu & tri thức',
-    items: ['MongoDB', 'Motor', 'FAISS', 'TimescaleDB / PostgreSQL 16', 'Redis 7', 'EMQX 5', 'MQTT 5', 'Celery 5'],
+    items: ['MongoDB', 'Motor', 'FAISS', 'TimescaleDB / PostgreSQL 16', 'TimescaleDB / PostgreSQL', 'Redis 7', 'Redis', 'EMQX 5', 'EMQX', 'MQTT 5', 'MQTT', 'MQTT.js', 'Celery 5', 'Celery'],
   },
   {
     en: 'Chemistry & scientific',
@@ -100,7 +139,12 @@ const groupDefs = [
   {
     en: 'Edge & simulation',
     vi: 'Edge & mô phỏng',
-    items: ['aiomqtt', 'PLC simulator', 'Bambu Lab LAN'],
+    items: ['aiomqtt', 'Node.js', 'PLC simulator', 'Bambu Lab LAN'],
+  },
+  {
+    en: 'Testing',
+    vi: 'Kiểm thử',
+    items: ['Pytest', 'Vitest', 'Playwright'],
   },
   {
     en: 'Platform & observability',
@@ -114,9 +158,28 @@ const groupDefs = [
   },
 ];
 
+const hmerGroupDefs = [
+  {
+    en: 'Core ML',
+    vi: 'ML cốt lõi',
+    items: ['Python', 'PyTorch', 'PyTorch Lightning', 'CUDA'],
+  },
+  {
+    en: 'Training & tracking',
+    vi: 'Huấn luyện & theo dõi',
+    items: ['Weights & Biases', 'TorchMetrics'],
+  },
+  {
+    en: 'Data & vision',
+    vi: 'Dữ liệu & thị giác',
+    items: ['CROHME', 'Torchvision + OpenCV', 'Pillow', 'Einops'],
+  },
+];
+
 const stackSet = new Set(stack);
-const assigned = new Set(groupDefs.flatMap((group) => group.items));
-const groups = groupDefs
+const activeGroupDefs = variant === 'hmer' ? hmerGroupDefs : groupDefs;
+const assigned = new Set(activeGroupDefs.flatMap((group) => group.items));
+const groups = activeGroupDefs
   .map((group) => ({ ...group, items: group.items.filter((item) => stackSet.has(item)) }))
   .filter((group) => group.items.length > 0);
 const ungrouped = stack.filter((item) => !assigned.has(item));
@@ -125,7 +188,8 @@ if (ungrouped.length > 0) groups.push({ en: 'Other', vi: 'Khác', items: ungroup
 
 <section class="tech-stack-section" aria-labelledby="tech-stack-heading">
   <div class="tech-stack-heading">
-    <h2 id="tech-stack-heading">{words(lang, 'Tech stack', 'Công nghệ sử dụng')}</h2>
+    <h2 id="tech-stack-heading">{heading ? heading[lang] : words(lang, 'Tech stack', 'Công nghệ sử dụng')}</h2>
+    {note && <p>{note[lang]}</p>}
   </div>
   <div class="tech-stack-groups">
     {groups.map((group) => <section class="tech-stack-group" aria-label={words(lang, group.en, group.vi)}>
@@ -135,7 +199,7 @@ if (ungrouped.length > 0) groups.push({ en: 'Other', vi: 'Khác', items: ungroup
           const mark = marks[item] || fallback;
           const iconSrc = mark.icon ? `/media/tech/${mark.icon}.svg` : undefined;
           const iconStyle = iconSrc ? `--tech-icon:url('${iconSrc}')` : '';
-          return <li class="tech-stack-item">
+          return <li class="tech-stack-item" data-tech={item}>
             <span class:list={['tech-logo', iconSrc && 'has-image']} style={`--tech-color:${mark.color};--tech-ink:${mark.ink};${iconStyle}`} aria-hidden="true">
               {iconSrc && <span class="tech-logo-image" />}
               <span class="tech-logo-fallback">{mark.mark}</span>

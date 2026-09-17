@@ -10,8 +10,8 @@ export const profile = {
     vi: "AI & học máy ứng dụng · Định hướng nghiên cứu về sản xuất thông minh.",
   },
   about: {
-    en: "I’m Khoa Nguyen, an AI engineer and computer science researcher at AiTA Lab, FPT University.",
-    vi: "Tôi là Nguyễn Minh Khoa, kỹ sư AI và nhà nghiên cứu khoa học máy tính tại AiTA Lab, Đại học FPT.",
+    en: "I’m Khoa Nguyen, an AI engineer and Research Assistant at AiTA Lab, FPT University.",
+    vi: "Tôi là Nguyễn Minh Khoa, kỹ sư AI và Research Assistant tại AiTA Lab, Đại học FPT.",
   }, 
   aboutExperience: {
     en: "My recent work includes handwritten mathematical expression recognition and text-to-molecule generation. I have worked across data preparation, model experiments, and inference integration, with a preference for research that can be checked in working software.",

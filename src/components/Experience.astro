@@ -3,12 +3,12 @@ import { type Lang, words } from '../lib/site';
 import Icon from './Icon.astro';
 const { lang } = Astro.props as { lang: Lang };
 ---
+<div class="background-row"><Icon name="lab" size={25} /><div>
+  <h3>Research Assistant · <a href="https://aita-lab.github.io/" target="_blank" rel="noopener noreferrer">AiTA Lab</a>, FPT University</h3>
+  <p>{words(lang,'October 2024–present · Research in HMER, cross-modal learning and structured generation.','10/2024–hiện tại · Nghiên cứu HMER, học đa phương thức và sinh chuỗi có cấu trúc.')}</p>
+</div></div>
 <div class="background-row"><Icon name="school" size={25} /><div>
   <h3>Olympic AI TA · AI VIET NAM</h3>
   <p>{words(lang,'Scheduled solution walkthroughs for the Olympic AI programme (“Kẻ mạo danh / AI là AI”): 19 September and 3 October 2026.','Dự kiến hỗ trợ hướng dẫn lời giải cho chương trình Olympic AI (“Kẻ mạo danh / AI là AI”): 19/9 và 3/10/2026.')}</p>
   <p class="experience-status">{words(lang,'Upcoming · schedule confirmed as of 12 September 2026','Sắp diễn ra · lịch xác nhận tại ngày 12/9/2026')}</p>
-</div></div>
-<div class="background-row"><Icon name="lab" size={25} /><div>
-  <h3>Research Assistant · <a href="https://aita-lab.github.io/" target="_blank" rel="noopener noreferrer">AiTA Lab</a>, FPT University</h3>
-  <p>{words(lang,'October 2024–present · Research in HMER, cross-modal learning and structured generation.','10/2024–hiện tại · Nghiên cứu HMER, học đa phương thức và sinh chuỗi có cấu trúc.')}</p>
 </div></div>

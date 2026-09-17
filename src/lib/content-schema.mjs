@@ -71,6 +71,8 @@ export const projectSchema = z.object({
   summary: localized,
   highlights: localizedList,
   stack: z.array(z.string()).default([]),
+  stackHeading: localized.optional(),
+  stackNote: localized.optional(),
   kind: z.enum(["engineering", "research"]),
   publications: z.array(slug),
   flow: localizedList,
