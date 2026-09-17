@@ -1,0 +1,202 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[left=1.25cm,top=1.05cm,right=1.25cm,bottom=0.9cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{lmodern}
+\usepackage{needspace}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.105}
+\pagestyle{empty}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{muted}{HTML}{596675}
+\definecolor{rulegray}{HTML}{CAD3DC}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=accent,
+    linkcolor=accent,
+    pdfauthor={Nguyen Minh Khoa},
+    pdftitle={Nguyen Minh Khoa - Full Project CV}
+}
+
+\newcommand{\cvsection}[1]{%
+    \vspace{6.2pt}%
+    {\color{accent}\bfseries\small #1}\par
+    \vspace{2.3pt}%
+    {\color{rulegray}\hrule height 0.45pt}\vspace{4.0pt}%
+}
+
+\newcommand{\entry}[2]{%
+    \textbf{#1}\hfill {\color{muted}\small #2}\par
+}
+
+\newcommand{\subentry}[1]{%
+    {\color{muted}\small #1}\par
+}
+
+\setlist[itemize]{
+    leftmargin=13pt,
+    labelsep=5pt,
+    itemsep=2.8pt,
+    topsep=2.8pt,
+    parsep=0pt,
+    partopsep=0pt
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\textbf{NGUYEN MINH KHOA}}\\[-1pt]
+    {\color{accent}\textbf{AI Engineer \& Researcher}}\\[3pt]
+    {\small Ho Chi Minh City, Vietnam \textbullet\
+    \href{tel:+84907713819}{+84 907 713 819} \textbullet\
+    \href{mailto:ngminhkhoayj2706@gmail.com}{ngminhkhoayj2706@gmail.com} \textbullet\
+    \href{https://www.linkedin.com/in/ngminhkhoa1410}{LinkedIn} \textbullet\
+    \href{https://github.com/Purin1410}{GitHub} \textbullet\
+    \href{https://scholar.google.com/citations?user=tCq7yoQAAAAJ}{Google Scholar} \textbullet\
+    \href{https://purin1410.github.io}{Portfolio}}
+\end{center}
+
+\vspace{-2pt}
+
+\cvsection{PROFILE}
+Applied AI engineer and Research Assistant at AiTA Lab, FPT University, working across model experimentation, data pipelines, and inference systems. Research spans handwritten mathematical expression recognition and text-to-molecule generation, with a current focus on AI for intelligent manufacturing.
+
+\cvsection{RESEARCH EXPERIENCE}
+\entry{Research Assistant | AiTA Lab, FPT University}{Oct 2024 - Present}
+\begin{itemize}
+    \item Developed and evaluated deep-learning methods across HMER and text-to-molecule generation, covering data preparation, model training, ablation studies, and reproducible experiment tracking.
+    \item Selected published outcomes include up to \textbf{+5 ExpRate points} for Mask CoMER, \textbf{+4 ExpRate points} for MTL + CBARM, and \textbf{+3.4 BLEU} with approximately \textbf{30\% lower Levenshtein distance} for ChemAligner-T5.
+    \item \textbf{5 papers across three research topics:} HMER (\textit{Mask CoMER}; \textit{MTL + CBARM}), text-to-molecule generation (\textit{LexiChem}; \textit{ChemAligner-T5}), and active learning with vision-language models (\textit{CorrTie}).
+\end{itemize}
+
+\cvsection{PROJECTS}
+\Needspace{16\baselineskip}
+\entry{LexiChem | AI \& Inference Contributor}{2025 - 2026}
+\subentry{Capstone combining text-to-molecule research with a complete local demo for molecule generation and exploration.}
+\begin{itemize}
+    \item Worked in a 3-person capstone team; owned the AI data pipeline, SMILES/SELFIES conversion, method development, ablations, and the inference path between research models and the application backend.
+    \item Combined L+M-24, Mol-Instructions, and ChEBI-20; used RDKit to parse structures, validate valence, canonicalize SMILES, remove duplicate molecules, and convert cleaned structures to SELFIES for training.
+    \item Developed the shared-latent alignment method and ran controlled ablations. On ChEBI-20, improved BioT5+ from \textbf{87.2 to 88.8 BLEU}, \textbf{52.2 to 52.9 exact match}, and \textbf{90.7 to 93.5 MACCS FTS}, while maintaining \textbf{100\% validity}.
+    \item Wrote the paper Introduction and full Results \& Discussion, and co-wrote Methods; presented LexiChem at APWeb-WAIM 2026 in Da Nang.
+    \item Integrated the Experiments workflow with FastAPI and NVIDIA Triton, including prompt normalization, model dispatch, RDKit validation of returned SMILES, and experiment persistence in MongoDB.
+    \item Worked with the team to productize generation into a local application with Dashboard, Experiments, Simulation, 2D/3D molecular exploration, and docking-oriented workflows. RAG/Knowledge remains in development.
+\end{itemize}
+
+\Needspace{14\baselineskip}
+\entry{NexOps | AI, Simulation \& Platform Lead}{2025 - Present}
+\subentry{Local-first MES/SCADA prototype linking factory simulation, production workflows, dashboards, and real-device control.}
+\begin{itemize}
+    \item Led the AI, simulation, and platform work for a working local prototype covering machine telemetry, production planning, work orders, alarms, event history, and OEE by shift.
+    \item Built repeatable machine and shift scenarios so planning, alarms, downtime, and OEE can be exercised through the same deterministic workflow during development and demos.
+    \item Designed the telemetry path from simulator and edge events through MQTT/EMQX into FastAPI services, TimescaleDB, and operator-facing dashboard state.
+    \item Connected the local runtime to production-facing views for machine status, planning, alarm handling, and OEE reporting rather than leaving the simulator as a standalone data generator.
+    \item Integrated a Bambu Lab printer over LAN and exercised real-device control as a separate hardware path inside the prototype.
+\end{itemize}
+
+\Needspace{12\baselineskip}
+\entry{HMER Research | Research Contributor}{2024 - 2026}
+\subentry{Research track on converting handwritten mathematical expressions into structured LaTeX, with published work on pretraining and multi-task attention refinement.}
+\begin{itemize}
+    \item Contributed to \textit{Mask CoMER}, a two-stage HMER approach using masked-language pretraining followed by task training with stochastic-depth regularization; published results improved ExpRate by up to \textbf{5 points} over the CoMER baseline.
+    \item Contributed multi-task learning experiments for the \textit{MTL + CBARM} line, where the main LaTeX-sequence task is trained with a structural auxiliary task and attention refinement; published results improved ExpRate by approximately \textbf{4 points} over the CoMER baseline.
+    \item Trained and evaluated PyTorch/PyTorch Lightning models on CROHME benchmarks and tracked experimental runs with Weights \& Biases.
+    \item Worked across model experimentation, evaluation, and reproducibility rather than only manuscript preparation; both research lines resulted in published papers.
+\end{itemize}
+
+\Needspace{14\baselineskip}
+\entry{TrendRadar | Data Pipeline Owner}{2025}
+\subentry{AI-driven trend analytics platform for short-form content, built to turn heterogeneous TikTok, TikTok Shop, and Reels data into normalized records for downstream analytics and ML.}
+\begin{itemize}
+    \item Designed and implemented the end-to-end ingestion and preprocessing pipeline from data collection through normalization and PostgreSQL storage.
+    \item Built asynchronous ingestion with Pydantic schema validation to enforce consistent contracts across heterogeneous sources.
+    \item Added idempotent processing, deduplication, retry/backoff, and quarantine handling for malformed records to stabilize scheduled runs.
+    \item Added pytest coverage, structured logging/monitoring hooks, and Docker-based local execution for reproducible pipeline development.
+    \item Reduced ingestion failures by \textbf{30\%} and authored \textbf{8 typed schemas} for source validation and normalization.
+\end{itemize}
+
+\Needspace{14\baselineskip}
+\entry{Research Ops | Developer}{2026 - Present}
+\subentry{Personal pre-alpha workspace for keeping sources, evidence, experiments, revisions, and human decisions traceable across long-running research cycles.}
+\begin{itemize}
+    \item Designed the project around reducing human attention required to keep trustworthy research moving while preserving provenance, checkpoints, and researcher judgment.
+    \item Implemented a local research library, PDF/citation handling, work sessions, evidence links, manuscript exports, and resumable study state backed by FastAPI and PostgreSQL.
+    \item Linked source files and cited spans through SHA-256 content digests so evidence remains tied to the exact source version used for a decision or manuscript revision.
+    \item Added revision-aware exports and approval gates for runtime changes; the researcher retains control of direction, interpretation, and scientific conclusions while agents handle bounded execution.
+    \item Current status is explicitly pre-alpha: no public deployment or measured long-term benefit yet, and model execution/GPU evaluation remain unfinished.
+\end{itemize}
+
+\cvsection{PUBLICATIONS}
+\textbf{LexiChem: Shared-Latent Alignment for Faithful Text-to-Molecule Generation in SELFIES Space}\\[-1pt]
+{\small APWeb-WAIM 2026 | Accepted and presented | \textbf{Scopus-indexed proceedings}}\par
+\vspace{2.8pt}
+\textbf{CorrTie: Correction-aware Tie-breaking for Active Learning with Vision-Language Models}\\[-1pt]
+{\small APWeb-WAIM 2026 | Accepted | \textbf{Scopus-indexed proceedings}}\par
+\vspace{2.8pt}
+\textbf{Enhancing handwritten mathematical expression recognition with convolutional block attention refinement module and multi-task learning}\\[-1pt]
+{\small Journal of Information and Telecommunication | \textbf{SCImago Q2 (2025)} | Published online Aug 2026}\par
+\vspace{2.8pt}
+\textbf{ChemAligner-T5: A Unified Text-to-Molecule Model via Representation Alignment}\\[-1pt]
+{\small ICCIES 2026 | Springer CCIS proceedings | Published}\par
+\vspace{2.8pt}
+\textbf{Mask CoMER: Enhancing Handwritten Mathematical Expression Recognition with Masked Language Pretraining and Regularization}\\[-1pt]
+{\small ICDAR 2025 | \textbf{ICORE 2026 Rank A} | Published}
+
+\Needspace{8\baselineskip}
+\cvsection{EDUCATION}
+\entry{Bachelor of Science in Artificial Intelligence | FPT University, HCMC}{2022 - 2026}
+{\small Academic requirements completed; degree conferral expected Nov 2026.}
+
+\cvsection{AWARDS \& SCHOLARSHIPS}
+\begin{itemize}
+    \item \textbf{50\% Tuition Scholarship}, FPT University (2022), awarded through the university scholarship examination and covering 50\% of tuition for the full programme.
+    \item \textbf{RESFES HCMC Second Prize}, ChemAligner-T5 (2026).
+    \item \textbf{RESFES HCMC Second Prize}, Mask CoMER (2025).
+    \item \textbf{Demo Pitching Day}, VND 50M team award/project funding (2025).
+    \item \textbf{Innovation Quest}, VND 40M team award/funding for TrendRadar / FrontAI (2025).
+    \item \textbf{HCMC Open April Olympiad}, Silver Medal in Mathematics (2021).
+\end{itemize}
+
+\cvsection{TECHNICAL SKILLS}
+{\small
+\textbf{AI \& Research:} Python, PyTorch, PyTorch Lightning, Hugging Face Transformers, scikit-learn, OpenCV, RDKit, Weights \& Biases, MLflow, self-supervised learning, vision-language models, cross-modal learning\\
+\textbf{Backend \& Data:} FastAPI, Pydantic, Pandas, PostgreSQL/TimescaleDB, MongoDB, Redis, MQTT/EMQX, REST, ETL/data pipeline design\\
+\textbf{Engineering \& Reproducibility:} Docker, Docker Compose, Linux, Git, Nginx, Playwright, LaTeX, scientific writing
+}
+
+\cvsection{CERTIFICATIONS}
+\begin{itemize}
+    \item \textbf{AIO 2024 | AI VIET NAM}: Machine Learning; Deep Learning; Computer Vision \& NLP; GenAI \& LLMs.
+    \item \textbf{Machine Learning Specialization}, Stanford Online / DeepLearning.AI (2023).
+    \item \textbf{Deep Learning Specialization}, DeepLearning.AI (2024).
+    \item \textbf{Natural Language Processing Specialization}, DeepLearning.AI (2025).
+    \item \textbf{DeepLearning.AI TensorFlow Developer Professional Certificate} (2025).
+    \item \textbf{Big Data Specialization}, University of California San Diego (2024).
+    \item \textbf{AI Foundations for Everyone Specialization}, IBM (2023).
+    \item \textbf{Introduction to AI}, Google (2026).
+    \item \textbf{IBM Full Stack Software Developer Professional Certificate} (2024).
+    \item \textbf{AWS Cloud Technical Essentials}, Amazon Web Services (2025).
+    \item \textbf{Software Development Lifecycle Specialization}, University of Minnesota (2024).
+    \item \textbf{Research Methodologies}, Queen Mary University of London (2025).
+    \item \textbf{Being a Researcher in Information Science and Technology}, Politecnico di Milano (2025).
+    \item \textbf{Understanding Research Methods}, University of London / SOAS University of London (2025).
+    \item \textbf{Introduction to Research for Essay Writing}, University of California, Irvine (2025).
+    \item \textbf{Advanced Writing}, University of California, Irvine (2025).
+    \item \textbf{Academic Skills for University Success Specialization}, The University of Sydney (2023).
+    \item \textbf{Project Management Principles and Practices Specialization}, University of California, Irvine (2025).
+    \item \textbf{Ethics in the Age of AI Specialization}, LearnQuest (2024).
+\end{itemize}
+
+\end{document}

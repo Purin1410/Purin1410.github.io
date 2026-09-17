@@ -1,0 +1,127 @@
+\documentclass[10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[left=1.25cm,top=1.05cm,right=1.25cm,bottom=0.85cm]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.105}
+\pagestyle{empty}
+
+\definecolor{accent}{HTML}{1F4E79}
+\definecolor{muted}{HTML}{596675}
+\definecolor{rulegray}{HTML}{CAD3DC}
+
+\hypersetup{
+    colorlinks=true,
+    urlcolor=accent,
+    linkcolor=accent,
+    pdfauthor={Nguyen Minh Khoa},
+    pdftitle={Nguyen Minh Khoa - AI Engineer and Researcher}
+}
+
+\newcommand{\cvsection}[1]{%
+    \vspace{6.2pt}%
+    {\color{accent}\bfseries\small #1}\par
+    \vspace{2.3pt}%
+    {\color{rulegray}\hrule height 0.45pt}\vspace{4.0pt}%
+}
+
+\newcommand{\entry}[2]{%
+    \textbf{#1}\hfill {\color{muted}\small #2}\par
+}
+
+\newcommand{\subentry}[1]{%
+    {\color{muted}\small #1}\par
+}
+
+\setlist[itemize]{
+    leftmargin=13pt,
+    labelsep=5pt,
+    itemsep=2.8pt,
+    topsep=2.8pt,
+    parsep=0pt,
+    partopsep=0pt
+}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\textbf{NGUYEN MINH KHOA}}\\[-1pt]
+    {\color{accent}\textbf{AI Engineer \& Researcher}}\\[3pt]
+    {\small Ho Chi Minh City, Vietnam \textbullet\
+    \href{tel:+84907713819}{+84 907 713 819} \textbullet\
+    \href{mailto:ngminhkhoayj2706@gmail.com}{ngminhkhoayj2706@gmail.com} \textbullet\
+    \href{https://www.linkedin.com/in/ngminhkhoa1410}{LinkedIn} \textbullet\
+    \href{https://github.com/Purin1410}{GitHub} \textbullet\
+    \href{https://scholar.google.com/citations?user=tCq7yoQAAAAJ}{Google Scholar} \textbullet\
+    \href{https://purin1410.github.io}{Portfolio}}
+\end{center}
+
+\vspace{-2pt}
+
+\cvsection{PROFILE}
+Applied AI engineer and Research Assistant at AiTA Lab, FPT University, working across model experimentation, data pipelines, and inference systems. Research spans handwritten mathematical expression recognition and text-to-molecule generation, with a current focus on AI for intelligent manufacturing.
+
+\cvsection{RESEARCH EXPERIENCE}
+\entry{Research Assistant | AiTA Lab, FPT University}{Oct 2024 - Present}
+\begin{itemize}
+    \item Developed and evaluated deep-learning methods across HMER and text-to-molecule generation, covering data preparation, model training, ablation studies, and reproducible experiment tracking.
+    \item Selected published outcomes include up to \textbf{+5 ExpRate points} for Mask CoMER, \textbf{+4 ExpRate points} for MTL + CBARM, and \textbf{+3.4 BLEU} with approximately \textbf{30\% lower Levenshtein distance} for ChemAligner-T5.
+    \item \textbf{5 papers across three research topics:} HMER (\textit{Mask CoMER}; \textit{MTL + CBARM}), text-to-molecule generation (\textit{LexiChem}; \textit{ChemAligner-T5}), and active learning with vision-language models (\textit{CorrTie}).
+\end{itemize}
+
+\cvsection{SELECTED PROJECTS}
+\entry{LexiChem | AI \& Inference Contributor}{2025 - 2026}
+\subentry{Capstone combining text-to-molecule research with a complete local demo for molecule generation and exploration.}
+\begin{itemize}
+    \item Built a three-dataset preprocessing pipeline covering \textbf{693,090 training examples} across L+M-24, Mol-Instructions, and ChEBI-20, with RDKit validation and canonicalization, deduplication, and SMILES-to-SELFIES conversion.
+    \item Developed the shared-latent alignment method; on ChEBI-20, improved the BioT5+ baseline from \textbf{87.2 to 88.8 BLEU}, \textbf{52.2 to 52.9 exact match}, and \textbf{90.7 to 93.5 MACCS FTS}, while maintaining \textbf{100\% validity}.
+    \item Integrated multi-model inference with FastAPI, NVIDIA Triton, RDKit, and MongoDB for molecule generation, validation, comparison, and saved experiment runs.
+\end{itemize}
+
+\entry{NexOps | AI, Simulation \& Platform Lead}{2025 - Present}
+\subentry{Local-first MES/SCADA prototype linking factory simulation, production workflows, dashboards, and real-device control.}
+\begin{itemize}
+    \item Built repeatable machine and shift simulations plus the MQTT/EMQX to FastAPI to TimescaleDB telemetry path for production planning, alarms, machine monitoring, and OEE.
+    \item Integrated a Bambu Lab printer over LAN to demonstrate real-device control inside the local MES/SCADA prototype.
+\end{itemize}
+
+\cvsection{SELECTED PUBLICATIONS}
+\textbf{LexiChem: Shared-Latent Alignment for Faithful Text-to-Molecule Generation in SELFIES Space}\\[-1pt]
+{\small APWeb-WAIM 2026 | Accepted and presented | \textbf{Scopus-indexed proceedings}}\par
+\vspace{2.2pt}
+\textbf{Mask CoMER: Enhancing Handwritten Mathematical Expression Recognition with Masked Language Pretraining and Regularization}\\[-1pt]
+{\small ICDAR 2025 | \textbf{ICORE 2026 Rank A} | Published}\par
+\vspace{2.2pt}
+\textbf{Enhancing handwritten mathematical expression recognition with convolutional block attention refinement module and multi-task learning}\\[-1pt]
+{\small Journal of Information and Telecommunication | \textbf{SCImago Q2 (2025)} | Published online Aug 2026}
+
+\cvsection{EDUCATION}
+\entry{Bachelor of Science in Artificial Intelligence | FPT University, HCMC}{2022 - 2026}
+{\small Academic requirements completed; degree conferral expected Nov 2026.}
+
+\cvsection{AWARDS \& SCHOLARSHIPS}
+{\small \textbf{50\% Tuition Scholarship}, FPT University (2022) \textbullet\
+\textbf{RESFES HCMC Second Prize} (2025, 2026) \textbullet\
+\textbf{Demo Pitching Day} (VND 50M team award/project funding, 2025) \textbullet\
+\textbf{Innovation Quest} (VND 40M team award/funding, 2025)}
+
+\cvsection{TECHNICAL SKILLS}
+{\footnotesize
+\textbf{AI \& Research:} Python, PyTorch, PyTorch Lightning, Hugging Face Transformers, scikit-learn, OpenCV, RDKit, Weights \& Biases, MLflow, self-supervised learning, vision-language models, cross-modal learning\\
+\textbf{Backend \& Data:} FastAPI, Pydantic, Pandas, PostgreSQL/TimescaleDB, MongoDB, Redis, MQTT/EMQX, REST, ETL/data pipeline design\\
+\textbf{Engineering \& Reproducibility:} Docker, Docker Compose, Linux, Git, Nginx, Playwright, LaTeX, scientific writing
+}
+
+\end{document}
