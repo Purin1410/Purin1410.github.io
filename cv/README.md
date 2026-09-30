@@ -1,24 +1,26 @@
 # CV sources
 
-`content.json` is the shared, editable English content for the one-page and full CV.
-Certificates and verification links come from `src/data/credentials.mjs`.
+The active sources are `latex_source/Nguyen-Minh-Khoa-CV-1page.tex` and
+`latex_source/Nguyen-Minh-Khoa-CV-full-project.tex`. They preserve the original
+pdfLaTeX / Latin Modern layout. Edit their text directly and keep the preamble,
+margins, section styles and spacing unchanged. `content.json` remains a factual
+reference; it does not control the PDF layout.
 
 ## Rebuild
 
-Create a Python virtual environment and install `scripts/requirements-cv.txt`, then:
+Install pdfLaTeX (with `lmodern`, `enumitem`, `titlesec`, `tabularx`, `microtype`,
+`hyperref` and `needspace`) and the Python dependencies in
+`scripts/requirements-cv.txt`, then:
 
 ```sh
 python scripts/build-cv.py
 ```
 
-Requires Node.js and the Liberation Serif TTF family. Set `CV_FONT_DIR` if fonts are
-not in `/usr/share/fonts/truetype/liberation`.
-
-The builder requires exactly one and three pages, checks key text and exclusions,
-and only then copies outputs to `public/cv.pdf` and `public/cv-full.pdf`.
-Named deliverables are also stored in `output/pdf/`. Render every page with
-`pdftoppm` after changes and check for clipping, bad breaks and tiny text.
-The original public CV is preserved once in `cv/archive/`.
+The builder compiles both LaTeX sources twice, checks the original Letter size,
+exactly one and three pages, layout overflow, required text and exclusions. It
+validates both PDFs before copying them into `output/pdf/`, `public/cv.pdf` and
+`public/cv-full.pdf`. Render every page with `pdftoppm` and inspect after editing.
+Do not replace the original layout with a ReportLab template.
 
 ## Editorial record, 17 September 2026
 
@@ -72,3 +74,14 @@ Metric sources checked for this refresh:
 - CorrTie DOI and publication state follow owner-confirmed issue #8; publisher fetch was unavailable during this refresh.
 
 Editorial update: Gemini Flash 3.7 High revised public EN/VI copy in an isolated worktree; Codex reviewed factual logic and corrected semantic inflation before integration. CV opening paragraphs remain identical to the website. Both regenerated PDFs retain their 1/3-page layouts.
+
+## Original format restored, 30 September 2026
+
+The owner requested restoration of the original CV format with only necessary
+factual corrections. This supersedes the four-paragraph website introduction
+requirement for these PDFs: retain the original compact profile and original
+sections, font, colors, margins and spacing. The original source recompilation
+matched the old one-page PDF pixel-for-pixel before text edits. Corrected stale
+MTL/ChemAligner metrics, publication roles/statuses and NexOps scope; removed
+Research Ops. Existing capstone metrics stay explicitly scoped to ChEBI-20
+experiments, separately from the LexiChem paper evaluated on L+M-24.
