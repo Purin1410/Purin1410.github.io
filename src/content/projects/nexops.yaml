@@ -1,30 +1,30 @@
 title: NexOps
 tagline:
-  en: Local-first MES / SCADA for factory operations
-  vi: Nền tảng MES / SCADA local-first cho vận hành nhà máy
+  en: Local-first MES and SCADA platform for shop-floor operations
+  vi: Nền tảng MES/SCADA cục bộ cho giám sát và vận hành nhà máy
 role:
   en: AI, Simulation & Platform Lead
   vi: Trưởng nhóm AI, Mô phỏng & Nền tảng
 period: 2025 – present
 status:
-  en: Working prototype
-  vi: Nguyên mẫu đang hoạt động
+  en: Working investment/demo prototype
+  vi: Nguyên mẫu demo/kêu gọi đầu tư đang hoạt động
 summary:
-  en:
-    NexOps gives production teams one local workspace for machine telemetry, plans, alarms and OEE. I lead the AI,
-    simulation and platform work that turns repeatable factory scenarios into live operational views.
+  en: >-
+    NexOps provides a local operational workspace uniting machine telemetry, production schedules, alarms, and shift OEE.
+    As AI, Simulation & Platform Lead, I design repeatable factory simulations and lead the software runtime that streams live telemetry into operator dashboards.
   vi: >-
-    NexOps là nơi đội sản xuất theo dõi telemetry máy, kế hoạch, cảnh báo và OEE trong cùng một workspace cục bộ. Tôi phụ
-    trách AI, mô phỏng và phần nền tảng: xây các kịch bản nhà máy có thể lặp lại rồi nối chúng vào những màn hình vận hành trực tiếp.
+    NexOps cung cấp không gian vận hành cục bộ tích hợp dữ liệu telemetry của thiết bị, kế hoạch sản xuất, cảnh báo và chỉ số OEE theo ca.
+    Với vai trò Trưởng nhóm AI, Mô phỏng & Nền tảng, tôi xây dựng các kịch bản mô phỏng nhà máy có thể tái lập và phát triển hệ thống runtime đưa dữ liệu thời gian thực lên giao diện điều hành.
 highlights:
   en:
-    - Led the local runtime that connects telemetry, work orders, alarms and OEE across the operator views.
-    - Built repeatable machine and shift simulations, plus the MQTT/EMQX path through FastAPI and TimescaleDB.
-    - Integrated an edge control path for a Bambu Lab printer on the local network.
+    - Architected the local MES/SCADA runtime connecting machine telemetry, work orders, alarms, and OEE metrics across operator views.
+    - Built repeatable deterministic machine/shift simulations and application-side MQTT/EMQX data pipelines with FastAPI and TimescaleDB, coordinating with the IoT teammate.
+    - Integrated a local LAN control adapter for a Bambu Lab 3D printer, demonstrated in a recorded hardware trial.
   vi:
-    - Dẫn phần runtime cục bộ, nối telemetry, lệnh sản xuất, cảnh báo và OEE vào các màn hình vận hành.
-    - Xây kịch bản máy và ca có thể chạy lại, cùng pipeline MQTT/EMQX đi qua FastAPI và TimescaleDB.
-    - Tích hợp một luồng điều khiển edge cho Bambu Lab trong mạng cục bộ.
+    - Chủ trì phát triển runtime MES/SCADA cục bộ, kết nối telemetry máy móc, lệnh sản xuất, cảnh báo và chỉ số OEE lên màn hình vận hành.
+    - Xây dựng kịch bản mô phỏng máy và ca sản xuất xác định, triển khai luồng dữ liệu MQTT/EMQX phía ứng dụng qua FastAPI và TimescaleDB (phối hợp cùng thành viên phụ trách IoT).
+    - Tích hợp adapter điều khiển máy in 3D Bambu Lab qua mạng LAN nội bộ, thử nghiệm thành công trên thiết bị thực tế.
 stack:
   - React
   - TypeScript

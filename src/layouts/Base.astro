@@ -10,7 +10,7 @@ import '@fontsource/be-vietnam-pro/vietnamese-700.css';
 import '../styles/global.css';
 import '../styles/polish.css';
 import { type Lang, otherPath, words } from '../lib/site';
-const { lang = 'en', title, description, alternate = true } = Astro.props as {lang?: Lang; title: string; description: string; alternate?: boolean};
+const { lang = 'en', title, description, alternate = true, index = true } = Astro.props as {lang?: Lang; title: string; description: string; alternate?: boolean; index?: boolean};
 const site = Astro.site ?? Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, site).toString();
 const alternateUrl = new URL(otherPath(Astro.url.pathname, lang), site).toString();
@@ -21,7 +21,7 @@ const ogImage = new URL('/og.png', site).toString();
   <head>
     <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title><meta name="description" content={description} />
-    <meta name="theme-color" content="#ffffff" /><meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#ffffff" /><meta name="robots" content={index ? 'index,follow' : 'noindex,follow'} />
     <script is:inline>
       (() => {
         const key = 'portfolio-theme';

@@ -2,15 +2,15 @@
 project: lexichem
 locale: en
 outcome:
-  The capstone is complete, and the LexiChem paper was announced as accepted at APWeb-WAIM 2026. The
-  recorded demo shows the locally running product; there is no public deployment or code repository.
+  The capstone is complete, and the LexiChem paper was accepted and presented at APWeb-WAIM 2026, with final
+  publication pending. The recorded demo shows the locally running product; there is no public deployment or code repository.
 ---
 
 ## Overview
 
-LexiChem turns a natural-language molecule description into a structure that can be viewed, checked and explored further. Rather than stopping at a model demo, the team built the full flow into an application: enter a brief, generate candidates, validate structures, compare results and revisit earlier experiments.
+LexiChem turns a natural-language molecule description into a structure that can be viewed, checked and explored further. Rather than stopping at a model demo, our three-person team built the full flow into an application: enter a brief, generate candidates, validate structures with RDKit, compare results and revisit earlier experiments.
 
-We were a team of three. I focused on the AI data pipeline, SMILES/SELFIES conversion, method development, ablations and the inference path between the model and backend. The interface and product workflows were shared across the team.
+I focused on the AI data pipeline, SMILES/SELFIES conversion, method development, ablations and the inference path between the model and backend. The interface and product workflows were shared across the team.
 
 <section class="case-section lexichem-flow">
   <h2>How it works</h2>
@@ -30,17 +30,17 @@ We were a team of three. I focused on the AI data pipeline, SMILES/SELFIES conve
 
 ## From research to product
 
-The application has four areas: Dashboard, Experiments, Simulation and Knowledge. The APWeb-WAIM paper goes deeper on one part of that system: aligning text and SELFIES representations in a shared latent space. We evaluated the method on L+M-24, ChEBI-20 and Mol-Instructions with both sequence and structure metrics.
+The application has four areas: Dashboard, Experiments, Simulation and Knowledge. In the broader capstone project, we conducted experiments on Mol-Instructions, L+M-24 and ChEBI-20. The APWeb-WAIM paper focuses on the core method of aligning text and SELFIES representations in a shared latent space, evaluated on the L+M-24 benchmark.
 
-LexiChem supports early, computational exploration of molecular candidates. Biological activity and synthesis feasibility still need experimental validation.
+LexiChem supports early, computational exploration of molecular candidates. Biological activity and synthesis feasibility still need experimental validation in the laboratory.
 
 ## What I built
 
 On the research side, I developed method ideas and tested them through experiments and ablations. I wrote the Introduction and the full Results & Discussion, and co-wrote Methods with a teammate.
 
-For the data pipeline, I combined Mol-Instructions, L+M-24 and ChEBI-20; used RDKit to parse structures, check valence and canonicalize SMILES; removed duplicates; then converted the remaining structures to SELFIES for training.
+For the data pipeline, I processed Mol-Instructions, L+M-24 and ChEBI-20; used RDKit to parse structures, check valence and canonicalize SMILES; removed duplicates; then converted the remaining structures to SELFIES for training.
 
-On the product side, I connected Experiments to the backend. The flow validates intent, normalizes the prompt, calls models through FastAPI and Triton, checks returned SMILES with RDKit and saves each run to MongoDB. The rest of the application was built with the team.
+On the product side, I connected Experiments to the backend. The flow normalizes the prompt, calls models through FastAPI and Triton, checks returned SMILES with RDKit and saves each run to MongoDB. The rest of the application was built with the team.
 
 ## The product in use
 
@@ -56,11 +56,11 @@ The screenshots and video below come from the locally running capstone build. Da
     <figcaption>Dashboard · run history and the currently selected molecule.</figcaption>
   </figure>
   <figure class="case-evidence">
-    <img src="/media/lexichem-simulation.png" alt="Local LexiChem Docking Console screenshot showing ligand, target protein and interaction sections." width="1907" height="925" loading="lazy" decoding="async" />
-    <figcaption>Docking Console · exploring a ligand, target protein and their interactions.</figcaption>
+    <img src="/media/lexichem-simulation.png" alt="Local LexiChem Simulation screenshot showing ligand, target protein and interaction sections." width="1907" height="925" loading="lazy" decoding="async" />
+    <figcaption>Simulation · exploring a ligand, target protein and their interactions.</figcaption>
   </figure>
   <figure class="case-evidence">
-    <img src="/media/lexichem-knowledge.png" alt="Local LexiChem Knowledge Relay screenshot showing a chemistry question, answer and source labels." width="1907" height="925" loading="lazy" decoding="async" />
-    <figcaption>Knowledge Relay · prototype interface for the RAG/Knowledge area in development.</figcaption>
+    <img src="/media/lexichem-knowledge.png" alt="Local LexiChem Knowledge screenshot showing a chemistry question, answer and source labels." width="1907" height="925" loading="lazy" decoding="async" />
+    <figcaption>Knowledge · interface for the RAG/Knowledge area in development.</figcaption>
   </figure>
 </div>

@@ -61,3 +61,14 @@ features that the CV does not claim to deliver. Preserve exact coauthorship scop
 Never turn a team award into an individual award, invent performance improvements,
 or claim industrial deployment. This is a general portfolio CV, so no JD keyword
 matching or unsupported business-impact figures are appropriate.
+
+## Owner-confirmed refresh, 30 September 2026
+
+Issues #7–#9 override earlier editorial facts: no public GPA or Research Ops; Mask CoMER co-author; CorrTie published; LexiChem accepted/presented pending publication. ORCID added. NexOps active investment/demo prototype with application-side ownership and IoT coordination. ChemAligner uses Springer abstract absolute L+M-24 metrics; unverified historical deltas omitted. Legacy LaTeX exports archived outside public assets.
+
+Metric sources checked for this refresh:
+- Mask CoMER: https://link.springer.com/chapter/10.1007/978-3-032-04624-6_22 (abstract supports up to +5 over CoMER).
+- ChemAligner-T5: https://link.springer.com/chapter/10.1007/978-3-032-21625-0_16 (abstract reports BLEU 69.77% and Levenshtein distance 31.28% on L+M-24; exact BioT5+ deltas not verified).
+- CorrTie DOI and publication state follow owner-confirmed issue #8; publisher fetch was unavailable during this refresh.
+
+Editorial update: Gemini Flash 3.7 High revised public EN/VI copy in an isolated worktree; Codex reviewed factual logic and corrected semantic inflation before integration. CV opening paragraphs remain identical to the website. Both regenerated PDFs retain their 1/3-page layouts.

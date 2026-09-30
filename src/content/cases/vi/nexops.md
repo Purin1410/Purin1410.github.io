@@ -2,16 +2,16 @@
 project: nexops
 locale: vi
 outcome:
-  NexOps chạy cục bộ với các kịch bản nhà máy có thể lặp lại cho workflow sản xuất.
+  NexOps hoạt động như một nguyên mẫu cục bộ với các kịch bản nhà máy có thể lặp lại để trình diễn và đánh giá kỹ thuật.
 ---
 
 ## Bài toán
 
-Trạng thái máy, kế hoạch sản xuất, cảnh báo và thời gian dừng thường nằm rải rác ở nhiều màn hình, bảng tính hoặc giấy tờ. NexOps gom chúng vào một giao diện MES/SCADA cho vận hành viên, bộ phận bảo trì và quản lý sản xuất.
+Tại nhiều xưởng sản xuất, telemetry máy móc, lịch sản xuất, cảnh báo và nhật ký dừng máy thường phân tán trên nhiều màn hình, bảng tính hoặc sổ tay. NexOps gom các thông tin này vào một giao diện MES/SCADA cục bộ cho người vận hành, kỹ sư bảo trì và quản lý xưởng.
 
-## Phạm vi
+## Phạm vi hệ thống
 
-Nguyên mẫu gồm telemetry máy, kế hoạch và lệnh sản xuất, cảnh báo, lịch sử sự kiện cùng báo cáo OEE theo ca. Các kịch bản cục bộ có thể chạy lại giúp tôi lặp đúng một workflow rồi đối chiếu telemetry, cảnh báo và OEE ở đầu ra.
+Nguyên mẫu tích hợp telemetry máy thời gian thực, lập lịch lệnh sản xuất, phân luồng cảnh báo và tính OEE theo ca. Các kịch bản mô phỏng xác định giúp phát lại các ca sản xuất chuẩn để kiểm tra luồng telemetry, cảnh báo và báo cáo OEE.
 
 <section class="case-section nexops-flow">
   <h2>Cách hoạt động</h2>
@@ -25,20 +25,20 @@ Nguyên mẫu gồm telemetry máy, kế hoạch và lệnh sản xuất, cảnh
 
 ## Vai trò của tôi
 
-Tôi phụ trách AI, mô phỏng và phần nền tảng. Tôi xây simulator, các kịch bản nhà máy đi kèm và luồng telemetry đưa những kịch bản đó vào các màn hình vận hành.
+NexOps là nguyên mẫu đang hoạt động phục vụ trình diễn kỹ thuật và kêu gọi đầu tư. Với vai trò Trưởng nhóm AI, Mô phỏng & Nền tảng, tôi phụ trách kiến trúc phần mềm, engine mô phỏng và các adapter tích hợp, đồng thời phối hợp về luồng MQTT/EMQX với thành viên phụ trách IoT.
 
-- Xây kịch bản máy và ca có thể chạy lại để kế hoạch, cảnh báo và OEE chạy trong cùng một workflow.
-- Thiết kế luồng từ simulator và edge events qua MQTT/EMQX tới FastAPI, TimescaleDB và trạng thái dashboard.
-- Triển khai tích hợp điều khiển, với hiện tại là sử dụng máy in Bambu Lab cục bộ dùng trong thử nghiệm phần cứng.
+- Xây dựng các kịch bản mô phỏng máy và ca sản xuất xác định để kiểm tra lịch sản xuất, cảnh báo và tính OEE.
+- Xây dựng pipeline backend tiếp nhận sự kiện MQTT/EMQX qua FastAPI vào TimescaleDB và truyền trạng thái thời gian thực lên dashboard.
+- Phát triển adapter mạng LAN cho máy in 3D Bambu Lab, minh họa khả năng điều khiển máy trong video thử nghiệm.
 
-## Nguyên mẫu đang chạy
+## Nguyên mẫu vận hành
 
-Sự kiện từ simulator và thiết bị đi qua MQTT/EMQX. FastAPI lưu trạng thái chuỗi thời gian vào TimescaleDB; React, ECharts và PixiJS dùng dữ liệu đó cho các màn hình kế hoạch, cảnh báo, OEE và sơ đồ nhà máy. Luồng Bambu Lab qua LAN là một tích hợp phần cứng nằm trong runtime cục bộ này.
+Dữ liệu từ thiết bị và simulator truyền qua MQTT qua EMQX. FastAPI lưu trữ dữ liệu chuỗi thời gian vào TimescaleDB, còn React, Apache ECharts và PixiJS hiển thị lịch ca, bảng andon, cảnh báo và báo cáo OEE. Kết nối máy in Bambu Lab qua LAN minh họa khả năng điều khiển thiết bị thực tế bên cạnh runtime mô phỏng.
 
 <div class="case-evidence-grid">
   <figure class="case-evidence">
     <a href="/media/nexops-andon.webp" target="_blank" rel="noopener noreferrer"><img src="/media/nexops-andon.webp" alt="Tổng quan nhà máy NexOps với trạng thái máy, sản lượng ca hiện tại và các thẻ OEE." width="1425" height="801" loading="lazy" decoding="async" /></a>
-    <figcaption>Tổng quan nhà máy từ một kịch bản cục bộ có thể chạy lại.</figcaption>
+    <figcaption>Tổng quan nhà máy từ một kịch bản cục bộ có thể lặp lại.</figcaption>
   </figure>
   <figure class="case-evidence">
     <a href="/media/nexops-planning.webp" target="_blank" rel="noopener noreferrer"><img src="/media/nexops-planning.webp" alt="Màn hình kế hoạch sản xuất NexOps với trạng thái xếp lịch, kiểm tra hợp lệ và thực thi." width="1425" height="801" loading="lazy" decoding="async" /></a>
@@ -46,7 +46,7 @@ Sự kiện từ simulator và thiết bị đi qua MQTT/EMQX. FastAPI lưu tr�
   </figure>
   <figure class="case-evidence">
     <a href="/media/nexops-machine-hub.webp" target="_blank" rel="noopener noreferrer"><img src="/media/nexops-machine-hub.webp" alt="Machine Hub của NexOps hiển thị telemetry CNC, ngữ cảnh lệnh sản xuất và trạng thái an toàn chỉ đọc." width="1425" height="801" loading="lazy" decoding="async" /></a>
-    <figcaption>Machine Hub · telemetry và ngữ cảnh vận hành ở giao diện control room.</figcaption>
+    <figcaption>Machine Hub · telemetry và ngữ cảnh vận hành ở giao diện phòng điều khiển.</figcaption>
   </figure>
   <figure class="case-evidence">
     <a href="/media/nexops-oee.webp" target="_blank" rel="noopener noreferrer"><img src="/media/nexops-oee.webp" alt="Báo cáo OEE NexOps với availability, performance, quality và xu hướng bảy ngày." width="1425" height="801" loading="lazy" decoding="async" /></a>

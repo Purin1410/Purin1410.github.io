@@ -9,11 +9,10 @@ role:
   en: Co-author
   vi: Đồng tác giả
 result:
-  en:
-    Multi-task learning with convolutional block attention refinement for handwritten mathematical expression
-    recognition; published online 19 August 2026.
-  vi: Kết hợp học đa nhiệm với convolutional block attention refinement cho HMER; xuất bản trực tuyến ngày 19 tháng 8
-    năm 2026.
+  en: >-
+    Multi-task learning framework with convolutional block attention refinement module (CBARM) for handwritten mathematical expression recognition, published online 19 August 2026.
+  vi: >-
+    Khung học đa nhiệm kết hợp khối tinh chỉnh attention dạng tích chập (CBARM) cho nhận dạng công thức toán viết tay, xuất bản trực tuyến ngày 19 tháng 8 năm 2026.
 tags:
   - HMER
   - Multi-task
@@ -44,7 +43,7 @@ authors:
     self: false
 featuredOrder: 3
 project: hmer-research
-source: https://nhut-ngnn.github.io/publications/
+source: https://doi.org/10.1080/24751839.2026.2716432
 bibtex:
   "@article{mtlcbarmhmer2026,\n  title = {Enhancing handwritten mathematical expression recognition with convolutional\
   \ block attention refinement module and multi-task learning},\n  author = {Thanh Trung Nguyen and Nhut Minh Nguyen\

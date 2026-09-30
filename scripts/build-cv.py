@@ -107,8 +107,6 @@ class CV:
         ed = DATA['education']
         self.add('<b>' + escape(ed['title']) + '</b>', self.small)
         self.add(ed['date'] + ' | ' + ed['status'], self.small)
-        if self.full:
-            self.add(ed['gpa'], self.small)
 
     def skills(self):
         self.section('Technical Skills')
@@ -187,8 +185,8 @@ def main():
             assert required in text, f'Missing text: {required}'
         for forbidden in ['PSRB', 'Bernstein', 'Olympic AI TA', 'FISAT']:
             assert forbidden not in text, f'Excluded content: {forbidden}'
-        if not full:
-            assert 'GPA' not in text
+        for forbidden in ['GPA', 'Research Ops', 'Will in soon']:
+            assert forbidden not in text
         outputs.append(path)
         print(f'{path.relative_to(ROOT)}: {len(reader.pages)} pages, {len(text)} text characters')
     backup = ROOT / 'cv/archive/cv-before-2026-09-17.pdf'

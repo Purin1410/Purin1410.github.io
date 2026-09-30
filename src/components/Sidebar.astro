@@ -8,12 +8,12 @@ import ThemeToggle from './ThemeToggle.astro';
 import { visibleGallery } from '../data/extras';
 import { credentials } from '../data/credentials.mjs';
 const { lang, hasNews = true, page = 'home' } = Astro.props as {lang: Lang; hasNews?: boolean; page?: string};
-const sections = [['about',words(lang,'About','Giới thiệu')],...(hasNews ? [['news',words(lang,'News','Cập nhật')]] : []),['work',words(lang,'Selected work','Công việc tiêu biểu')],['research',words(lang,'Publications','Công bố')],['background',words(lang,'Background','Học vấn & nghiên cứu')]];
+const sections = [['about',words(lang,'About','Giới thiệu')],...(hasNews ? [['news',words(lang,'News','Cập nhật')]] : []),['work',words(lang,'Selected work','Dự án tiêu biểu')],['research',words(lang,'Publications','Công bố')],['background',words(lang,'Background','Kinh nghiệm & học vấn')]];
 const cv = existsSync('public/cv.pdf');
 const fullCv = existsSync('public/cv-full.pdf');
 sections.push(['awards', words(lang,'Awards & funding','Giải thưởng & tài trợ')]);
 if (credentials.length) sections.push(['certificates', words(lang,'Certifications','Chứng chỉ')]);
-sections.push(['open-source', words(lang,'Contributions','Đóng góp xây dựng')]);
+sections.push(['open-source', words(lang,'Open source contributions','Đóng góp mã nguồn mở')]);
 if (visibleGallery.length) sections.push(['gallery', words(lang,'Gallery','Hình ảnh')]);
 const photo = existsSync('public/khoa.jpg');
 ---
@@ -37,6 +37,7 @@ const photo = existsSync('public/khoa.jpg');
     <a href={`mailto:${profile.email}`}><Icon name="mail" />Email</a>
     <a href={profile.links.github} target="_blank" rel="noopener noreferrer"><Icon name="github" />GitHub</a>
     <a href={profile.links.scholar} target="_blank" rel="noopener noreferrer"><Icon name="school" />Scholar</a>
+    <a href={profile.links.orcid} target="_blank" rel="noopener noreferrer"><Icon name="school" />ORCID</a>
     <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" />LinkedIn</a>
   </div>
   <div class="display-controls">

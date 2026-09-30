@@ -39,13 +39,13 @@ export async function registry() {
     cases.map((c) => c.data),
   );
   return {
-    projects: projects.sort((a, b) => a.data.order - b.data.order),
+    projects: projects.filter((p) => p.data.slug !== "research-ops").sort((a, b) => a.data.order - b.data.order),
     papers: papers.sort(
       (a, b) => b.data.year - a.data.year || a.data.order - b.data.order,
     ),
     news: sortNews(
       news.map((n) => n.data),
     ) as CollectionEntry<"news">["data"][],
-    cases,
+    cases: cases.filter((c) => c.data.project !== "research-ops"),
   };
 }

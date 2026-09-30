@@ -6,10 +6,10 @@ role:
   en: First author
   vi: Tác giả chính
 result:
-  en:
-    Text-to-molecule generation evaluated on L+M-24; the research core comes from my undergraduate thesis system.
-  vi:
-    Sinh phân tử từ văn bản, đánh giá trên L+M-24; lõi nghiên cứu được trích từ hệ thống đồ án tốt nghiệp.
+  en: >-
+    Shared-latent text and SELFIES alignment for text-to-molecule generation evaluated on L+M-24, derived from the core research of our capstone project.
+  vi: >-
+    Căn chỉnh không gian ẩn chung giữa văn bản và SELFIES cho bài toán sinh phân tử, đánh giá trên tập L+M-24 từ nghiên cứu trọng tâm của đồ án tốt nghiệp.
 tags:
   - Text-to-Molecule
   - L+M-24

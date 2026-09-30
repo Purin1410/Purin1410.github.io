@@ -2,16 +2,16 @@
 project: nexops
 locale: en
 outcome:
-  NexOps runs locally with repeatable factory scenarios for the production workflow.
+  NexOps operates as an active local prototype with repeatable shop-floor scenarios for demonstration and evaluation.
 ---
 
 ## The problem
 
-Machine status, production plans, alarms and downtime often sit in different screens, spreadsheets or paper records. NexOps brings them into one MES/SCADA interface for operators, maintenance staff and production managers.
+On many factory floors, machine telemetry, production schedules, alarms, and downtime logs are scattered across separate screens, spreadsheets, and paper notes. NexOps brings these into a single local MES/SCADA interface for operators, maintenance engineers, and plant managers.
 
 ## What it covers
 
-The prototype covers machine telemetry, production planning, work orders, alarms, event history and OEE by shift. Repeatable local scenarios let me run the same workflow again and compare the resulting telemetry, alarms and OEE.
+The prototype brings together live machine telemetry, work-order scheduling, alarm routing, and shift OEE. Deterministic simulation scenarios let us replay standardized shifts to verify telemetry ingestion, alarms, and OEE calculations.
 
 <section class="case-section nexops-flow">
   <h2>How it works</h2>
@@ -25,15 +25,15 @@ The prototype covers machine telemetry, production planning, work orders, alarms
 
 ## My role
 
-I lead the AI, simulation and platform work. I built the simulator, the factory scenarios around it, and the telemetry path that carries those scenarios into the operator views.
+NexOps is an active working prototype built for investor demonstrations and technical evaluation. As AI, Simulation & Platform Lead, I lead the software architecture, simulation engine, and integration adapters, while coordinating MQTT/EMQX messaging with our IoT hardware teammate.
 
-- Built repeatable machine and shift scenarios for planning, alarms and OEE to run as one workflow.
-- Designed the path from simulator and edge events through MQTT/EMQX into FastAPI, TimescaleDB and dashboard state.
-- Implemented the local Bambu Lab control integration used in the hardware trial.
+- Designed and implemented deterministic machine and shift simulations to verify production schedules, alarms, and OEE calculations.
+- Built the backend data pipeline ingesting MQTT/EMQX events through FastAPI into TimescaleDB and streaming live state to dashboards.
+- Developed the local network adapter for a Bambu Lab 3D printer, demonstrating local device control in a recorded trial.
 
 ## Working prototype
 
-Simulator and device events travel through MQTT/EMQX. FastAPI stores the time-series state in TimescaleDB; React, ECharts and PixiJS turn it into the planning, alarm, OEE and factory-floor screens. The Bambu Lab LAN path is one hardware integration inside that local runtime.
+Telemetry from devices and simulators streams over MQTT through EMQX. FastAPI saves time-series data into TimescaleDB, while React, Apache ECharts, and PixiJS render shift schedules, andon boards, alarms, and OEE reports. The Bambu Lab integration shows local hardware control working alongside the simulation runtime.
 
 <div class="case-evidence-grid">
   <figure class="case-evidence">

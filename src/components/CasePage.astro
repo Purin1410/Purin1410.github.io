@@ -17,14 +17,14 @@ const entry = cases.find(c=>c.data.project===slug && c.data.locale===lang)!;
 const { Content } = await render(entry);
 const related = p.publications.map(slug=>papers.find(paper=>paper.data.slug===slug)!);
 ---
-<Base lang={lang} title={`${p.title} — Khoa Nguyen`} description={t(p.summary,lang)}>
+<Base lang={lang} title={`${p.title} — Nguyen Minh Khoa`} description={t(p.summary,lang)}>
   <div class="case-shell"><Header lang={lang} /><main id="main" class="case-main">
-    <a class="back-link" href={`${pathFor('/',lang)}#work`}><Icon name="back" size={17} />{words(lang,'Back to selected work','Về công việc tiêu biểu')}</a>
+    <a class="back-link" href={`${pathFor('/',lang)}#work`}><Icon name="back" size={17} />{words(lang,'Back to selected work','Trở về dự án tiêu biểu')}</a>
     <header class:list={['case-heading', slug === 'hmer-research' && 'case-heading-hmer']}>
       <h1>{p.title}</h1>
       <p class="case-tagline">{t(p.tagline,lang)}</p>
       <p class="case-summary">{t(p.summary,lang)}</p>
-      {slug === 'hmer-research' && <p class="hmer-heading-note">{words(lang,'From handwritten mathematics to structured, machine-readable form.','Từ công thức toán viết tay đến biểu diễn có cấu trúc mà máy có thể đọc.')}</p>}
+      {slug === 'hmer-research' && <p class="hmer-heading-note">{words(lang,'From handwritten mathematics to structured LaTeX sequences.','Từ công thức toán viết tay đến chuỗi LaTeX có cấu trúc.')}</p>}
       <dl class="case-meta"><div><dt>{words(lang,'Role','Vai trò')}</dt><dd>{t(p.role,lang)}</dd></div><div><dt>{words(lang,'Period','Thời gian')}</dt><dd>{p.period}</dd></div><div><dt>{words(lang,'Status','Trạng thái')}</dt><dd>{t(p.status,lang)}</dd></div></dl>
       <div class="resource-links">{Object.entries(p.links).map(([label,url])=><a href={url} target="_blank" rel="noopener noreferrer">{label==='demo' ? words(lang,'Live demo','Mở demo') : label==='code' ? 'Code' : 'Paper'}<Icon name="external" size={15} /></a>)}</div>
     </header>

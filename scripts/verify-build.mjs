@@ -14,8 +14,8 @@ for (const file of pages) {
   );
   assert.match(
     html,
-    /name="robots" content="index,follow"/,
-    `${file}: public indexing enabled`,
+    file === '404.html' ? /name="robots" content="noindex,follow"/ : /name="robots" content="index,follow"/,
+    `${file}: correct indexing policy`,
   );
   assert.match(html, /rel="canonical" href="https:\/\/purin1410\.github\.io\//, `${file}: absolute canonical URL`);
   assert.match(html, /property="og:image" content="https:\/\/purin1410\.github\.io\/og\.png"/, `${file}: absolute OG image`);
@@ -60,7 +60,6 @@ for (const file of pages) {
 }
 const home = await readFile(join(root, "index.html"), "utf8");
 const all = await readFile(join(root, "research/index.html"), "utf8");
-const work = await readFile(join(root, "work/index.html"), "utf8");
 const viHome = await readFile(join(root, "vi/index.html"), "utf8");
 assert.deepEqual(
   [...home.matchAll(/data-paper="([^"]+)"/g)].map((m) => m[1]),
@@ -72,9 +71,14 @@ assert.deepEqual(
   ["lexichem", "nexops", "hmer-research"],
 );
 assert.ok(home.includes('/media/nexops-andon.webp') && viHome.includes('/media/nexops-andon.webp'), 'NexOps selected-work cover is present');
-assert.equal([...home.matchAll(/<time /g)].length, 5);
-assert.ok(home.includes('Presenting LexiChem at APWeb-WAIM 2026 in Da Nang.'), 'APWeb-WAIM presentation news is present');
+assert.equal([...home.matchAll(/<time /g)].length, 6);
+assert.ok(home.includes('Presented our LexiChem paper at the APWeb-WAIM 2026 conference in Da Nang.'), 'APWeb-WAIM presentation news is present');
 assert.ok(home.includes("older-news"));
+for (const html of [home, viHome]) {
+  const news = html.match(/<section id="news"[\s\S]*?<\/section>/)?.[0] || '';
+  assert.ok(news.includes('10.1007/978-981-92-5699-0_26'), 'CorrTie news links to its chapter');
+  assert.ok(!news.includes('taiduc1001.github.io'), 'news avoids unrelated collaborator links');
+}
 assert.ok((await stat(join(root, "cv.pdf"))).isFile(), "public CV is present");
 assert.match(home, /href="\/cv\.pdf"/, "homepage exposes CV download");
 assert.match(viHome, /href="\/cv\.pdf"/, "Vietnamese homepage exposes CV download");
@@ -103,7 +107,10 @@ for (const html of [home, viHome]) {
   assert.ok(html.includes('AIO 2024'), 'completed AIO programme present');
   assert.deepEqual([...html.matchAll(/data-award-year="(\d+)"/g)].map(m => Number(m[1])), [2026, 2025, 2025, 2025], 'main awards ordered newest first; earlier activities separate');
 }
-assert.ok(work.includes('data-project="research-ops"') && work.includes('Will in soon'), 'Research Ops remains available in all work');
+for (const file of pages) {
+  const html = await readFile(join(root, file), 'utf8');
+  assert.ok(!/Research Ops|research-ops|Will in soon|GPA/.test(html), `${file}: hidden content stays private`);
+}
 for (const [file, sampleLabel, footnote] of [
   ['work/hmer-research/index.html', 'CROHME sample*', '* Sample from CROHME 2016 dataset.'],
   ['vi/work/hmer-research/index.html', 'Mẫu CROHME*', '* Mẫu từ bộ dữ liệu CROHME 2016.'],
@@ -135,7 +142,7 @@ for (const file of ['work/nexops/index.html', 'vi/work/nexops/index.html']) {
   assert.ok(!html.includes('Live demo') && !html.includes('Mở demo'), 'NexOps has no public demo link');
   for (const asset of ['nexops-andon.webp', 'nexops-planning.webp', 'nexops-machine-hub.webp', 'nexops-oee.webp']) assert.ok(html.includes(asset), `${file}: ${asset}`);
   assert.ok(!html.includes('Outcome &amp; current status') && !html.includes('Kết quả &amp; trạng thái hiện tại'), 'NexOps omits redundant outcome section');
-  assert.ok(html.includes('Working prototype') || html.includes('Nguyên mẫu đang hoạt động'), 'NexOps states the current working form');
+  assert.ok(html.includes('Working investment/demo prototype') || html.includes('Nguyên mẫu demo/kêu gọi đầu tư đang hoạt động'), 'NexOps states the current working form');
   assert.ok(!html.includes('then tested a separate LAN control path') && !html.includes('sau đó thử một luồng điều khiển riêng'), 'NexOps introduction does not mistake the Bambu integration for the project purpose');
   assert.ok(html.includes('AI, Simulation &amp; Platform Lead') || html.includes('AI, Mô phỏng &amp; Nền tảng'), 'NexOps uses the expanded role title');
   for (const phrase of ['Broader repository scope', 'What this does not prove', 'Phạm vi rộng hơn của repository', 'Những gì demo chưa chứng minh', 'production deployment', 'triển khai sản xuất']) {
@@ -153,7 +160,7 @@ for (const file of ['work/nexops/index.html', 'vi/work/nexops/index.html']) {
   }
 }
 assert.ok(files.every(f => !/PORTFOLIO|resfes_2026\.png|Link_coursera|AiTA -Scribble/.test(f)), 'private source assets excluded');
-assert.equal(pages.length, 15, "14 bilingual pages and a fallback");
+assert.equal(pages.length, 13, "12 bilingual public pages and a fallback");
 console.log(
   `Verified ${pages.length} pages and ${checked} local links/assets; publication order, news, CV download, portrait and metadata passed.`,
 );

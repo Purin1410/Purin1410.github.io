@@ -10,18 +10,18 @@ status:
   en: Research contributions
   vi: Đóng góp nghiên cứu
 summary:
-  en:
-    Research on converting handwritten mathematical expressions into structured sequences, including experiments in
-    masked-language pretraining and multi-task learning.
-  vi:
-    Nghiên cứu chuyển ảnh công thức toán viết tay thành chuỗi có cấu trúc, gồm các thí nghiệm về tiền huấn luyện ngôn ngữ
-    có che và học đa nhiệm.
+  en: >-
+    Research on converting handwritten mathematical expressions into structured sequences,
+    including experiments in masked-language pretraining and multi-task learning.
+  vi: >-
+    Nghiên cứu chuyển ảnh công thức toán viết tay thành chuỗi có cấu trúc,
+    gồm các thí nghiệm về masked-language pretraining và học đa nhiệm.
 highlights:
   en:
     - Contributed to masked-language pretraining and multi-task learning experiments for HMER.
     - Two related papers are listed with their authorship, venue and publication status.
   vi:
-    - Đóng góp vào các thí nghiệm tiền huấn luyện ngôn ngữ có che và học đa nhiệm cho HMER.
+    - Đóng góp vào các thí nghiệm masked-language pretraining và học đa nhiệm cho HMER.
     - Hai công bố liên quan được ghi rõ tác giả, nơi công bố và trạng thái.
 stack:
   - Python

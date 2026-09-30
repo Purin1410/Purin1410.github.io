@@ -2,9 +2,8 @@ slug: 2026-09-09-apweb-presentation
 date: "2026-09-09"
 precision: day
 text:
-  en: Presenting LexiChem at APWeb-WAIM 2026 in Da Nang.
-  vi: Tôi đã trình bày LexiChem tại APWeb-WAIM 2026 ở Đà Nẵng.
-source: https://taiduc1001.github.io/publications/
+  en: Presented our LexiChem paper at the APWeb-WAIM 2026 conference in Da Nang.
+  vi: Trình bày báo cáo bài báo LexiChem tại hội nghị APWeb-WAIM 2026 ở Đà Nẵng.
 event: milestone
 publications:
   - lexichem

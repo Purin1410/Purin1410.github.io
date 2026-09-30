@@ -1,7 +1,7 @@
 title: LexiChem
 tagline:
   en: A workspace for designing molecules from text
-  vi: Không gian thiết kế phân tử từ mô tả bằng lời
+  vi: Không gian thiết kế phân tử từ mô tả văn bản
 role:
   en: AI & inference contributor · Capstone project
   vi: Phụ trách AI & suy luận · Đồ án tốt nghiệp
@@ -10,19 +10,19 @@ status:
   en: Completed
   vi: Hoàn thành
 summary:
-  en:
-    "LexiChem starts with a plain-language brief for a molecule, then generates candidates that can be checked, compared and explored in 2D or 3D.
-    I built the AI data path, ran model experiments and brought inference into the product."
-  vi:
-    "LexiChem bắt đầu từ một mô tả phân tử bằng lời, sau đó sinh các ứng viên để kiểm tra, so sánh và khám phá ở dạng 2D hoặc 3D.
-    Tôi xây dựng tuyến dữ liệu AI, chạy thực nghiệm mô hình và đưa suy luận vào sản phẩm."
+  en: >-
+    LexiChem starts from a natural-language description of a molecule, generates candidate structures, and checks them with RDKit for 2D/3D exploration.
+    I built the data pipeline, ran model experiments and ablations, and brought inference into the product.
+  vi: >-
+    LexiChem bắt đầu từ mô tả phân tử bằng ngôn ngữ tự nhiên, sinh các cấu trúc ứng viên rồi kiểm tra qua RDKit để khảo sát ở dạng 2D/3D.
+    Tôi xây dựng pipeline dữ liệu, chạy thực nghiệm mô hình và đưa suy luận vào sản phẩm.
 highlights:
   en:
     - Inspect generated molecules in 2D and 3D, with RDKit structure checks and ADMET readouts.
     - Compare multiple generation models served through Triton Inference Server.
     - Dashboard, Experiments and Simulation run locally; RAG/Knowledge remains in development.
   vi:
-    - Xem phân tử sinh ra ở dạng 2D/3D, kiểm tra cấu trúc qua RDKit và đọc các thuộc tính ADMET.
+    - Xem phân tử sinh ra ở dạng 2D/3D, kiểm tra cấu trúc qua RDKit và xem các chỉ số ADMET.
     - So sánh nhiều mô hình sinh được phục vụ qua Triton Inference Server.
     - Dashboard, Experiments và Simulation chạy cục bộ; RAG/Knowledge vẫn đang phát triển.
 stack:

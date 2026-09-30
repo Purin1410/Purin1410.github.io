@@ -113,7 +113,7 @@ export const newsSchema = z
     date: z.string(),
     precision: z.enum(["day", "month", "year"]),
     text: localized,
-    source: external,
+    source: external.optional(),
     event: z.enum(["announcement", "publication", "release", "milestone"]),
     publications: z.array(slug).default([]),
   })

@@ -6,7 +6,7 @@ import Media from './Media.astro';
 const { paper, lang } = Astro.props as { paper: CollectionEntry<'publications'>; lang: Lang };
 const p = paper.data;
 const paperHref = p.links.doi || p.links.pdf || p.links.arxiv;
-const statusLabels = {published:words(lang,'Published','Đã xuất bản'),accepted:words(lang,'Accepted','Đã được nhận'),submitted:words(lang,'Submitted','Đã gửi'), 'under-review':words(lang,'Under review','Đang phản biện')};
+const statusLabels = {published:words(lang,'Published','Đã xuất bản'),accepted:words(lang,'Accepted','Đã chấp nhận'),submitted:words(lang,'Submitted','Đã nộp'), 'under-review':words(lang,'Under review','Đang phản biện')};
 ---
 <article class:list={['publication-row',p.kind]} id={`paper-${p.slug}`} data-paper={p.slug}>
   <div class="publication-mark"><Icon name="paper" size={25} /></div>
@@ -24,8 +24,8 @@ const statusLabels = {published:words(lang,'Published','Đã xuất bản'),acce
       {p.links.code && <a href={p.links.code} target="_blank" rel="noopener noreferrer">Code<Icon name="external" size={14} /></a>}
       {p.project && <a href={workPath(p.project,lang)}>{words(lang,'Project','Dự án')}<Icon name="arrow" size={14} /></a>}
     </div>
-    {p.abstractExcerpt && <details class="disclosure"><summary>Abstract <span class="disclosure-sign" aria-hidden="true">+</span></summary><div class="disclosure-content"><p class="caption">{words(lang,'Excerpt from the abstract','Trích đoạn abstract')}</p><blockquote lang="en">{p.abstractExcerpt}</blockquote><a href={p.source} target="_blank" rel="noopener noreferrer">{words(lang,'Read the full abstract at source','Đọc abstract đầy đủ tại nguồn')}<Icon name="external" size={14} /></a></div></details>}
-    {p.bibtex && <details class="disclosure bibtex"><summary>BibTeX <span class="disclosure-sign" aria-hidden="true">+</span></summary><div class="disclosure-content"><div class="copy-bar"><button type="button" class="copy-button" data-copy data-success={words(lang,'Copied','Đã sao chép')} data-failure={words(lang,'Copy unavailable. Select the text below to copy manually.','Không thể sao chép tự động. Hãy chọn nội dung bên dưới để sao chép.')}><Icon name="copy" size={16} />{words(lang,'Copy citation','Sao chép trích dẫn')}</button><span class="copy-status" role="status" aria-live="polite"></span></div><pre tabindex="0" aria-label={words(lang,'BibTeX citation','Trích dẫn BibTeX')}><code>{p.bibtex}</code></pre></div></details>}
+    {p.abstractExcerpt && <details class="disclosure"><summary>Abstract <span class="disclosure-sign" aria-hidden="true">+</span></summary><div class="disclosure-content"><p class="caption">{words(lang,'Excerpt from the abstract','Trích đoạn tóm tắt')}</p><blockquote lang="en">{p.abstractExcerpt}</blockquote><a href={p.source} target="_blank" rel="noopener noreferrer">{words(lang,'Read the full abstract at source','Xem tóm tắt đầy đủ tại nguồn')}<Icon name="external" size={14} /></a></div></details>}
+    {p.bibtex && <details class="disclosure bibtex"><summary>BibTeX <span class="disclosure-sign" aria-hidden="true">+</span></summary><div class="disclosure-content"><div class="copy-bar"><button type="button" class="copy-button" data-copy data-success={words(lang,'Copied','Đã sao chép')} data-failure={words(lang,'Copy unavailable. Please select and copy manually.','Không thể tự động sao chép. Vui lòng chọn và sao chép thủ công.')}><Icon name="copy" size={16} />{words(lang,'Copy citation','Sao chép trích dẫn')}</button><span class="copy-status" role="status" aria-live="polite"></span></div><pre tabindex="0" aria-label={words(lang,'BibTeX citation','Trích dẫn BibTeX')}><code>{p.bibtex}</code></pre></div></details>}
     </div>
   </div>
 </article>

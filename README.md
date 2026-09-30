@@ -1,4 +1,4 @@
-# Khoa Nguyen — professional portfolio
+# Nguyen Minh Khoa — professional portfolio
 
 An Astro static portfolio for AI engineering roles and research opportunities. English is the default; Vietnamese lives under `/vi/`. The public site is deployed to `https://purin1410.github.io` through GitHub Actions.
 

@@ -6,12 +6,10 @@ role:
   en: Co-first author
   vi: Đồng tác giả chính
 result:
-  en:
-    Contrastive alignment of textual and molecular representations on BioT5+; evaluated on the L+M-24 text-to-molecule
-    benchmark.
-  vi:
-    Căn chỉnh tương phản giữa biểu diễn văn bản và phân tử trên BioT5+; đánh giá trên benchmark text-to-molecule
-    L+M-24.
+  en: >-
+    Contrastive representation alignment of textual and molecular embeddings on BioT5+, reporting 69.77% BLEU and 31.28% Levenshtein distance on the L+M-24 benchmark.
+  vi: >-
+    Căn chỉnh tương phản giữa biểu diễn văn bản và phân tử trên nền BioT5+, đạt 69,77% BLEU và 31,28% khoảng cách Levenshtein trên tập chuẩn L+M-24 (theo số liệu bài báo).
 tags:
   - Text-to-Molecule
   - Contrastive alignment

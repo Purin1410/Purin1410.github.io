@@ -113,6 +113,8 @@ test("content rejects missing translations and unsafe links", () => {
     event: "announcement",
   };
   assert.equal(newsSchema.safeParse(news).success, true);
+  const { source, ...unlinkedNews } = news;
+  assert.equal(newsSchema.safeParse(unlinkedNews).success, true);
   assert.equal(
     newsSchema.safeParse({ ...news, text: { en: "Update" } }).success,
     false,

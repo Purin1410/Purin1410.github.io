@@ -5,11 +5,11 @@ venue: International Conference on Document Analysis and Recognition
 year: 2025
 status: published
 role:
-  en: Co-first author
-  vi: Đồng tác giả chính
+  en: Co-author
+  vi: Đồng tác giả
 result:
-  en: Masked-language pretraining and regularization for handwritten mathematical expression recognition.
-  vi: Tiền huấn luyện với cơ chế che và regularization cho nhận dạng công thức toán viết tay.
+  en: Masked-language pretraining and stochastic-depth regularization for HMER, achieving up to +5 ExpRate points over CoMER on CROHME.
+  vi: Tiền huấn luyện masked-language và regularization ngắt tầng ngẫu nhiên cho HMER, cải thiện tới +5 điểm ExpRate so với CoMER trên CROHME.
 tags:
   - HMER
   - Masked LM
