@@ -1,3 +1,5 @@
+Latest owner correction, 2026-10-02: retain the total five accepted/published paper count in Research Experience and Selected Publications; research fields are HMER, text-to-molecule generation and active learning with vision-language models. Use existing publisher/GitHub links in publication YAML files. This overrides older advice to omit repeated counts.
+
 
 ## Quyết định mới của chủ CV, 2026-10-02 (ưu tiên hơn hướng dẫn cũ)
 

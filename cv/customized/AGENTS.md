@@ -17,7 +17,7 @@ Read `WORKFLOW.md`, `TAILORING_NOTES.md` and `CV_VOICE.md` before editing a CV. 
 
 - Global Layout & Typography rule: Strictly preserve the base 1-page aesthetic, comfortable line spacing (`\linespread{1.08}` to `1.105`), standard margins, and readable 10pt body font from `Nguyen-Minh-Khoa-CV-1page.tex`. Do NOT over-compress line spacing or shrink font sizes; to fill whitespace at the bottom of the page, keep comfortable line height, adjust geometry margins slightly (`top=0.90cm`, `bottom=0.40cm` in the approved master), and increase section/category spacing (`\par\vspace{2.0pt-2.4pt}`), keeping lines uncrowded and easy to read.
 
-- Global Publications rule: Preserve the approved master’s three selected full citations in `SELECTED PUBLICATIONS` (the full CV retains all five), while NEVER including the phrase/sentence "Author of 5 peer-reviewed publications." (or similar redundant text) in the Professional Summary, Research Experience, or anywhere else in the TeX source, keeping the page uncrowded and visually balanced.
+- Global Publications rule: Preserve the approved master’s three selected full citations in `SELECTED PUBLICATIONS` (the full CV retains all five), The owner explicitly requested the five accepted/published paper count in Research Experience and the Selected Publications heading on 2026-10-02. Keep those annotations and the three research fields; do not add another count to Profile.
 
 - Global Folder Structure rule: All job-specific artifacts, TeX sources, logs, and compiled PDFs MUST reside exclusively inside `jobs/<company-role>/` (and its `build/` directory). Never place loose PDF/TeX files in the root `customized/` folder.
 
