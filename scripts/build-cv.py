@@ -4,6 +4,7 @@
 Edit cv/latex_source/*.tex. The layout is intentionally kept in those sources;
 cv/content.json is a factual reference, not a PDF layout template.
 """
+import argparse
 from pathlib import Path
 import re
 import shutil
@@ -22,12 +23,16 @@ VARIANTS = [
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--variant", choices=["all", "one-page", "full"], default="all")
+    args = parser.parse_args()
+    variants = VARIANTS if args.variant == "all" else [VARIANTS[0 if args.variant == "one-page" else 1]]
     if not shutil.which('pdflatex'):
         raise RuntimeError('Install pdfLaTeX and the packages listed in cv/README.md.')
     with tempfile.TemporaryDirectory(prefix='portfolio-cv-latex-') as temp:
         build = Path(temp)
         outputs = []
-        for source_name, output_name, public_name, pages in VARIANTS:
+        for source_name, output_name, public_name, pages in variants:
             source = SOURCE / source_name
             for _ in range(2):
                 result = subprocess.run(
@@ -48,9 +53,13 @@ def main():
             for required in ['NGUYEN MINH KHOA', 'AiTA', 'LexiChem', 'NexOps', 'Bachelor of Science']:
                 if required not in text:
                     raise RuntimeError(f'{source_name}: missing {required}.')
-            for forbidden in ['GPA', 'Research Ops', 'PSRB', 'Bernstein', 'Olympic AI TA', 'FISAT', '+4 ExpRate', '+3.4 BLEU', '30% lower Levenshtein']:
+            for forbidden in ['GPA', 'PSRB', 'Bernstein', 'Olympic AI TA', 'FISAT', '+4 ExpRate', '+3.4 BLEU', '30% lower Levenshtein']:
                 if forbidden in text:
                     raise RuntimeError(f'{source_name}: excluded or stale content: {forbidden}.')
+            if pages == 1 and 'Research Ops' not in text:
+                raise RuntimeError(f'{source_name}: missing approved Research Ops project.')
+            if pages != 1 and 'Research Ops' in text:
+                raise RuntimeError(f'{source_name}: Research Ops is not approved for this variant.')
             for page in reader.pages:
                 if tuple(round(float(v)) for v in page.mediabox[2:]) != (612, 792):
                     raise RuntimeError(f'{source_name}: expected the original Letter page size.')
